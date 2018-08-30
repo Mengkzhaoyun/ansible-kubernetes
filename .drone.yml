@@ -11,6 +11,6 @@ pipeline:
     version: v1.11.2
     channel: alpha
     registry: hub.c.163.com
-    registry_user: mengkzhaoyun
+    registry_user: mengkzhaoyun@gmail.com
     registry_password: "mk7788414"
     registry_email: "mengkzhaoyun@gmail.com"
