@@ -1,0 +1,97 @@
+- name: Run prepare.sh
+  environment:
+    HTTP_SERVER: '{{ HTTP_SERVER }}'
+    RKT_ACI_KUBELET: '{{ RKT_ACI_KUBELET }}'
+    REGISTRY_LOCAL: '{{ REGISTRY_LOCAL }}'
+    REGISTRY_LOCAL_SPLIT: ":"
+    REGISTRY_KUBELET_REPO: '{{ K8S_IMAGES["KUBELET"]["NAME"] }}'
+    REGISTRY_KUBELET_VERSION: '{{ K8S_IMAGES["KUBELET"]["VERSION"] }}' 
+  script: scripts/prepare.sh
+
+- name: mkdir -p /etc/kubernetes/config
+  raw: mkdir -p /etc/kubernetes/config
+
+- name: check need config/kubelet.yaml
+  raw: stat /etc/kubernetes/config/kubelet.yaml
+  register: need_config_kubelet
+  ignore_errors: True
+
+- name: copy config/kubelet.yaml
+  copy: src=config/kubelet.yaml dest=/etc/kubernetes/config/kubelet.yaml
+  when: need_config_kubelet | failed
+
+- name: check need config/kubeproxy.yaml
+  raw: stat /etc/kubernetes/config/kubeproxy.yaml
+  register: need_config_kubeproxy
+  ignore_errors: True  
+
+- name: copy config/kubeproxy.yaml
+  copy: src=config/kubeproxy.yaml dest=/etc/kubernetes/config/kubeproxy.yaml
+  when: need_config_kubeproxy | failed  
+
+- name: check need scripts/kubelet.sh
+  raw: stat /etc/kubernetes/scripts/kubelet.sh
+  register: need_scripts_kubelet
+  ignore_errors: True  
+
+- name: copy scripts/kubelet.sh
+  copy: src=scripts/kubelet.sh dest=/etc/kubernetes/scripts/kubelet.sh mode=0755
+  when: need_scripts_kubelet | failed  
+
+- name: check need ssl/admin.csv
+  raw: stat /etc/kubernetes/ssl/admin.csv
+  register: need_ssl_admin
+  ignore_errors: True
+
+- name: template ssl/admin.csv
+  template: src=ssl/admin.csv dest=/etc/kubernetes/ssl/admin.csv
+  when: need_ssl_admin | failed
+
+- name: check need ssl/token.csv
+  raw: stat /etc/kubernetes/ssl/token.csv
+  register: need_ssl_token
+  ignore_errors: True
+
+- name: template ssl/token.csv
+  template: src=ssl/token.csv dest=/etc/kubernetes/ssl/token.csv
+  when: need_ssl_token | failed  
+
+- name: check need manifests/kube-apiserver.yaml
+  raw: stat /etc/kubernetes/manifests/kube-apiserver.yaml
+  register: need_manifests_apiserver
+  ignore_errors: True
+
+- name: template manifests/kube-apiserver.yaml
+  template: src=manifests/kube-apiserver.yaml dest=/etc/kubernetes/manifests/kube-apiserver.yaml
+  when: need_manifests_apiserver | failed  
+
+- name: check need manifests/kube-controller-manager.yaml
+  raw: stat /etc/kubernetes/manifests/kube-controller-manager.yaml
+  register: need_manifests_controller
+  ignore_errors: True
+
+- name: template manifests/kube-controller-manager.yaml
+  template: src=manifests/kube-controller-manager.yaml dest=/etc/kubernetes/manifests/kube-controller-manager.yaml
+  when: need_manifests_controller | failed     
+
+- name: check need manifests/kube-scheduler.yaml
+  raw: stat /etc/kubernetes/manifests/kube-scheduler.yaml
+  register: need_manifests_scheduler
+  ignore_errors: True
+
+- name: template manifests/kube-scheduler.yaml
+  template: src=manifests/kube-scheduler.yaml dest=/etc/kubernetes/manifests/kube-scheduler.yaml
+  when: need_manifests_scheduler | failed
+
+- name: check need services/k8s-kubelet.service
+  raw: stat /etc/systemd/system/k8s-kubelet.service
+  register: need_services_kubelet
+  ignore_errors: True
+
+- name: template services/k8s-kubelet.service
+  template: src=services/kubelet.service dest=/etc/systemd/system/k8s-kubelet.service
+  when: need_services_kubelet | failed  
+
+- name: start services k8s-kubelet.service
+  raw: systemctl daemon-reload && systemctl enable k8s-kubelet.service && systemctl start k8s-kubelet.service
+  when: need_services_kubelet | failed

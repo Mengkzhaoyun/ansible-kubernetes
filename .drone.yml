@@ -1,0 +1,16 @@
+clone:
+  git:
+    image: registry.ispacesys.cn/public/drone-git:1.4.0
+pipeline:
+  docker:
+    image: registry.ispacesys.cn/devops/docker:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    base: hub.c.163.com/mengkzhaoyun/public:ansible-2.3.0-centos7
+    repo: mengkzhaoyun/cloud/ansible-kubernetes
+    version: v1.11.2
+    channel: alpha
+    registry: hub.c.163.com
+    registry_user: mengkzhaoyun
+    registry_password: "mk7788414"
+    registry_email: "mengkzhaoyun@gmail.com"

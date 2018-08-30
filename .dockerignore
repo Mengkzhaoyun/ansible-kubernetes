@@ -1,0 +1,19 @@
+# Ignore all development artifacts so that the build is always clean.
+.git/
+.tmp/
+.temp/
+.vscode/
+build/
+docs/
+node_modules/
+.babelrc
+.git*
+.drone.yml
+docker-compose.debug.yml
+docker-compose.yml
+dockerfile
+gulpfile.babel.js
+jsconfig.json
+package.json
+readme.md
+ali*

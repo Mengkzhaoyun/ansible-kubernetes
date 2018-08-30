@@ -1,0 +1,11 @@
+---
+# install rkt
+- name: install rkt
+  environment:
+    HTTP_SERVER: '{{ HTTP_SERVER }}'
+    YUM_RKT: '{{ YUM_RKT }}'
+  script: "{{ lookup('first_found', findme)}}"
+  vars:
+    findme:
+      - install-{{ ansible_distribution }}.sh  
+      - install.sh    
