@@ -23,11 +23,14 @@ if ! (grep -q /opt/bin /etc/environment) ; then
   source /etc/environment;
 fi
 
-if [[ -e /opt/$ActivePython.tar.gz ]]; then
-  echo '$ActivePython.tar.gz exist!'
-else
-  curl $HTTP_SERVER/$ActivePython.tar.gz > /opt/$ActivePython.tar.gz
-fi
+# if [[ -e /opt/$ActivePython.tar.gz ]]; then
+#   echo '$ActivePython.tar.gz exist!'
+# else
+#   curl $HTTP_SERVER/$ActivePython.tar.gz > /opt/$ActivePython.tar.gz
+# fi
+
+curl $HTTP_SERVER/$ActivePython.tar.gz > /opt/$ActivePython.tar.gz
+
 cd /opt
 tar -xzvf $ActivePython.tar.gz
 cd /opt/${ActivePython} && ./install.sh -I /opt/python/
