@@ -58,8 +58,7 @@
 
 - name: template kube-proxy-conf.yml
   when: 
-  - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_manifests_kube_proxy | failed   
+  - K8S_NETWORK_PLUGIN == "flannel"
   template: src=kube-proxy-conf.yml dest=/etc/kubernetes/config/kube-proxy-conf.yml
 
 - name: template kube-proxy-client.yml to master
