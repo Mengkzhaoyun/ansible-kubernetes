@@ -18,7 +18,7 @@ K8S_IMAGES:
   KUBELET:
     NAME: hyperkube
     VERSION: "v1.11.2"
-  KUBELET:
+  KUBE-PROXY:
     NAME: kube-proxy
     VERSION: "v1.11.2"    
   PAUSE: 
