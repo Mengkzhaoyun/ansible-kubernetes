@@ -33,7 +33,7 @@ pipeline:
         target: REGISTRY_PASSWORD
     when:
       branch: master       
-  docker-163:
+  docker-163-latest:
     image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
