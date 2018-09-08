@@ -2,21 +2,7 @@ clone:
   git:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod/drone-plugin-git:1.4.0
 pipeline:
-  docker-163:
-    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
-    repo: mengkzhaoyun/cloud/ansible-kubernetes
-    version: v1.11.2
-    channel: alpha
-    registry: hub.c.163.com
-    secrets: 
-      - source: REGISTRY_USER_163
-        target: REGISTRY_USER
-      - source: REGISTRY_PASSWORD_163
-        target: REGISTRY_PASSWORD
-  docker-aliyun:
+  docker-aliyun-alpha:
     image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -30,4 +16,21 @@ pipeline:
         target: REGISTRY_USER
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
-branches: master
+    when:
+      branch: dev        
+  docker-163:
+    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
+    repo: mengkzhaoyun/cloud/ansible-kubernetes
+    version: v1.11.2
+    registry: hub.c.163.com
+    secrets: 
+      - source: REGISTRY_USER_163
+        target: REGISTRY_USER
+      - source: REGISTRY_PASSWORD_163
+        target: REGISTRY_PASSWORD
+    when:
+      branch: master        
+branches: [master,dev]
