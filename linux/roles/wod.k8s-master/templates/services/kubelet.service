@@ -25,7 +25,7 @@ ExecStartPre=-/usr/bin/rkt rm --uuid-file=/etc/kubernetes/data/kubelet-pod.uuid
 
 ExecStart=/etc/kubernetes/scripts/kubelet.sh \
   --kubeconfig=/etc/kubernetes/config/kubelet.yaml \
-  --register-node=true \  
+  --register-node=true \
   --anonymous-auth=false \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --authentication-token-webhook=true \
