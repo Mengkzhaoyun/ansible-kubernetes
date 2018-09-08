@@ -2,7 +2,7 @@ clone:
   git:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod/drone-plugin-git:1.4.0
 pipeline:
-  docker:
+  docker-163:
     image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -15,8 +15,8 @@ pipeline:
       - source: REGISTRY_USER_163
         target: REGISTRY_USER
       - source: REGISTRY_PASSWORD_163
-        target: REGISTRY_PASSWORD    
-  docker:
+        target: REGISTRY_PASSWORD
+  docker-aliyun:
     image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
