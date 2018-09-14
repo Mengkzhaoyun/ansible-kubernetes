@@ -10,9 +10,9 @@ SSH_KEYS:
 # registry
 REGISTRY_LOCAL_HOST: reg.local
 REGISTRY_LOCAL: "{{ REGISTRY_LOCAL_HOST }}:5000/k8s/"
-REGISTRY_REMOTE: "hub.c.163.com/mengkzhaoyun/k8s:"
+REGISTRY_REMOTE: "registry.cn-qingdao.aliyuncs.com/wod/"
 # REGISTRY_REMOTE_HOST: "172.16.11.23:5000"
-REGISTRY_REMOTE_SPLIT: "-"
+REGISTRY_REMOTE_SPLIT: ":"
 
 K8S_IMAGES: 
   KUBELET:
@@ -20,7 +20,7 @@ K8S_IMAGES:
     VERSION: "v1.11.2"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.11.2"    
+    VERSION: "v1.11.2"
   PAUSE: 
     NAME: pause
     VERSION: "3.1"
@@ -35,16 +35,19 @@ K8S_IMAGES:
     VERSION: "v0.10.0"
   KUBE-ROUTER:
     NAME: kube-router
-    VERSION: "v0.2.0-beta.9"
+    VERSION: "v0.2.0"
   BUSYBOX:
     NAME: busybox
     VERSION: "1.27.2"
+  NGINX:
+    NAME: nginx
+    VERSION: "1.15.3-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.2.0"
+    VERSION: "1.2.2"
   DASHBOARD:
     NAME: kubernetes-dashboard-amd64
-    VERSION: "v1.8.3"
+    VERSION: "v1.10.0"
   HEAPSTER:
     NAME: heapster-amd64
     VERSION: "v1.5.4"

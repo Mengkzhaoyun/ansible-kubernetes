@@ -16,4 +16,8 @@ ETCD_CLUSTER_ROLE:
 K8S_CLUSTER_ROLE: 
   systech14: master
 
+# one master
 K8S_MASTER_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"
+
+# three master ha-cluster
+# K8S_MASTER_IP: "127.0.0.1"
