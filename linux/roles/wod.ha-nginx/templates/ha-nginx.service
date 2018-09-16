@@ -1,0 +1,30 @@
+[Unit]
+Description=k8s-nginx  (System Application Container)
+Documentation=https://github.com/coreos/nginx
+
+[Service]
+Restart=always
+RestartSec=10
+# TimeoutSec=infinity
+
+Environment=PATH=/opt/bin/:/usr/bin/:/usr/sbin:/sbin:$PATH
+
+ExecStartPre=/usr/bin/mkdir --parents /etc/kubernetes/downloads
+ExecStartPre=/usr/bin/mkdir --parents /etc/kubernetes/nginx
+ExecStartPre=/usr/bin/mkdir --parents /etc/kubernetes/nginx-pod
+
+
+ExecStart=/usr/bin/rkt run \
+  --insecure-options=image \
+  --uuid-file-save=/etc/kubernetes/nginx-pod/nginx-pod.uuid \
+  --volume volume-etc-nginx,kind=host,source=/etc/kubernetes/nginx \
+  --mount volume=volume-etc-nginx,target=/etc-nginx \
+  --inherit-env \
+  --stage1-from-dir=stage1-fly.aci \
+  /etc/kubernetes/downloads/{{ RKT_ACI_NGINX }}.aci \
+  --name=k8s-nginx
+
+ExecStop=-/usr/bin/rkt stop --uuid-file=/etc/kubernetes/nginx-pod/nginx-pod.uuid
+
+[Install]
+WantedBy=multi-user.target
