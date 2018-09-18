@@ -25,6 +25,8 @@ rm -rf /etc/systemd/system/$SERVICE.service
 
 docker rm $(docker ps -a | awk '{print $1}') -f
 
+docker system prune -a -f
+
 rkt gc --grace-period=0
 
 rkt image gc --grace-period=0
