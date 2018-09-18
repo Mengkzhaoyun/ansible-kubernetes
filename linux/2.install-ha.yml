@@ -19,6 +19,8 @@
     when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"
   - role: wod.k8s-keepalived
     when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"    
+  - role: wod.k8s-nginx
+    when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"        
   - role: wod.k8s-kubectl
     when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"    
   - role: wod.k8s-worker

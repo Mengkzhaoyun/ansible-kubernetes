@@ -1,0 +1,28 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ""
+  labels:
+    component: nginx
+    tier: control-plane
+  name: kube-nginx
+  namespace: kube-system
+spec:
+  hostNetwork: true
+  priorityClassName: system-cluster-critical
+  containers:
+  - name: kube-nginx
+    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['NGINX']['NAME'] }}:{{ K8S_IMAGES['NGINX']['VERSION'] }}
+    ports:
+    - containerPort: {{ K8S_MASTER_PORT }}
+      hostPort: {{ K8S_MASTER_PORT }}
+      name: https
+    volumeMounts:
+    - mountPath: /etc/nginx
+      name: etc-nginx
+      readOnly: true  
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/data/nginx
+    name: etc-nginx    

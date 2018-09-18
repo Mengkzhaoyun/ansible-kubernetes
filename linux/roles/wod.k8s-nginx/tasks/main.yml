@@ -1,22 +1,15 @@
 ---
-- name: copy nginx.sh
-  template: src=nginx.sh dest=/etc/kubernetes/scripts/nginx.sh mode=0744
-
-- name:  mkdir -p /etc/kubernetes/data/nginx
+- name: mkdir -p /etc/kubernetes/data/nginx
   raw: mkdir -p /etc/kubernetes/data/nginx
 
 - name: template nginx.conf
   template: src=nginx.conf dest=/etc/kubernetes/data/nginx/nginx.conf mode=0644
 
-- name: check need nginx.service
-  raw: stat /etc/systemd/system/k8s-nginx.service
-  register: need_services_nginx
-  ignore_errors: True  
+- name: check need manifests/kube-nginx.yaml
+  raw: stat /etc/kubernetes/manifests/kube-nginx.yaml
+  register: need_manifests_nginx
+  ignore_errors: True
 
-- name: template nginx.service
-  template: src=nginx.service dest=/etc/systemd/system/k8s-nginx.service mode=0644
-  when: need_services_nginx | failed
-
-- name: start nginx.service
-  raw: systemctl daemon-reload && systemctl enable k8s-nginx.service && systemctl start k8s-nginx.service
-  when: need_services_nginx | failed
+- name: template manifests/kube-nginx.yaml
+  template: src=kube-nginx.yaml dest=/etc/kubernetes/manifests/kube-nginx.yaml
+  when: need_manifests_nginx | failed

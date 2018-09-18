@@ -18,9 +18,11 @@ REGISTRY_LOCAL_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] 
 
 # one master
 K8S_MASTER_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"
+K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
 # # three master ha-cluster
 # # vip
 # K8S_MASTER_IP: "127.0.0.1"
 # # vip interface
 # K8S_MASTER_INTERFACE: "eth0"
+# K8S_MASTER_PORT: "8443"
