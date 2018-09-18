@@ -67,4 +67,9 @@ docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.9
 docker pull quay.io/coreos/flannel:v0.10.0 && \
 docker tag quay.io/coreos/flannel:v0.10.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.10.0 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.10.0
+
+# keepalived
+docker pull osixia/keepalived:1.4.5 && \
+docker tag osixia/keepalived:1.4.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/keepalived:1.4.5 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/keepalived:1.4.5
 ```

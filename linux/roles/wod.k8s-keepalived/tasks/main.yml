@@ -4,5 +4,5 @@
   ignore_errors: True
 
 - name: template manifests/keepalived.yaml
-  template: src=manifests/keepalived.yaml dest=/etc/kubernetes/manifests/keepalived.yaml
+  template: src=keepalived.yaml dest=/etc/kubernetes/manifests/keepalived.yaml
   when: need_manifests_keepalived | failed
