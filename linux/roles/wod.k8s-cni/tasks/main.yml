@@ -98,6 +98,6 @@
   - need_addons_flannel | failed  
   register: create_result_flannel
   until: create_result_flannel.rc == 0
-  retries: 5
-  delay: 2
+  retries: 15
+  delay: 5
   ignore_errors: true  
