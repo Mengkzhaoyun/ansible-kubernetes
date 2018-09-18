@@ -1,6 +1,6 @@
 ---
 - name: copy nginx.sh
-  template: src=nginx.sh dest=/etc/kubernetes/scipts/nginx.sh mode=0744
+  template: src=nginx.sh dest=/etc/kubernetes/scripts/nginx.sh mode=0744
 
 - name: template nginx.conf
   template: src=nginx.conf dest=/etc/kubernetes/data/nginx/nginx.conf mode=0644

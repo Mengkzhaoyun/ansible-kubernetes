@@ -32,9 +32,14 @@ docker tag gcr.io/google-containers/pause-amd64:3.1 registry.cn-qingdao.aliyuncs
 docker push registry.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
 
 # heapster
-docker pull k8s.gcr.io/heapster-amd64:v1.5.4 ;`
-docker tag k8s.gcr.io/heapster-amd64:v1.5.4 registry.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4 ;`
+docker pull gcr.io/google-containers/heapster-amd64:v1.5.4 ;`
+docker tag gcr.io/google-containers/heapster-amd64:v1.5.4 registry.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4 ;`
 docker push registry.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4
+
+# addon-resizer
+docker pull gcr.io/google-containers/addon-resizer:1.8.3 ;`
+docker tag gcr.io/google-containers/addon-resizer:1.8.3 registry.cn-qingdao.aliyuncs.com/wod/addon-resizer:1.8.3 ;`
+docker push registry.cn-qingdao.aliyuncs.com/wod/addon-resizer:1.8.3
 ```
 
 ```bash
