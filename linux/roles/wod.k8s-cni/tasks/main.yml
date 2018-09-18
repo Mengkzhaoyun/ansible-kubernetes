@@ -93,7 +93,7 @@
 - name: kubectl create -f flannel.yml
   raw: kubectl create -f /etc/kubernetes/addons/kube-system/flannel.yml
   when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
   - K8S_NETWORK_PLUGIN == "flannel" 
   - need_addons_flannel | failed  
   register: create_result_flannel
