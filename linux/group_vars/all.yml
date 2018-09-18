@@ -60,6 +60,9 @@ K8S_IMAGES:
   ETCDCTL:
     NAME: etcdctl
     VERSION: "latest"
+  KEEPALIVED:
+    NAME: keepalived
+    VERSION: "1.4.5"
 
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}"
