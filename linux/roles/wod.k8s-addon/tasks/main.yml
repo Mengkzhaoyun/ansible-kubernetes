@@ -12,7 +12,7 @@
   - need_addons_rbac_admin | failed
 
 - name: kubectl create -f rbac-admin.yml
-  raw: kubectl create -f /etc/kubernetes/addons/kube-system/rbac-admin.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/rbac-admin.yml
   when: 
   - need_addons_rbac_admin | failed
 
@@ -27,7 +27,7 @@
   - need_addons_dns | failed
 
 - name: kubectl create -f coredns.yml
-  raw: kubectl create -f /etc/kubernetes/addons/kube-system/coredns.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/coredns.yml
   when: 
   - need_addons_dns | failed  
 
@@ -42,7 +42,7 @@
   - need_addons_dashboard | failed
 
 - name: kubectl create -f dashboard.yml
-  raw: kubectl create -f /etc/kubernetes/addons/kube-system/dashboard.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/dashboard.yml
   when: 
   - need_addons_dashboard | failed  
 
@@ -57,6 +57,6 @@
   - need_addons_heapster | failed
 
 - name: kubectl create -f heapster.yml
-  raw: kubectl create -f /etc/kubernetes/addons/kube-system/heapster.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/heapster.yml
   when: 
   - need_addons_heapster | failed 
