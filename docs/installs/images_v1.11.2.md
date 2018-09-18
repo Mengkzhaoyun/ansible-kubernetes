@@ -25,6 +25,16 @@ docker push registry.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.11.2
 docker pull gcr.io/google-containers/kube-proxy:v1.11.2 ;`
 docker tag gcr.io/google-containers/kube-proxy:v1.11.2 registry.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.11.2 ;`
 docker push registry.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.11.2
+
+# pause
+docker pull gcr.io/google-containers/pause-amd64:3.1 ;`
+docker tag gcr.io/google-containers/pause-amd64:3.1 registry.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1 ;`
+docker push registry.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
+
+# heapster
+docker pull k8s.gcr.io/heapster-amd64:v1.5.4 ;`
+docker tag k8s.gcr.io/heapster-amd64:v1.5.4 registry.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4 ;`
+docker push registry.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4
 ```
 
 ```bash
@@ -42,4 +52,14 @@ docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.2
 docker pull cloudnativelabs/kube-router:v0.2.0 && \
 docker tag cloudnativelabs/kube-router:v0.2.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.0 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.0
+
+# etcd
+docker pull quay.io/coreos/etcd:v3.3.9 && \
+docker tag quay.io/coreos/etcd:v3.3.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.9 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.9
+
+# flannel
+docker pull quay.io/coreos/flannel:v0.10.0 && \
+docker tag quay.io/coreos/flannel:v0.10.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.10.0 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.10.0
 ```

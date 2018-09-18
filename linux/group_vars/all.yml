@@ -22,7 +22,7 @@ K8S_IMAGES:
     NAME: kube-proxy
     VERSION: "v1.11.2"
   PAUSE: 
-    NAME: pause
+    NAME: pause-amd64
     VERSION: "3.1"
   REGISTRY:
     NAME: registry
@@ -38,7 +38,7 @@ K8S_IMAGES:
     VERSION: "v0.2.0"
   BUSYBOX:
     NAME: busybox
-    VERSION: "1.27.2"
+    VERSION: "1.29"
   NGINX:
     NAME: nginx
     VERSION: "1.15.3-alpine"
