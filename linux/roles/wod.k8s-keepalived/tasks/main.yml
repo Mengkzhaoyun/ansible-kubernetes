@@ -3,6 +3,6 @@
   register: need_manifests_keepalived
   ignore_errors: True
 
-- name: template manifests/keepalived.yaml
+- name: template manifests/kube-keepalived.yaml
   template: src=kube-keepalived.yaml dest=/etc/kubernetes/manifests/kube-keepalived.yaml
   when: need_manifests_keepalived | failed
