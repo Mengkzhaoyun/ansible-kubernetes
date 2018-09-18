@@ -91,7 +91,7 @@
   - need_addons_flannel | failed
 
 - name: kubectl create -f flannel.yml
-  raw: kubectl create -f /etc/kubernetes/addons/kube-system/flannel.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/flannel.yml
   when: 
   - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
   - K8S_NETWORK_PLUGIN == "flannel" 
