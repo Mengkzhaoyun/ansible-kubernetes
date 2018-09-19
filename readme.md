@@ -36,6 +36,10 @@ define the cluster in hosts<br>
 - systech16
 <br>
 
+check date on each host<br>
+make sure each host has the same date<br>
+yum install ntp -y && ntpdate -u time.windows.com<br>
+
 [./hosts](./hosts)
 ```ini
 [systech]
