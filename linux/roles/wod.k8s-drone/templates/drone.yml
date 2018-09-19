@@ -1,0 +1,177 @@
+---
+# Source: drone/templates/drone/drone-secrets.cm.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: drone-secrets
+  namespace: devops
+data:
+  config: |
+    [
+      {
+        "name": "KUBERNETES_SERVER_ALIYUN",
+        "value": "https://172.31.14.41:6443"
+      },{
+        "name": "KUBERNETES_CERT_ALIYUN",
+        "value": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlDK1RDQ0FlR2dBd0lCQWdJSkFJQWVDWDZHdnRUS01BMEdDU3FHU0liM0RRRUJDd1VBTUJJeEVEQU9CZ05WDQpCQU1NQjJ0MVltVXRZMkV3SUJjTk1UWXhNVEl4TURZME5URTJXaGdQTWpFeE5qRXdNamd3TmpRMU1UWmFNQkl4DQpFREFPQmdOVkJBTU1CMnQxWW1VdFkyRXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCDQpBUURZS2IvV1hwaW0xVlpDc2Z3Y1I5aDRzVEJFM2M4SWxORWtnNFhyUElIM1RES0VsWDdiR1B0Uk4yVldMNjlSDQpJQjJlZVFNVHFOZ3k2WW5aR1JqSjBVb1RBanoyWUUvUXQ4TmRscjJJRFRwQndleGE1Tk41enpnWDQ0UmR3WVRGDQo3cUk5NG5rWE5ZUFhhQkg1Wm5yRXpRZm52dHJNQXg2eG96L0lzRmVMc3Uza2M4Sm1NeDZzeFVKZkdLWCtoNlZVDQpsajNFeEUvSk9ITTlpLzIyZnRYdXJmeVYwbjV2S0Z0UldTeUFuVm53YVFIeThFcW0wdHBEaWlIZWRtUWI3MWx2DQpHOUs4RG9yQWI3dWVJZjFXWUVYTkRFQ3ZCajNja0VWTkVRU3JCcmZMY1pQL2RvSitpblcvL0FXOFVlYjRqcVNDDQo2VVVWalVwTUdORE5kOHk0YlZYaHV6S1RBZ01CQUFHalVEQk9NQjBHQTFVZERnUVdCQlQ2b05pUGNtQ1dwbkxBDQpJYUJ0R2xEQTFGcnM4REFmQmdOVkhTTUVHREFXZ0JUNm9OaVBjbUNXcG5MQUlhQnRHbERBMUZyczhEQU1CZ05WDQpIUk1FQlRBREFRSC9NQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUIwNm1LYWQ0V0VhOTVuRmpUSjFXR3l5Wnh6DQpXcC81bUkvRXRkRkNsbTFudnhTQVJWcHJwMWoyVHU2Z1FUMnE0UlJWdWU5RHlBalpOZk45TndqTkVyYjdoenB0DQpleUVOTUpCTDFlOTIvSDkwQVdxNGpCRXhDWFE2MkV3QUd5eG5GZnRkQTUwWDNrN295cW5VdDFhdE5pNWFiOThFDQpjamMxMDRnbnRIc1ByMU1vRW9hUm9yRi93dGdwSGVqeW45cVZJcWY2ckxBby9rQ0RPVGJMcElmeHBoSkFBWG9iDQp3SmxjSkNIY09mTzhXRThFd3NwUU1WdWw1bFFYbUFmdTh6U1FLV3J0VjRhcjJDSEN3OEZFZDJhNkNCZHp5UGdDDQpXL0ZDZi9WM012ME9KVForTS9TZHcvWUZmdXpKUy9TMDNkY3RZdCtQejFUOWJvMkowZHpteTBmZDBIbjANCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0NCg=="
+      },{
+        "name": "KUBERNETES_TOKEN_ALIYUN",
+        "value": "7176d48e4e66ddb3557a82f2dd316a93"
+      }
+    ]
+---
+# Source: drone/templates/drone/drone.cm.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: drone
+  namespace: devops
+data:
+  DRONE_HOST: "https://drone.wodcloud.com"
+  DRONE_ADMIN: "docker,shucheng"  
+  DRONE_GITLAB_URL: "https://gitlab.wodcloud.com"
+  DRONE_GITLAB_CLIENT: "1a73245d0c6f7904b2c2f05c4ce132975dd2bc273593fe9b99459c3bba735465"
+  DRONE_GITLAB_SECRET: "f3ea050f6d189fa012020f31a8f3f3938829ac7306fb32dd812a529f283a7e4e"
+  DRONE_GITLAB_GIT_USERNAME: "docker"
+  DRONE_GITLAB_GIT_PASSWORD: "58772015"
+---
+# Source: drone/templates/drone-server/drone-server.pvc.yml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: drone-server
+  namespace: devops
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: fast
+  resources:
+    requests:
+      storage: 2Gi
+---
+# Source: drone/templates/drone-server/drone-server.svc.yml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: drone-server
+  namespace: devops
+spec:
+  selector:
+    app: drone-server
+  ports:
+  - name: http
+    port: 9000
+---
+# Source: drone/templates/drone-agent/drone-agent.ds.yml
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: drone-agent
+  namespace: devops
+spec:
+  template:
+    metadata:
+      labels:
+        app: drone-agent
+        version: "0.8.4"
+    spec:
+      containers:
+      - name: drone-agent
+        image: "harbor.wodcloud.com/cloud/drone-server:0.8.4-4"
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: docker
+          mountPath: /var/run/docker.sock
+        securityContext:
+          privileged: true
+        env:
+        - name: DRONE_SERVER
+          value: drone-server:9000
+        - name: DRONE_SECRET
+          value: passwddrone
+        - name: DRONE_HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+      volumes:      
+      - name: docker
+        hostPath:
+          path: /var/run/docker.sock
+---
+# Source: drone/templates/drone-server/drone-server.dp.yml
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: drone-server
+  namespace: devops
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: drone-server
+        version: "0.8.4"
+    spec:
+      containers:
+      - name: drone-server
+        image: "harbor.wodcloud.com/cloud/drone-server:0.8.4-4"
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        - containerPort: 9000
+        volumeMounts:
+        - name: sqlite
+          mountPath: /var/lib/drone
+        - name: src
+          mountPath: /drone/src
+        - name: secret
+          mountPath: /drone/secrets
+        securityContext:
+          privileged: true
+        envFrom:
+        - configMapRef:
+            name: "drone"          
+        env:
+        - name: DRONE_OPEN
+          value: "true"
+        - name: DRONE_GITLAB
+          value: "true"
+        - name: DRONE_SECRET
+          value: passwddrone
+        - name: DRONE_GLOBAL_SECRETS
+          value: /drone/secrets/global.secrets.json
+      volumes:      
+      - name: sqlite
+        persistentVolumeClaim:
+          claimName: drone-server
+      - name: src
+        hostPath:
+          path: /data/devops/drone/src
+      - name: secret
+        configMap:
+          name: drone-secrets
+          items:
+          - key: global.secrets.json
+            path: global.secrets.json
+          - key: global.env.yaml
+            path: global.env.yaml   
+---
+# Source: drone/templates/drone/drone.ig.yml
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: drone
+  namespace: devops
+spec:
+  rules:
+  - host: "drone.wodcloud.com"
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: drone-server
+          servicePort: 8000
