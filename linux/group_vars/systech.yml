@@ -16,11 +16,11 @@ K8S_CLUSTER_ROLE:
 REGISTRY_LOCAL_HOSTNAME: systech14
 REGISTRY_LOCAL_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"  
 
-# one master
+# single master
 K8S_MASTER_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
-# # three master ha-cluster
+# # ha-cluster master
 # # vip
 # K8S_MASTER_IP: "127.0.0.1"
 # # vip interface
