@@ -18,7 +18,7 @@ pipeline:
         target: REGISTRY_PASSWORD
     when:
       branch: dev        
-  docker-aliyun-alpha:
+  docker-aliyun:
     image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -32,7 +32,22 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: master          
+      branch: master      
+  docker-aliyun-latest:
+    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
+    repo: wod-cloud/ansible-kubernetes
+    version: latest
+    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    secrets: 
+      - source: REGISTRY_USER_ALIYUN
+        target: REGISTRY_USER
+      - source: REGISTRY_PASSWORD_ALIYUN
+        target: REGISTRY_PASSWORD
+    when:
+      branch: master             
   docker-163:
     image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
     volumes:
