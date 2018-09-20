@@ -56,10 +56,10 @@ K8S_IMAGES:
     VERSION: "1.8.3"
   KUBECTL:
     NAME: kubectl
-    VERSION: "latest"
+    VERSION: "1.11.2"
   ETCDCTL:
     NAME: etcdctl
-    VERSION: "latest"
+    VERSION: "v3.3.9"
   KEEPALIVED:
     NAME: keepalived
     VERSION: "1.4.5"
@@ -72,8 +72,6 @@ RKT_ACI_KUBELET: "{{ K8S_IMAGES['KUBELET']['NAME'] }}-{{ K8S_IMAGES['KUBELET']['
 
 # ctl tools
 RKT_ACI_REGISTRY_DATA: "registry-data-{{ K8S_IMAGES['KUBELET']['VERSION'] }}"
-TOOLS_KUBECTL: kubectl
-TOOLS_ETCDCTL: etcdctl
 
 # k8s adv option.
 K8S_NETWORK_PLUGIN: flannel
@@ -126,27 +124,39 @@ CLOUD_IMAGES:
   K8SCSI-CSI-ATTACHER:
     NAME: k8scsi-csi-attacher
     VERSION: "canary"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"
-  KUBELET:
-    NAME: hyperkube
-    VERSION: "v1.11.2"    
+  SAMEERSBN-GITLAB:
+    NAME: sameersbn-gitlab
+    VERSION: "11.2.3"
+  SAMEERSBN-POSTGRESQL:
+    NAME: sameersbn-postgresql
+    VERSION: "10"
+  SAMEERSBN-REDIS:
+    NAME: sameersbn-redis
+    VERSION: "4.0.9-1"
+  HARBOR-UI:
+    NAME: harbor-ui
+    VERSION: "v1.6.0"
+  HARBOR-ADMINSERVER:
+    NAME: harbor-adminserver
+    VERSION: "v1.6.0"
+  HARBOR-JOBSERVICE:
+    NAME: harbor-jobservice
+    VERSION: "v1.6.0"
+  HARBOR-DB:
+    NAME: harbor-db
+    VERSION: "v1.6.0"
+  CHARTMUSEUM:
+    NAME: chartmuseum
+    VERSION: "v0.7.1"
+  CLAIR:
+    NAME: clair
+    VERSION: "v2.0.6"
+  NOTARY-SERVER:
+    NAME: notary-server
+    VERSION: "0.5.0"
+  drone-server:
+    NAME: drone-server
+    VERSION: "0.8.4-4"
+  drone-agent:
+    NAME: drone-agent
+    VERSION: "0.8.4-4"

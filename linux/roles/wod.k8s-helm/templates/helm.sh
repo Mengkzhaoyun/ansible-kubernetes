@@ -6,6 +6,8 @@ TOOLS_HELM="{{ CLOUD_IMAGES['HELM']['NAME'] }}-{{ CLOUD_IMAGES['HELM']['VERSION'
 REGISTRY_LOCAL="{{ REGISTRY_LOCAL }}"
 REGISTRY_HELM_REPO="{{ CLOUD_IMAGES['HELM']['NAME'] }}"
 REGISTRY_HELM_VERSION="{{ CLOUD_IMAGES['HELM']['VERSION'] }}"
+REGISTRY_TILLER_REPO="{{ CLOUD_IMAGES['TILLER']['NAME'] }}"
+REGISTRY_TILLER_VERSION="{{ CLOUD_IMAGES['TILLER']['VERSION'] }}"
 
 mkdir -p /etc/kubernetes/downloads
 mkdir -p /opt/bin
@@ -19,9 +21,9 @@ if ! [ -x "$(command -v helm)" ]; then
   chmod 0744 /etc/kubernetes/downloads/$TOOLS_HELM
   rm -rf /opt/bin/helm
   ln -s /etc/kubernetes/downloads/$TOOLS_HELM /opt/bin/helm
-  /opt/bin/helm config set-cluster kubernetes --server=http://127.0.0.1:8080
-  /opt/bin/helm config set-context kubernetes --cluster=kubernetes
-  /opt/bin/helm config use-context kubernetes
+  /opt/bin/kubectl create serviceaccount --namespace kube-system tiller
+  /opt/bin/kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  /opt/bin/helm init --upgrade -i $REGISTRY_LOCAL$REGISTRY_TILLER_REPO:$REGISTRY_TILLER_VERSION --service-account tiller
 fi
 
 if ! [ -x "$(command -v helm)" ]; then
