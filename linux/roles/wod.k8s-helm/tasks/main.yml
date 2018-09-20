@@ -1,0 +1,13 @@
+- name: check need helm
+  raw: stat /opt/bin/helm
+  register: need_cli_helm
+  ignore_errors: True
+
+- name: template helm.sh
+  template: src=helm.sh dest=/etc/kubernetes/scripts/helm.sh mode=0755
+  - need_cli_helm | failed
+
+- name: download helm cli
+  raw: /etc/kubernetes/scripts/helm.sh
+  when:
+  - need_cli_helm | failed

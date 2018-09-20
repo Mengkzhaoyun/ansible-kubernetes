@@ -29,3 +29,7 @@ if ! [ -x "$(command -v kubectl)" ]; then
   /opt/bin/kubectl config set-context kubernetes --cluster=kubernetes
   /opt/bin/kubectl config use-context kubernetes
 fi
+
+if ! [ -x "$(command -v kubectl)" ]; then
+  ln -s /opt/bin/kubectl /usr/bin/kubectl
+fi
