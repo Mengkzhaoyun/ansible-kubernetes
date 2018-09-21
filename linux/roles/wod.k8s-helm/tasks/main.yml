@@ -5,6 +5,7 @@
 
 - name: template helm.sh
   template: src=helm.sh dest=/etc/kubernetes/scripts/helm.sh mode=0755
+  when:
   - need_cli_helm | failed
 
 - name: download helm cli
