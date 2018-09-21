@@ -25,10 +25,8 @@ if ! [[ -e /etc/kubernetes/helm/storageos/Chart.yaml ]]; then
   --set cluster.join={{ HOST_IP }} \
   --set cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos \
   --set storageclass.name=storageos \
+  --set csi.enable=true \
   --set api.username=admin \
   --set api.password="{{ STORAGEOS['PASSWORD'] }}" \
   --set ingress.hosts[0].name="{{ STORAGEOS['HOST'] }}"
-  ClusterIP=$(kubectl get svc/storageos --namespace storageos -o custom-columns=IP:spec.clusterIP --no-headers=true) && \
-  ApiAddress=$(echo -n "tcp://$ClusterIP:5705" | base64) && \
-  kubectl patch secret/storageos-api --namespace default --patch "{\"data\":{\"apiAddress\": \"$ApiAddress\"}}"
 fi
