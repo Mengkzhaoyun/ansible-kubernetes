@@ -9,6 +9,7 @@ REGISTRY_STORAGEOS_CHART_VERSION="{{ CLOUD_IMAGES['STORAGEOS-CHART']['VERSION'] 
 mkdir -p /etc/kubernetes/helm
 
 if ! [[ -e /etc/kubernetes/helm/storageos/Chart.yaml ]]; then
+  docker pull $REGISTRY_LOCAL$REGISTRY_STORAGEOS_CHART_REPO:$REGISTRY_STORAGEOS_CHART_VERSION
   docker run -v /etc/kubernetes/helm/storageos:/data/output --rm $REGISTRY_LOCAL$REGISTRY_STORAGEOS_CHART_REPO:$REGISTRY_STORAGEOS_CHART_VERSION
   helm install /etc/kubernetes/helm/storageos --name storageos --namespace storageos \
   --set image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['STORAGEOS-NODE']['NAME'] }} \
