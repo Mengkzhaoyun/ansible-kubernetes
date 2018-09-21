@@ -84,7 +84,7 @@ K8S_DNS_SERVICE_IP: 10.3.0.10
 K8S_ADVERTISE_IP: "{{ ansible_default_ipv4['address'] }}"
 K8S_PORT: 6443
 K8S_ADMIN_PWD: abc2018
-K8S_MASTER_DOMAIN: xx.ispacesys.cn
+K8S_MASTER_DOMAIN: k8s.wodcloud.local
 
 # ubuntu
 DEB_LIBLTDL7: libltdl7_2.4.6-0.1_amd64
@@ -154,9 +154,25 @@ CLOUD_IMAGES:
   NOTARY-SERVER:
     NAME: notary-server
     VERSION: "0.5.0"
-  drone-server:
+  DRONE-SERVER:
     NAME: drone-server
     VERSION: "0.8.4-4"
-  drone-agent:
+  DRONE-AGENT:
     NAME: drone-agent
     VERSION: "0.8.4-4"
+  STORAGEOS-CHART:
+    NAME: "storageos-chart"
+    VERSION: "1.0.0-rc4"
+  GITLAB-CHART:
+    NAME: "gitlab-chart"
+    VERSION: "11.2.3"
+  DRONE-CHART:
+    NAME: "drone-chart"
+    VERSION: "0.8.4-4"
+  HARBOR-CHART:
+    NAME: "harbor-chart"
+    VERSION: "v1.6.0"
+
+STORAGEOS:
+  PASSWORD: "abc2018"
+  HOST: "storageos.wodcloud.local"
