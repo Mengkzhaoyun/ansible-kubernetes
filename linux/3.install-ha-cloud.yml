@@ -1,9 +1,4 @@
 - hosts: all
-  gather_facts: False
-  roles:
-  - wod.python
-
-- hosts: all
   roles:
   - role: wod.registry-cache-cloud
     when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
