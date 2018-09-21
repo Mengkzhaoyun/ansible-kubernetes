@@ -12,3 +12,6 @@
   raw: /etc/kubernetes/scripts/helm.sh
   when:
   - need_cli_helm | failed
+
+- name: template rbac-tiller.yml
+  copy: src=rbac-tiller.yml dest=/etc/kubernetes/addons/kube-system/rbac-tiller.yml

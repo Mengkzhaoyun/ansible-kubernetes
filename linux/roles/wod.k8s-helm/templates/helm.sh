@@ -2,6 +2,7 @@
 
 set -e  
 
+HTTP_SERVER="${HTTP_SERVER:-http://k8s.spacecig.com/softs/kubernetes}"
 TOOLS_HELM="{{ CLOUD_IMAGES['HELM']['NAME'] }}-{{ CLOUD_IMAGES['HELM']['VERSION'] }}"
 REGISTRY_LOCAL="{{ REGISTRY_LOCAL }}"
 REGISTRY_HELM_REPO="{{ CLOUD_IMAGES['HELM']['NAME'] }}"
@@ -21,9 +22,11 @@ if ! [ -x "$(command -v helm)" ]; then
   chmod 0744 /etc/kubernetes/downloads/$TOOLS_HELM
   rm -rf /opt/bin/helm
   ln -s /etc/kubernetes/downloads/$TOOLS_HELM /opt/bin/helm
-  /opt/bin/kubectl create serviceaccount --namespace kube-system tiller
-  /opt/bin/kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-  /opt/bin/helm init --upgrade -i $REGISTRY_LOCAL$REGISTRY_TILLER_REPO:$REGISTRY_TILLER_VERSION --service-account tiller --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
+  if ! [[ -e /etc/kubernetes/addons/kube-system/rbac-tiller.yml ]]; then
+    /opt/bin/kubectl create serviceaccount --namespace kube-system tiller
+    /opt/bin/kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  fi
+  /opt/bin/helm init --upgrade -i $REGISTRY_LOCAL$REGISTRY_TILLER_REPO:$REGISTRY_TILLER_VERSION --service-account tiller --stable-repo-url $HTTP_SERVER/charts
 fi
 
 if ! [ -x "$(command -v helm)" ]; then
