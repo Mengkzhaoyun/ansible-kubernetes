@@ -23,7 +23,7 @@ if ! [ -x "$(command -v helm)" ]; then
   ln -s /etc/kubernetes/downloads/$TOOLS_HELM /opt/bin/helm
   /opt/bin/kubectl create serviceaccount --namespace kube-system tiller
   /opt/bin/kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-  /opt/bin/helm init --upgrade -i $REGISTRY_LOCAL$REGISTRY_TILLER_REPO:$REGISTRY_TILLER_VERSION --service-account tiller
+  /opt/bin/helm init --upgrade -i $REGISTRY_LOCAL$REGISTRY_TILLER_REPO:$REGISTRY_TILLER_VERSION --service-account tiller --stable-repo-url https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
 fi
 
 if ! [ -x "$(command -v helm)" ]; then

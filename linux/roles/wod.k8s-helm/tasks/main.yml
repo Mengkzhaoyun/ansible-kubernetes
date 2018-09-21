@@ -8,7 +8,7 @@
   when:
   - need_cli_helm | failed
 
-- name: download helm cli
+- name: /etc/kubernetes/scripts/helm.sh
   raw: /etc/kubernetes/scripts/helm.sh
   when:
   - need_cli_helm | failed
