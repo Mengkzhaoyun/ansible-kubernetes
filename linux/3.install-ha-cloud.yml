@@ -3,4 +3,6 @@
   - role: wod.registry-cache-cloud
     when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
   - role: wod.k8s-helm
-    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME" 
+    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
+  - role: wod.k8s-storageos
+    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
