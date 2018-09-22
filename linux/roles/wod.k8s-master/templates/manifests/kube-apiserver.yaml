@@ -31,6 +31,7 @@ spec:
     - --kubelet-client-key=/etc/kubernetes/ssl/apiserver.key
     - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true,rbac.authorization.k8s.io/v1beta1=true
     - --token-auth-file=/etc/kubernetes/ssl/token.csv    
+    - --feature-gates=MountPropagation=true
     ports:
     - containerPort: {{ K8S_PORT }}
       hostPort: {{ K8S_PORT }}
