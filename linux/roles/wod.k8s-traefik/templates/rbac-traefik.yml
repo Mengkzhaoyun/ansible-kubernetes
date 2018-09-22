@@ -2,7 +2,7 @@
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: traefik
+  name: kube-traefik
 rules:
   - apiGroups:
       - ""
@@ -26,26 +26,26 @@ rules:
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
-  name: traefik
+  name: kube-traefik
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: traefik
+  name: kube-traefik
 subjects:
 - kind: ServiceAccount
-  name: traefik
+  name: kube-traefik
   namespace: kube-system
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: traefik
+  name: kube-traefik
   namespace: kube-system
 ---  
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: traefik-conf
+  name: kube-traefik-conf
   namespace: kube-system
 data:
   traefik.toml: |
