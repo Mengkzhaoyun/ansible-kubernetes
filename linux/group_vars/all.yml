@@ -176,9 +176,6 @@ CLOUD_IMAGES:
   TRAEFIK-CHART:
     NAME: "traefik-chart"
     VERSION: "v1.7.0-rc5"
-  TRAEFIK:
-    NAME: "traefik"
-    VERSION: "v1.7.0-rc3-alpine"
 
 STORAGEOS:
   PASSWORD: "abc2018"
