@@ -22,7 +22,7 @@ if ! [[ -e /etc/kubernetes/helm/storageos/Chart.yaml ]]; then
   --set csiExternalProvisioner.tag={{ CLOUD_IMAGES['K8SCSI-CSI-PROVISIONER']['VERSION'] }} \
   --set csiExternalAttacher.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['K8SCSI-CSI-ATTACHER']['NAME'] }} \
   --set csiExternalAttacher.tag={{ CLOUD_IMAGES['K8SCSI-CSI-ATTACHER']['VERSION'] }} \
-  --set cluster.join={% for host in groups['systech'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}{% if loop.last %}{% else %},{% endif %}{% endfor %} \
+  --set cluster.join={% for host in groups['systech'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}{% if loop.last %}{% else %}\,{% endif %}{% endfor %} \
   --set cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos \
   --set storageclass.name=storageos \
   --set csi.enable=true \
