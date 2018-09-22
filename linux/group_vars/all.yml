@@ -203,15 +203,6 @@ CLOUD_IMAGES:
   GITLAB-REDIS:
     NAME: "sameersbn-redis"
     VERSION: "4.0.9-1"
-  DRONE-CHART:
-    NAME: "drone-chart"
-    VERSION: "0.8.4-4"
-  DRONE-SERVER:
-    NAME: "drone-server"
-    VERSION: "0.8.4-3"
-  DRONE-AGENT:
-    NAME: "drone-agent"
-    VERSION: "0.8.4-3"
 
 STORAGEOS:
   PASSWORD: "abc2018"
