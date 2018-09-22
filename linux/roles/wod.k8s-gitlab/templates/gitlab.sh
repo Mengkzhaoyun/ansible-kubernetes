@@ -18,7 +18,7 @@ if ! [[ -e /etc/kubernetes/helm/gitlab/Chart.yaml ]]; then
   --set gitlab.sshport="{{ GITLAB['SSHPORT'] }}" \
   --set postgresql.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-POSTGRESQL']['VERSION'] }} \
   --set postgresql.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-POSTGRESQL']['NAME'] }} \
-  --set redis.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-REDIS']['VERSION'] }} \
-  --set redis.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-REDIS']['NAME'] }}
+  --set redis.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-REDIS']['NAME'] }} \
+  --set redis.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-REDIS']['VERSION'] }}
 fi
 
