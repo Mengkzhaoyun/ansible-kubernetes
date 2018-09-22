@@ -181,7 +181,7 @@ CLOUD_IMAGES:
     VERSION: "0.8.4-4"
   STORAGEOS-CHART:
     NAME: "storageos-chart"
-    VERSION: "1.0.0-rc2"
+    VERSION: "1.0.0-rc4"
   GITLAB-CHART:
     NAME: "gitlab-chart"
     VERSION: "11.2.3"
