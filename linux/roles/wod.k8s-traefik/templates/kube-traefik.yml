@@ -23,7 +23,7 @@ spec:
       path: /etc/localtime  
   containers:
   - name: kube-traefik
-    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['TRAEFIK']['NAME'] }}:{{ K8S_IMAGES['TRAEFIK']['VERSION'] }}
+    image: {{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['TRAEFIK']['NAME'] }}:{{ CLOUD_IMAGES['TRAEFIK']['VERSION'] }}
     volumeMounts:
     - name: config
       mountPath: /config
