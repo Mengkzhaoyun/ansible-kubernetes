@@ -1,0 +1,5 @@
+- name: template harbor.sh
+  template: src=harbor.sh dest=/etc/kubernetes/scripts/harbor.sh mode=0755
+
+- name: /etc/kubernetes/scripts/harbor.sh
+  raw: /etc/kubernetes/scripts/harbor.sh

@@ -146,6 +146,24 @@ CLOUD_IMAGES:
   HARBOR-DB:
     NAME: harbor-db
     VERSION: "v1.6.0"
+  HARBOR-REGISTRY:
+    NAME: registry-photon
+    VERSION: "dev" 
+  HARBOR-CHARTMUSEUM:
+    NAME: chartmuseum-photon
+    VERSION: "dev" clair
+  HARBOR-CLAIR:
+    NAME: clair-photon
+    VERSION: "dev"
+  HARBOR-REDIS:
+    NAME: redis
+    VERSION: "4.0.1-alpine"
+  HARBOR-NOTARY-SERVER:
+    NAME: notary-server-photon
+    VERSION: "dev"
+  HARBOR-SIGNER-SERVER:
+    NAME: notary-signer-photon
+    VERSION: "dev"
   CHARTMUSEUM:
     NAME: chartmuseum
     VERSION: "v0.7.1"
@@ -176,7 +194,43 @@ CLOUD_IMAGES:
   TRAEFIK-CHART:
     NAME: "traefik-chart"
     VERSION: "v1.7.0-rc5"
+  GITLAB:
+    NAME: "sameersbn-gitlab"
+    VERSION: "11.2.3"
+  GITLAB-POSTGRESQL:
+    NAME: "sameersbn-postgresql"
+    VERSION: "10"
+  GITLAB-REDIS:
+    NAME: "sameersbn-redis"
+    VERSION: "4.0.9-1"
+  DRONE-CHART:
+    NAME: "drone-chart"
+    VERSION: "0.8.4-4"
+  DRONE-SERVER:
+    NAME: "drone-server"
+    VERSION: "0.8.4-3"
+  DRONE-AGENT:
+    NAME: "drone-agent"
+    VERSION: "0.8.4-3"
 
 STORAGEOS:
   PASSWORD: "abc2018"
   HOST: "storageos.wodcloud.local"
+
+GITLAB:
+  HOST: "gitlab.wodcloud.com"
+  SSHPORT: "10022" 
+
+DRONE:
+  CLIENT: "336fe21bbea699845c5212b85b2a1baafc302d3e07d270f25bc967954ed99bd7"
+  SECRET: "04c6b83e968404eec18dc4e4f40c7c156001a50e5ae526aa8fa9c1569b1d2789"
+  HOST: "drone.wodcloud.com"
+
+HARBOR:
+  EXTERNALDOMAIN: "harbor.wodcloud.com"
+  EXTERNALPROTOCOL: "https"
+  PASSWORD: "58772015"
+  REDIS-PASSWORD: "abc58772015"
+  REDIS-PORT: "6379"
+  SECRET: "BBRQwySksiHZqJUh"
+  

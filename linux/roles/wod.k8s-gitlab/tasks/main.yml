@@ -1,0 +1,5 @@
+- name: template gitlab.sh
+  template: src=gitlab.sh dest=/etc/kubernetes/scripts/gitlab.sh mode=0755
+
+- name: /etc/kubernetes/scripts/gitlab.sh
+  raw: /etc/kubernetes/scripts/gitlab.sh
