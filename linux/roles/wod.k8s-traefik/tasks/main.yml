@@ -12,13 +12,13 @@
   template: src=rbac-traefik.yml dest=/etc/kubernetes/addons/kube-system/rbac-traefik.yml
   when:
   - need_addons_rbac_admin | failed
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
 
 - name: kubectl create -f rbac-traefik.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/rbac-traefik.yml
   when: 
   - need_addons_rbac_admin | failed
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
 
 - name: check need manifests/kube-traefik.yaml
   raw: stat /etc/kubernetes/manifests/kube-traefik.yaml
