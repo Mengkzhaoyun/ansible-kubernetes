@@ -20,11 +20,11 @@
   - need_addons_rbac_admin | failed
   - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
 
-- name: check need manifests/kube-traefik.yaml
-  raw: stat /etc/kubernetes/manifests/kube-traefik.yaml
+- name: check need manifests/kube-traefik.yml
+  raw: stat /etc/kubernetes/manifests/kube-traefik.yml
   register: need_manifests_traefik
   ignore_errors: True
 
-- name: template manifests/kube-traefik.yaml
-  template: src=kube-traefik.yaml dest=/etc/kubernetes/manifests/kube-traefik.yaml
+- name: template manifests/kube-traefik.yml
+  template: src=kube-traefik.yml dest=/etc/kubernetes/manifests/kube-traefik.yml
   when: need_manifests_traefik | failed  
