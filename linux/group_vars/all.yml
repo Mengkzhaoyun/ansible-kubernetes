@@ -121,10 +121,10 @@ CLOUD_IMAGES:
     VERSION: "v0.2.0"
   K8SCSI-CSI-PROVISIONER:
     NAME: k8scsi-csi-provisioner
-    VERSION: "canary"
+    VERSION: "v0.3.0"
   K8SCSI-CSI-ATTACHER:
     NAME: k8scsi-csi-attacher
-    VERSION: "canary"
+    VERSION: "v0.3.0"
   SAMEERSBN-GITLAB:
     NAME: sameersbn-gitlab
     VERSION: "11.2.3"
