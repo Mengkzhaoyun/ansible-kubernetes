@@ -176,7 +176,7 @@ CLOUD_IMAGES:
   TRAEFIK-CHART:
     NAME: "traefik-chart"
     VERSION: "v1.7.0-rc5"
-  TRAEFIK-NODE:
+  TRAEFIK:
     NAME: "traefik"
     VERSION: "v1.7.0-rc3-alpine"
 
