@@ -173,6 +173,12 @@ CLOUD_IMAGES:
   HARBOR-CHART:
     NAME: "harbor-chart"
     VERSION: "v1.6.0"
+  TRAEFIK-CHART:
+    NAME: "traefik-chart"
+    VERSION: "v1.7.0-rc5"
+  TRAEFIK-NODE:
+    NAME: "traefik"
+    VERSION: "v1.7.0-rc3-alpine"
 
 STORAGEOS:
   PASSWORD: "abc2018"

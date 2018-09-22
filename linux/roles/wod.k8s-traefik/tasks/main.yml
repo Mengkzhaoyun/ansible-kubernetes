@@ -1,30 +1,5 @@
-- name: mkdir -p /etc/kubernetes/addons/kube-system
-  raw: mkdir -p /etc/kubernetes/addons/kube-system
+- name: template traefik.sh
+  template: src=traefik.sh dest=/etc/kubernetes/scripts/traefik.sh mode=0755
 
-- name: check need rbac-traefik.yml
-  raw: stat /etc/kubernetes/addons/kube-system/rbac-traefik.yml
-  register: need_addons_rbac_admin
-  ignore_errors: True
-  when:
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
-
-- name: template rbac-traefik.yml
-  template: src=rbac-traefik.yml dest=/etc/kubernetes/addons/kube-system/rbac-traefik.yml
-  when:
-  - need_addons_rbac_admin | failed
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
-
-- name: kubectl create -f rbac-traefik.yml
-  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/rbac-traefik.yml
-  when: 
-  - need_addons_rbac_admin | failed
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
-
-- name: check need manifests/kube-traefik.yml
-  raw: stat /etc/kubernetes/manifests/kube-traefik.yml
-  register: need_manifests_traefik
-  ignore_errors: True
-
-- name: template manifests/kube-traefik.yml
-  template: src=kube-traefik.yml dest=/etc/kubernetes/manifests/kube-traefik.yml
-  when: need_manifests_traefik | failed  
+- name: /etc/kubernetes/scripts/tr.sh
+  raw: /etc/kubernetes/scripts/traefik.sh
