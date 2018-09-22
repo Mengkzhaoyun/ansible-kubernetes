@@ -8,6 +8,7 @@ REGISTRY_STORAGEOS_CHART_VERSION="{{ CLOUD_IMAGES['STORAGEOS-CHART']['VERSION'] 
 
 mkdir -p /etc/kubernetes/helm
 
+#--set cluster.join="{% for host in groups['systech'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}{% if loop.last %}{% else %}\,{% endif %}{% endfor %}" \
 if ! [[ -e /etc/kubernetes/helm/storageos/Chart.yaml ]]; then
   docker pull $REGISTRY_LOCAL$REGISTRY_STORAGEOS_CHART_REPO:$REGISTRY_STORAGEOS_CHART_VERSION
   docker run -v /etc/kubernetes/helm/storageos:/data/output --rm $REGISTRY_LOCAL$REGISTRY_STORAGEOS_CHART_REPO:$REGISTRY_STORAGEOS_CHART_VERSION
@@ -22,7 +23,7 @@ if ! [[ -e /etc/kubernetes/helm/storageos/Chart.yaml ]]; then
   --set csiExternalProvisioner.tag={{ CLOUD_IMAGES['K8SCSI-CSI-PROVISIONER']['VERSION'] }} \
   --set csiExternalAttacher.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['K8SCSI-CSI-ATTACHER']['NAME'] }} \
   --set csiExternalAttacher.tag={{ CLOUD_IMAGES['K8SCSI-CSI-ATTACHER']['VERSION'] }} \
-  --set cluster.join="{% for host in groups['systech'] %}{{ hostvars[host]['ansible_default_ipv4']['address'] }}{% if loop.last %}{% else %}\,{% endif %}{% endfor %}" \
+  --set cluster.join="{{ HOST_IP }}" \
   --set cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos \
   --set storageclass.name=storageos \
   --set csi.enable=true \
