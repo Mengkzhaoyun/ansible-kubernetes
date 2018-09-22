@@ -6,7 +6,7 @@
   register: need_addons_rbac_admin
   ignore_errors: True
   when:
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME"  
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
 
 - name: template rbac-traefik.yml
   template: src=rbac-traefik.yml dest=/etc/kubernetes/addons/kube-system/rbac-traefik.yml
