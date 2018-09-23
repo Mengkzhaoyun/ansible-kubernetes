@@ -15,6 +15,7 @@ if ! [[ -e /etc/kubernetes/helm/gitlab/Chart.yaml ]]; then
   --set gitlab.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB']['NAME'] }} \
   --set gitlab.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB']['VERSION'] }} \
   --set gitlab.host="{{ GITLAB['HOST'] }}" \
+  --set gitlab.password="{{ GITLAB['PASSWORD'] }}" \
   --set gitlab.sshport="{{ GITLAB['SSHPORT'] }}" \
   --set postgresql.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-POSTGRESQL']['VERSION'] }} \
   --set postgresql.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-POSTGRESQL']['NAME'] }} \

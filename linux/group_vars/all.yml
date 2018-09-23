@@ -205,23 +205,19 @@ CLOUD_IMAGES:
     VERSION: "4.0.9-1"
 
 STORAGEOS:
-  PASSWORD: "abc2018"
   HOST: "storageos.wodcloud.local"
+  PASSWORD: "abc2018"
 
 GITLAB:
-  HOST: "gitlab.wodcloud.com"
+  HOST: "gitlab.wodcloud.local"
+  PASSWORD: "abc2018"
   SSHPORT: "10022" 
 
 DRONE:
+  HOST: "drone.wodcloud.local"
   CLIENT: "336fe21bbea699845c5212b85b2a1baafc302d3e07d270f25bc967954ed99bd7"
   SECRET: "04c6b83e968404eec18dc4e4f40c7c156001a50e5ae526aa8fa9c1569b1d2789"
-  HOST: "drone.wodcloud.com"
-
-HARBOR:
-  EXTERNALDOMAIN: "harbor.wodcloud.com"
-  EXTERNALPROTOCOL: "https"
-  PASSWORD: "58772015"
-  REDIS-PASSWORD: "abc58772015"
-  REDIS-PORT: "6379"
-  SECRET: "BBRQwySksiHZqJUh"
   
+HARBOR:
+  HOST: "harbor.wodcloud.local"
+  PASSWORD: "abc2018"
