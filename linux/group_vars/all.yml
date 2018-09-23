@@ -215,8 +215,6 @@ GITLAB:
 
 DRONE:
   HOST: "drone.wodcloud.local"
-  CLIENT: "336fe21bbea699845c5212b85b2a1baafc302d3e07d270f25bc967954ed99bd7"
-  SECRET: "04c6b83e968404eec18dc4e4f40c7c156001a50e5ae526aa8fa9c1569b1d2789"
   
 HARBOR:
   HOST: "harbor.wodcloud.local"
