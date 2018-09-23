@@ -206,11 +206,11 @@ CLOUD_IMAGES:
 
 STORAGEOS:
   HOST: "storageos.wodcloud.local"
-  PASSWORD: "abc2018"
+  PASSWORD: "{{ K8S_ADMIN_PWD }}"
 
 GITLAB:
   HOST: "gitlab.wodcloud.local"
-  PASSWORD: "abc2018"
+  PASSWORD: "{{ K8S_ADMIN_PWD }}"
   SSHPORT: "10022" 
 
 DRONE:
@@ -220,4 +220,4 @@ DRONE:
   
 HARBOR:
   HOST: "harbor.wodcloud.local"
-  PASSWORD: "abc2018"
+  PASSWORD: "{{ K8S_ADMIN_PWD }}"
