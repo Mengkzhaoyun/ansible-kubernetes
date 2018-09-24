@@ -14,7 +14,7 @@ if ! [[ -e /etc/kubernetes/helm/gitlab/Chart.yaml ]]; then
   helm install /etc/kubernetes/helm/gitlab --name gitlab --namespace devops \
   --set gitlab.host="{{ GITLAB['HOST'] }}" \
   --set gitlab.password="{{ GITLAB['PASSWORD'] }}" \
-  --set gitlab.sshport="{{ GITLAB['SSHPORT'] }}" \  
+  --set gitlab.sshport="{{ GITLAB['SSHPORT'] }}" \
   --set gitlab.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB']['NAME'] }} \
   --set gitlab.tag={{ CLOUD_IMAGES['GITLAB']['VERSION'] }} \
   --set postgresql.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-POSTGRESQL']['NAME'] }} \
