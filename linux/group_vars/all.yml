@@ -203,48 +203,48 @@ CLOUD_IMAGES:
   GITLAB-REDIS:
     NAME: "sameersbn-redis"
     VERSION: "4.0.9-1"
-  # CLOUD-CHART:
-  #   NAME: "cloud-chart"
-  #   VERSION: "v1.0"
-  # CLOUD-REDIS:
-  #   NAME: "harbor.wodcloud.com/cloud/redis"
-  #   VERSION: "4.0.10"
-  # CLOUD-MYSQL:
-  #   NAME: "harbor.wodcloud.com/cloud/mysql"
-  #   VERSION: "5.6.36"
-  # CLOUD-INITMYSQL:
-  #   NAME: "harbor.wodcloud.com/cloud/mysql-init"
-  #   VERSION: "1.0.0"
-  # CLOUD-DEX:
-  #   NAME: "harbor.wodcloud.com/cloud/dex"
-  #   VERSION: "v2.10.0"
-  # CLOUD-AWECLOUD-DEX:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-dex"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-API:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-api"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-DEPLOY:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-deploy"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-HARBOR:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-harbor"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-KUBERNETES:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-kubernetes"
-  #   VERSION: "1.8.4"
-  # CLOUD-AWECLOUD-REST:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-rest"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-LOGIN:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-login"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-UI:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-deuix"
-  #   VERSION: "1.0.0"
-  # CLOUD-AWECLOUD-USERS:
-  #   NAME: "harbor.wodcloud.com/cloud/awecloud-users"
-  #   VERSION: "1.0.0"
+  CLOUD-CHART:
+    NAME: "cloud-chart"
+    VERSION: "v1.0"
+  CLOUD-REDIS:
+    NAME: "redis"
+    VERSION: "4.0.10"
+  CLOUD-MYSQL:
+    NAME: "mysql"
+    VERSION: "5.6.36"
+  CLOUD-INITMYSQL:
+    NAME: "mysql-init"
+    VERSION: "1.0.0"
+  CLOUD-DEX:
+    NAME: "dex"
+    VERSION: "v2.10.0"
+  CLOUD-AWECLOUD-DEX:
+    NAME: "awecloud-dex"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-API:
+    NAME: "awecloud-api"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-DEPLOY:
+    NAME: "awecloud-deploy"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-HARBOR:
+    NAME: "awecloud-harbor"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-KUBERNETES:
+    NAME: "awecloud-kubernetes"
+    VERSION: "1.8.4"
+  CLOUD-AWECLOUD-REST:
+    NAME: "awecloud-rest"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-LOGIN:
+    NAME: "awecloud-login"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-UI:
+    NAME: "awecloud-deuix"
+    VERSION: "1.0.0"
+  CLOUD-AWECLOUD-USERS:
+    NAME: "awecloud-users"
+    VERSION: "1.0.0"
 
 STORAGEOS:
   HOST: "storageos.wodcloud.local"
@@ -268,7 +268,7 @@ CLOUD:
     PASSWORD: "123456"
     PORT: "3306"
   DEX:
-    CLIENTID: "684715d2724e811be6002c11165f8461b5e9d2b7c6b1be9a7685eb8c87c8288e"
-    CLIENTSECRET: "e0b423f81fcc94740fc87fd14569f795a35fcdf7b697b6d50f97a6f6f0507555"
+    CLIENTID: "e83d8d141b70f3463620610725cf09cb0d731e95c02323d7eb34700ff42df545"
+    CLIENTSECRET: "04ae9ca440401be79b14ca30bd6a3f10c5edbf945c686c3e5fc9c14a3b9e3da1"
     K8SSECRET: "ZXhhbXBsZS1hcHAtc2VjcmV0"
   DRONE_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0Ijoicm9vdCIsInR5cGUiOiJ1c2VyIn0.8jkUWAS0Yq9T6ObZ-CRuw0LhXfOfq4WRo4_kj56T4gk"
