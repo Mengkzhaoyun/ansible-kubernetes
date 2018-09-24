@@ -83,7 +83,7 @@ K8S_SERVICE_IP: 10.3.0.1
 K8S_DNS_SERVICE_IP: 10.3.0.10
 K8S_ADVERTISE_IP: "{{ ansible_default_ipv4['address'] }}"
 K8S_PORT: 6443
-K8S_ADMIN_PWD: abc2018
+K8S_ADMIN_PWD: abcd2018
 K8S_MASTER_DOMAIN: k8s.wodcloud.local
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
