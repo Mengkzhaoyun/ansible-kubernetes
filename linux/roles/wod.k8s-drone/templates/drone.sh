@@ -8,7 +8,7 @@ REGISTRY_DRONE_CHART_VERSION="{{ CLOUD_IMAGES['DRONE-CHART']['VERSION'] }}"
 
 mkdir -p /etc/kubernetes/helm
 
-if ! [[ -e /etc/kubernetes/helm/DRONE/Chart.yaml ]]; then
+if ! [[ -e /etc/kubernetes/helm/drone/Chart.yaml ]]; then
   docker pull $REGISTRY_LOCAL$REGISTRY_DRONE_CHART_REPO:$REGISTRY_DRONE_CHART_VERSION
   docker run -v /etc/kubernetes/helm/drone:/data/output --rm $REGISTRY_LOCAL$REGISTRY_DRONE_CHART_REPO:$REGISTRY_DRONE_CHART_VERSION
   helm install /etc/kubernetes/helm/drone --name drone --namespace devops \
