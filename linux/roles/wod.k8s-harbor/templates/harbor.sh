@@ -35,6 +35,6 @@ if ! [[ -e /etc/kubernetes/helm/HARBOR/Chart.yaml ]]; then
   --set notary.server.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-NOTARY-SERVER']['NAME'] }} \
   --set notary.server.image.tag={{ CLOUD_IMAGES['HARBOR-NOTARY-SERVER']['VERSION'] }} \
   --set notary.signer.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['NAME'] }} \
-  --set notary.signer.image.tag={{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['VERSION'] }} \
+  --set notary.signer.image.tag={{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['VERSION'] }}
 fi
 
