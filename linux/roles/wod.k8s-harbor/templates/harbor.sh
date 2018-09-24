@@ -15,7 +15,9 @@ if ! [[ -e /etc/kubernetes/helm/harbor/Chart.yaml ]]; then
   --set externalDomain="{{ HARBOR['HOST'] }}" \
   --set harborAdminPassword="{{ HARBOR['PASSWORD'] }}" \
   --set registry.filesystem.rootdirectory="/data/devops/harbor/registry" \
-  --set registry.nodeSelector.kubernetes.io/hostname="{{ HOST_IP }}" \
+  --set registry.nodeSelector."kubernetes\.io/hostname"="{{ HOST_IP }}" \
+  --set busybox.image.repository={{ REGISTRY_LOCAL }}{{ K8S_IMAGES['BUSYBOX']['NAME'] }} \
+  --set busybox.image.tag={{ K8S_IMAGES['BUSYBOX']['VERSION'] }} \
   --set adminserver.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-ADMINSERVER']['NAME'] }} \
   --set adminserver.image.tag={{ CLOUD_IMAGES['HARBOR-ADMINSERVER']['VERSION'] }} \
   --set jobservice.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-JOBSERVICE']['NAME'] }} \
