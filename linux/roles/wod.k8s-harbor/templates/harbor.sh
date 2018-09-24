@@ -17,24 +17,24 @@ if ! [[ -e /etc/kubernetes/helm/HARBOR/Chart.yaml ]]; then
   --set registry.filesystem.rootdirectory="/data/devops/harbor/registry" \
   --set registry.nodeSelector.kubernetes.io/hostname="{{ HOST_IP }}" \
   --set adminserver.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-ADMINSERVER']['NAME'] }} \
-  --set adminserver.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-ADMINSERVER']['VERSION'] }} \
+  --set adminserver.image.tag={{ CLOUD_IMAGES['HARBOR-ADMINSERVER']['VERSION'] }} \
   --set jobservice.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-JOBSERVICE']['NAME'] }} \
-  --set jobservice.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-JOBSERVICE']['VERSION'] }} \
+  --set jobservice.image.tag={{ CLOUD_IMAGES['HARBOR-JOBSERVICE']['VERSION'] }} \
   --set ui.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-UI']['NAME'] }} \
-  --set ui.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-UI']['VERSION'] }} \
+  --set ui.image.tag={{ CLOUD_IMAGES['HARBOR-UI']['VERSION'] }} \
   --set database.internal.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-DB']['NAME'] }} \
-  --set database.internal.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-DB']['VERSION'] }} \
+  --set database.internal.image.tag={{ CLOUD_IMAGES['HARBOR-DB']['VERSION'] }} \
   --set registry.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-REGISTRY']['NAME'] }} \
-  --set registry.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-REGISTRY']['VERSION'] }} \
+  --set registry.image.tag={{ CLOUD_IMAGES['HARBOR-REGISTRY']['VERSION'] }} \
   --set chartmuseum.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-CHARTMUSEUM']['NAME'] }} \
-  --set chartmuseum.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-CHARTMUSEUM']['VERSION'] }} \
+  --set chartmuseum.image.tag={{ CLOUD_IMAGES['HARBOR-CHARTMUSEUM']['VERSION'] }} \
   --set clair.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-CLAIR']['NAME'] }} \
-  --set clair.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-CLAIR']['VERSION'] }} \
+  --set clair.image.tag={{ CLOUD_IMAGES['HARBOR-CLAIR']['VERSION'] }} \
   --set redis.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-REDIS']['NAME'] }} \
-  --set redis.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-REDIS']['VERSION'] }} \
+  --set redis.image.tag={{ CLOUD_IMAGES['HARBOR-REDIS']['VERSION'] }} \
   --set notary.server.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-NOTARY-SERVER']['NAME'] }} \
-  --set notary.server.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-NOTARY-SERVER']['VERSION'] }} \
+  --set notary.server.image.tag={{ CLOUD_IMAGES['HARBOR-NOTARY-SERVER']['VERSION'] }} \
   --set notary.signer.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['NAME'] }} \
-  --set notary.signer.image.tag={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['VERSION'] }} \
+  --set notary.signer.image.tag={{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['VERSION'] }} \
 fi
 
