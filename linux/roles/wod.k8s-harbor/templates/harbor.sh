@@ -40,3 +40,15 @@ if ! [[ -e /etc/kubernetes/helm/harbor/Chart.yaml ]]; then
   --set notary.signer.image.tag={{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['VERSION'] }}
 fi
 
+if ! (grep -q ${REGISTRY_LOCAL_HOST} /etc/hosts) ; then
+  echo "\n " >> /etc/hosts;
+  echo "${REGISTRY_LOCAL_IP} {{ DRONE['HOST'] }}" >> /etc/hosts;
+  echo "\n " >> /etc/hosts;
+  echo "${REGISTRY_LOCAL_IP} {{ GITLAB['HOST'] }}" >> /etc/hosts;
+  echo "\n " >> /etc/hosts;
+  echo "${REGISTRY_LOCAL_IP} {{ HARBOR['HOST'] }}" >> /etc/hosts;
+  echo "\n " >> /etc/hosts;
+  echo "${REGISTRY_LOCAL_IP} {{ CLOUD['HOST'] }}" >> /etc/hosts;
+else
+  sed -i "/${REGISTRY_LOCAL_HOST}/c\\${REGISTRY_LOCAL_IP} ${REGISTRY_LOCAL_HOST}" /etc/hosts
+fi
