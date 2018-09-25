@@ -250,7 +250,6 @@ STORAGEOS:
 GITLAB:
   HOST: "gitlab.wodcloud.local"
   PASSWORD: "{{ K8S_ADMIN_PWD }}"
-  SSHPORT: "10022" 
 
 DRONE:
   HOST: "drone.wodcloud.local"
@@ -261,11 +260,3 @@ HARBOR:
 
 CLOUD:
   HOST: "cloud.wodcloud.local"
-  MYSQL: 
-    PASSWORD: "123456"
-    PORT: "3306"
-  DEX:
-    CLIENTID: "e83d8d141b70f3463620610725cf09cb0d731e95c02323d7eb34700ff42df545"
-    CLIENTSECRET: "04ae9ca440401be79b14ca30bd6a3f10c5edbf945c686c3e5fc9c14a3b9e3da1"
-    K8SSECRET: "ZXhhbXBsZS1hcHAtc2VjcmV0"
-  DRONE_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0Ijoicm9vdCIsInR5cGUiOiJ1c2VyIn0.8jkUWAS0Yq9T6ObZ-CRuw0LhXfOfq4WRo4_kj56T4gk"
