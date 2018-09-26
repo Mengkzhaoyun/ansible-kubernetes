@@ -43,16 +43,3 @@ if ! [[ -e /etc/kubernetes/helm/cloud/Chart.yaml ]]; then
   --set awecloud.users.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['CLOUD-AWECLOUD-USERS']['NAME'] }} \
   --set awecloud.users.image.tag={{ CLOUD_IMAGES['CLOUD-AWECLOUD-USERS']['VERSION'] }}
 fi
-
-if ! (grep -q ${REGISTRY_LOCAL_HOST} /etc/hosts) ; then
-  echo "\n " >> /etc/hosts;
-  echo "${REGISTRY_LOCAL_IP} {{ DRONE['HOST'] }}" >> /etc/hosts;
-  echo "\n " >> /etc/hosts;
-  echo "${REGISTRY_LOCAL_IP} {{ GITLAB['HOST'] }}" >> /etc/hosts;
-  echo "\n " >> /etc/hosts;
-  echo "${REGISTRY_LOCAL_IP} {{ HARBOR['HOST'] }}" >> /etc/hosts;
-  echo "\n " >> /etc/hosts;
-  echo "${REGISTRY_LOCAL_IP} {{ CLOUD['HOST'] }}" >> /etc/hosts;
-else
-  sed -i "/${REGISTRY_LOCAL_HOST}/c\\${REGISTRY_LOCAL_IP} ${REGISTRY_LOCAL_HOST}" /etc/hosts
-fi
