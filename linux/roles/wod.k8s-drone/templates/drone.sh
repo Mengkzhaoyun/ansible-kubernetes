@@ -20,3 +20,10 @@ if ! [[ -e /etc/kubernetes/helm/drone/Chart.yaml ]]; then
   --set drone.server.host="{{ DRONE['HOST'] }}" 
 fi
 
+REGISTRY_LOCAL_IP="${REGISTRY_LOCAL_IP}"
+DRONE_HOST={{ DRONE['HOST'] }}
+if ! (grep -q ${DRONE_HOST} /etc/hosts) ; then
+  echo "${REGISTRY_LOCAL_IP} ${DRONE_HOST}" >> /etc/hosts;
+else
+  sed -i "/${DRONE_HOST}/c\\${REGISTRY_LOCAL_IP} ${DRONE_HOST}" /etc/hosts
+fi

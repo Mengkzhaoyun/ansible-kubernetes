@@ -43,3 +43,11 @@ if ! [[ -e /etc/kubernetes/helm/cloud/Chart.yaml ]]; then
   --set awecloud.users.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['CLOUD-AWECLOUD-USERS']['NAME'] }} \
   --set awecloud.users.image.tag={{ CLOUD_IMAGES['CLOUD-AWECLOUD-USERS']['VERSION'] }}
 fi
+
+REGISTRY_LOCAL_IP="${REGISTRY_LOCAL_IP}"
+CLOUD_HOST={{ CLOUD['HOST'] }}
+if ! (grep -q ${CLOUD_HOST} /etc/hosts) ; then
+  echo "${REGISTRY_LOCAL_IP} ${CLOUD_HOST}" >> /etc/hosts;
+else
+  sed -i "/${CLOUD_HOST}/c\\${REGISTRY_LOCAL_IP} ${CLOUD_HOST}" /etc/hosts
+fi

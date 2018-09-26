@@ -21,3 +21,11 @@ if ! [[ -e /etc/kubernetes/helm/gitlab/Chart.yaml ]]; then
   --set redis.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['GITLAB-REDIS']['NAME'] }} \
   --set redis.tag={{ CLOUD_IMAGES['GITLAB-REDIS']['VERSION'] }}
 fi
+
+REGISTRY_LOCAL_IP="${REGISTRY_LOCAL_IP}"
+GITLAB_HOST={{ GITLAB['HOST'] }}
+if ! (grep -q ${GITLAB_HOST} /etc/hosts) ; then
+  echo "${REGISTRY_LOCAL_IP} ${GITLAB_HOST}" >> /etc/hosts;
+else
+  sed -i "/${GITLAB_HOST}/c\\${REGISTRY_LOCAL_IP} ${GITLAB_HOST}" /etc/hosts
+fi

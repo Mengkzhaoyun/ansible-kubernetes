@@ -39,3 +39,11 @@ if ! [[ -e /etc/kubernetes/helm/harbor/Chart.yaml ]]; then
   --set notary.signer.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['NAME'] }} \
   --set notary.signer.image.tag={{ CLOUD_IMAGES['HARBOR-SIGNER-SERVER']['VERSION'] }}
 fi
+
+REGISTRY_LOCAL_IP="${REGISTRY_LOCAL_IP}"
+HARBOR_HOST={{ HARBOR['HOST'] }}
+if ! (grep -q ${HARBOR_HOST} /etc/hosts) ; then
+  echo "${REGISTRY_LOCAL_IP} ${HARBOR_HOST}" >> /etc/hosts;
+else
+  sed -i "/${HARBOR_HOST}/c\\${REGISTRY_LOCAL_IP} ${HARBOR_HOST}" /etc/hosts
+fi
