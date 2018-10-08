@@ -2,6 +2,17 @@
 
 set -e  
 
+function require_ev_all() {
+  for rev in $@ ; do
+    if [[ -z "${!rev}" ]]; then
+      echo ${rev} is not set
+      exit 1
+    fi
+  done
+}
+
+require_ev_all REGISTRY_LOCAL_IP
+
 REGISTRY_LOCAL="{{ REGISTRY_LOCAL }}"
 REGISTRY_DRONE_CHART_REPO="{{ CLOUD_IMAGES['DRONE-CHART']['NAME'] }}"
 REGISTRY_DRONE_CHART_VERSION="{{ CLOUD_IMAGES['DRONE-CHART']['VERSION'] }}"
