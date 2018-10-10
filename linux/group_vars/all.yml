@@ -244,19 +244,19 @@ CLOUD_IMAGES:
     VERSION: "1.0.0"
 
 STORAGEOS:
-  HOST: "storageos.wodcloud.csii"
+  HOST: "storageos.wodcloud.local"
   PASSWORD: "{{ K8S_ADMIN_PWD }}"
 
 GITLAB:
-  HOST: "gitlab.wodcloud.csii"
+  HOST: "gitlab.wodcloud.local"
   PASSWORD: "{{ K8S_ADMIN_PWD }}"
 
 DRONE:
-  HOST: "drone.wodcloud.csii"
+  HOST: "drone.wodcloud.local"
   
 HARBOR:
-  HOST: "harbor.wodcloud.csii"
+  HOST: "harbor.wodcloud.local"
   PASSWORD: "{{ K8S_ADMIN_PWD }}"
 
 CLOUD:
-  HOST: "cloud.wodcloud.csii"
+  HOST: "cloud.wodcloud.local"
