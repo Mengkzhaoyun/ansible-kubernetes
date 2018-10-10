@@ -17,8 +17,7 @@ if ! [[ -e /etc/kubernetes/helm/drone/Chart.yaml ]]; then
   --set drone.server.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['DRONE-SERVER']['NAME'] }} \
   --set drone.server.image.tag={{ CLOUD_IMAGES['DRONE-SERVER']['VERSION'] }} \
   --set drone.agent.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['DRONE-AGENT']['NAME'] }} \
-  --set drone.agent.image.tag={{ CLOUD_IMAGES['DRONE-AGENT']['VERSION'] }} \
-  --set drone.server.host="{{ DRONE['HOST'] }}" 
+  --set drone.agent.image.tag={{ CLOUD_IMAGES['DRONE-AGENT']['VERSION'] }} 
 fi
 
 REGISTRY_LOCAL_IP="${REGISTRY_LOCAL_IP}"
