@@ -13,7 +13,7 @@ if ! [[ -e /etc/kubernetes/helm/cloud/Chart.yaml ]]; then
   docker run -v /etc/kubernetes/helm/cloud:/data/output --rm $REGISTRY_LOCAL$REGISTRY_CLOUD_CHART_REPO:$REGISTRY_CLOUD_CHART_VERSION
   helm install /etc/kubernetes/helm/cloud --name cloud --namespace cloud \
   --set host="{{ CLOUD['HOST'] }}" \
-  --set gitlab.host="https://{{ GITLAB['HOST'] }}" \
+  --set gitlab.host="{{ GITLAB['HOST'] }}" \
   --set redis.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['CLOUD-REDIS']['NAME'] }} \
   --set redis.tag={{ CLOUD_IMAGES['CLOUD-REDIS']['VERSION'] }} \
   --set mysql.image.repository={{ REGISTRY_LOCAL }}{{ CLOUD_IMAGES['CLOUD-MYSQL']['NAME'] }} \
