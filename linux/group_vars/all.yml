@@ -112,7 +112,7 @@ CLOUD_IMAGES:
     VERSION: "v1.7.0-rc5-alpine"
   STORAGEOS-NODE:
     NAME: storageos-node
-    VERSION: "1.0.0-rc2"
+    VERSION: "1.0.0-rc5"
   STORAGEOS-INIT:
     NAME: storageos-init
     VERSION: "0.1"
