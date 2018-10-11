@@ -18,3 +18,8 @@ download : https://storage.googleapis.com/kubernetes-release/release/v1.10.0/bin
 2018.03.27  v3.3.2
 readme : https://github.com/coreos/etcd/releases
 download : https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz
+
+# cni-plugin
+
+2018.10.11  v0.7.1
+download : https://github.com/containernetworking/plugins/releases/download/v0.7.1/cni-plugins-amd64-v0.7.1.tgz
