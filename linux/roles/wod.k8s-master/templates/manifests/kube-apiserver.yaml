@@ -19,7 +19,7 @@ spec:
     - --service-node-port-range={{ K8S_SERVICE_PORT_RANGE }}
     - --secure-port={{ K8S_PORT }}
     - --advertise-address={{ K8S_ADVERTISE_IP }}
-    - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota
+    - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,MutatingAdmissionWebhook,ValidatingAdmissionWebhook
     - --authorization-mode=RBAC
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/apiserver.key
