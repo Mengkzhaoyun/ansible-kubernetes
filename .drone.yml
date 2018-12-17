@@ -1,9 +1,9 @@
 clone:
   git:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod/drone-plugin-git:1.4.0
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/git:1.4.0
 pipeline:
   docker-aliyun-alpha:
-    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
@@ -19,7 +19,7 @@ pipeline:
     when:
       branch: dev        
   docker-aliyun:
-    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
@@ -34,7 +34,7 @@ pipeline:
     when:
       branch: master      
   docker-aliyun-latest:
-    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
@@ -49,7 +49,7 @@ pipeline:
     when:
       branch: master             
   docker-163:
-    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
@@ -64,7 +64,7 @@ pipeline:
     when:
       branch: master       
   docker-163-latest:
-    image: harbor.wodcloud.com/devops/drone-plugin-docker:1.0
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
