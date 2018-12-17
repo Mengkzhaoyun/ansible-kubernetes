@@ -17,10 +17,10 @@ REGISTRY_REMOTE_SPLIT: ":"
 K8S_IMAGES: 
   KUBELET:
     NAME: hyperkube
-    VERSION: "v1.11.2"
+    VERSION: "1.11.5"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.11.2"
+    VERSION: "1.11.5"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -56,7 +56,7 @@ K8S_IMAGES:
     VERSION: "1.8.3"
   KUBECTL:
     NAME: kubectl
-    VERSION: "v1.11.2"
+    VERSION: "1.11.5"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.3.9"
