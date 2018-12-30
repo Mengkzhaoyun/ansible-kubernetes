@@ -7,7 +7,9 @@ PYPY_VERSION=5.1.0
 ActivePython="ActivePython-2.7.14.2717-linux-x86_64-glibc-2.12-404899"
 ENV_OPT="$PATH:/opt/bin"
 
-mkdir -p /opt/bin
+if [[ ! -d /opt/bin ]];then
+	mkdir /opt/bin
+fi
 
 if [[ -e /opt/bin/python ]]; then
   exit 0 
