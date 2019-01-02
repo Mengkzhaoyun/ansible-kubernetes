@@ -72,6 +72,7 @@ RKT_ACI_KUBELET: "{{ K8S_IMAGES['KUBELET']['NAME'] }}-{{ K8S_IMAGES['KUBELET']['
 
 # ctl tools
 RKT_ACI_REGISTRY_DATA: "registry-data-{{ K8S_IMAGES['KUBELET']['VERSION'] }}"
+TOOLS_KUBECTL: kubectl
 
 # k8s adv option.
 K8S_NETWORK_PLUGIN: flannel
