@@ -2,7 +2,7 @@
 
 set -e  
 
-HTTP_SERVER="${HTTP_SERVER:-http://k8s.spacecig.com/softs/kubernetes}"
+HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
 REGISTRY_REMOTE="${REGISTRY_REMOTE:-}"
 REGISTRY_REMOTE_SPLIT="${REGISTRY_REMOTE_SPLIT:-}"
 REGISTRY_KUBECTL_REPO="${REGISTRY_KUBECTL_REPO:-}"

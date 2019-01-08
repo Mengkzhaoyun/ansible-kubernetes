@@ -73,7 +73,7 @@ run ${RKT_RUN_ARGS} \
 --volume coreos-lib-modules,kind=host,source=/lib/modules,readOnly=true \
 --volume coreos-etc-cni-net,kind=host,source=/etc/cni/net.d,readOnly=true \
 --volume coreos-etc-localtime,kind=host,source=/etc/localtime,readOnly=true \
---volume coreos-kubelet-plugins-volume,kind=host,source=/usr/libexec/kubernetes/kubelet-plugins/volume/exec,readOnly=false \
+--volume coreos-kubelet-plugins-volume,kind=host,source=/usr/libexec/kubernetes,readOnly=false \
 --mount volume=coreos-etc-kubernetes,target=/etc/kubernetes \
 --mount volume=coreos-etc-ssl-certs,target=/etc/ssl/certs \
 --mount volume=coreos-usr-share-certs,target=/usr/share/ca-certificates \
@@ -85,7 +85,7 @@ run ${RKT_RUN_ARGS} \
 --mount volume=coreos-lib-modules,target=/lib/modules \
 --mount volume=coreos-etc-cni-net,target=/etc/cni/net.d \
 --mount volume=coreos-etc-localtime,target=/etc/localtime \
---mount volume=coreos-kubelet-plugins-volume,target=/usr/libexec/kubernetes/kubelet-plugins/volume/exec \
+--mount volume=coreos-kubelet-plugins-volume,target=/usr/libexec/kubernetes \
 --hosts-entry host \
 ${RKT_STAGE1_ARG} \
 ${KUBELET_IMAGE} \

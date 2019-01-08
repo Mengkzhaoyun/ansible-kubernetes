@@ -29,7 +29,7 @@ K8S_IMAGES:
     VERSION: "2.6.2"
   ETCD:
     NAME: etcd
-    VERSION: "v3.3.9"
+    VERSION: "v3.3.10"
   FLANNEL:
     NAME: flannel
     VERSION: "v0.10.0"
@@ -59,16 +59,16 @@ K8S_IMAGES:
     VERSION: "v1.11.5"
   ETCDCTL:
     NAME: etcdctl
-    VERSION: "v3.3.9"
+    VERSION: "v3.3.10"
   KEEPALIVED:
     NAME: keepalived
     VERSION: "1.4.5"
 
 # rkt images
-RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}"
-RKT_ACI_ETCD: "etcd-{{ K8S_IMAGES['ETCD']['VERSION'] }}"
-RKT_ACI_FLANNEL: "flannel-{{ K8S_IMAGES['FLANNEL']['VERSION'] }}"
-RKT_ACI_KUBELET: "{{ K8S_IMAGES['KUBELET']['NAME'] }}-{{ K8S_IMAGES['KUBELET']['VERSION'] }}"
+RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
+RKT_ACI_ETCD: "etcd-{{ K8S_IMAGES['ETCD']['VERSION'] }}.aci"
+RKT_ACI_FLANNEL: "flannel-{{ K8S_IMAGES['FLANNEL']['VERSION'] }}.aci"
+RKT_ACI_KUBELET: "{{ K8S_IMAGES['KUBELET']['NAME'] }}-{{ K8S_IMAGES['KUBELET']['VERSION'] }}.aci"
 
 # ctl tools
 RKT_ACI_REGISTRY_DATA: "registry-data-{{ K8S_IMAGES['KUBELET']['VERSION'] }}"
@@ -89,17 +89,16 @@ K8S_MASTER_DOMAIN: k8s.wodcloud.local
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
 # ubuntu
-DEB_LIBLTDL7: libltdl7_2.4.6-0.1_amd64
-DEB_IPTABLE: iptables_1.6.0-2ubuntu3_amd64
-DEB_DOCKER: docker-engine_1.13.1-0~ubuntu-xenial_amd64
-DEB_RKT: rkt_1.29.0-1_amd64
+DEB_LIBLTDL7: libltdl7_2.4.6-0.1_amd64.deb
+DEB_IPTABLE: iptables_1.6.0-2ubuntu3_amd64.deb
+DEB_DOCKER: docker-engine_1.13.1-0~ubuntu-xenial_amd64.deb
+DEB_RKT: rkt_1.29.0-1_amd64.deb
 
 # centos
 YUM_RKT: rkt-1.29.0-1.x86_64.rpm
 
 # other
-HTTP_SERVER: http://k8s.spacecig.com/softs/kubernetes
-
+HTTP_SERVER: http://192.168.137.1/k8s
 
 CLOUD_IMAGES: 
   HELM:

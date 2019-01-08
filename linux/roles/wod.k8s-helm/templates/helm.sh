@@ -2,7 +2,7 @@
 
 set -e  
 
-HTTP_SERVER="${HTTP_SERVER:-http://k8s.spacecig.com/softs/kubernetes}"
+HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
 TOOLS_HELM="{{ CLOUD_IMAGES['HELM']['NAME'] }}-{{ CLOUD_IMAGES['HELM']['VERSION'] }}"
 REGISTRY_LOCAL="{{ REGISTRY_LOCAL }}"
 REGISTRY_HELM_REPO="{{ CLOUD_IMAGES['HELM']['NAME'] }}"

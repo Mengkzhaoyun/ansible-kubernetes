@@ -5,6 +5,7 @@
   - "HTTP_SERVER is defined"
   environment:
     HTTP_SERVER: '{{ HTTP_SERVER }}'
+    ANSIBLE_LSB_CODENAME: '{{ ansible_lsb.codename }}'
   script: "{{ lookup('first_found', findme)}}"
   vars:
     findme:

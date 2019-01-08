@@ -6,18 +6,18 @@ SSH_INSTALL_KEYS:
 
 # etcd options
 ETCD_CLUSTER_ROLE: 
-  systech14: etcd
+  ubuntu01: etcd
 
 # k8s option
 K8S_CLUSTER_ROLE: 
-  systech14: master
+  ubuntu01: master
 
 # registry options
-REGISTRY_LOCAL_HOSTNAME: systech14
-REGISTRY_LOCAL_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"  
+REGISTRY_LOCAL_HOSTNAME: ubuntu01
+REGISTRY_LOCAL_IP: "{{ hostvars['ubuntu01']['ansible_default_ipv4']['address'] }}"  
 
 # single master
-K8S_MASTER_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"
+K8S_MASTER_IP: "{{ hostvars['ubuntu01']['ansible_default_ipv4']['address'] }}"
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
 # # ha-cluster master

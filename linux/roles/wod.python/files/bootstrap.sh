@@ -2,7 +2,7 @@
 
 set -e 
   
-HTTP_SERVER="${HTTP_SERVER:-http://k8s.spacecig.com/softs/kubernetes}" 
+HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}" 
 PYPY_VERSION=5.1.0
 ActivePython="ActivePython-2.7.14.2717-linux-x86_64-glibc-2.12-404899"
 ENV_OPT="$PATH:/opt/bin"

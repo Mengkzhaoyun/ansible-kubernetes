@@ -59,9 +59,9 @@ docker tag cloudnativelabs/kube-router:v0.2.0 registry-vpc.cn-qingdao.aliyuncs.c
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.0
 
 # etcd
-docker pull quay.io/coreos/etcd:v3.3.9 && \
-docker tag quay.io/coreos/etcd:v3.3.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.9 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.9
+docker pull quay.io/coreos/etcd:v3.3.10 && \
+docker tag quay.io/coreos/etcd:v3.3.10 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.10 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.10
 
 # flannel
 docker pull quay.io/coreos/flannel:v0.10.0 && \

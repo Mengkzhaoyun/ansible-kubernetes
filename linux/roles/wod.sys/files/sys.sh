@@ -35,6 +35,10 @@ if ! [[ -e /usr/bin/mkdir ]]; then
   ln -s /bin/mkdir /usr/bin/mkdir
 fi
 
+if ! [[ -e /usr/libexec/kubernetes ]]; then
+  /bin/mkdir -p /usr/libexec/kubernetes
+fi
+
 if ! [[ -e /root/.ssh/authorized_keys ]]; then
   mkdir -p /root/.ssh/
   touch /root/.ssh/authorized_keys create file

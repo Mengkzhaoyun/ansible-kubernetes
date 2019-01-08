@@ -2,7 +2,7 @@
 
 set -e  
 
-HTTP_SERVER="${HTTP_SERVER:-http://k8s.spacecig.com/softs/kubernetes}"
+HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
 YUM_SERVER="$HTTP_SERVER/centos"
 
 mkdir -p /etc/kubernetes/downloads
