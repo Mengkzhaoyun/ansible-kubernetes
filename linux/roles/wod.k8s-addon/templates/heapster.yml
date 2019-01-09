@@ -100,13 +100,11 @@ spec:
           command:
             - /heapster
             - --source=kubernetes.summary_api:''
-            - --sink=influxdb:http://monitoring-influxdb:8086
         - image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["HEAPSTER"]["NAME"] }}:{{ K8S_IMAGES["HEAPSTER"]["VERSION"] }}
           name: eventer
           command:
             - /eventer
             - --source=kubernetes:''
-            - --sink=influxdb:http://monitoring-influxdb:8086
         - image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["ADDON-RESIZER"]["NAME"] }}:{{ K8S_IMAGES["ADDON-RESIZER"]["VERSION"] }}
           name: heapster-nanny
           resources:
