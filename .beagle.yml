@@ -8,7 +8,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
     repo: wod-cloud/ansible-kubernetes
-    version: v1.11.5
+    version: v1.11.6
     channel: alpha
     registry: registry-vpc.cn-qingdao.aliyuncs.com
     secrets: 
@@ -24,7 +24,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
     repo: wod-cloud/ansible-kubernetes
-    version: v1.11.5
+    version: v1.11.6
     registry: registry-vpc.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
@@ -54,7 +54,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
     repo: mengkzhaoyun/cloud/ansible-kubernetes
-    version: v1.11.5
+    version: v1.11.6
     registry: hub.c.163.com
     secrets: 
       - source: REGISTRY_USER_163
