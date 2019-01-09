@@ -58,6 +58,7 @@ spec:
         - --run-router=true
         - --run-firewall=true
         - --run-service-proxy=true
+        - --advertise-cluster-ip=true
         - --kubeconfig=/var/lib/kube-router/kubeconfig
         - --hairpin-mode=true
         - --cluster-cidr={{ K8S_POD_NETWORK }}        
