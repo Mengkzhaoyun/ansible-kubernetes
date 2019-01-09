@@ -31,4 +31,4 @@ rkt gc --grace-period=0
 
 rkt image gc --grace-period=0
 
-rm -rf /etc/kubernetes /etc/cni/net.d /opt/cni/bin
+rm -rf /etc/kubernetes /etc/cni/net.d /opt/cni/bin /opt/bin/helm /opt/bin/kubectl
