@@ -47,7 +47,7 @@ K8S_IMAGES:
     VERSION: "1.2.2"
   DASHBOARD:
     NAME: kubernetes-dashboard-amd64
-    VERSION: "v1.10.0"
+    VERSION: "v1.10.1"
   HEAPSTER:
     NAME: heapster-amd64
     VERSION: "v1.5.4"
@@ -67,7 +67,6 @@ K8S_IMAGES:
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
 RKT_ACI_ETCD: "etcd-{{ K8S_IMAGES['ETCD']['VERSION'] }}.aci"
-RKT_ACI_FLANNEL: "flannel-{{ K8S_IMAGES['FLANNEL']['VERSION'] }}.aci"
 RKT_ACI_KUBELET: "{{ K8S_IMAGES['KUBELET']['NAME'] }}-{{ K8S_IMAGES['KUBELET']['VERSION'] }}.aci"
 
 # ctl tools
@@ -76,7 +75,7 @@ TOOLS_KUBECTL: kubectl
 
 # k8s adv option.
 K8S_NETWORK_PLUGIN: flannel
-K8S_CNI_BIN: cni-plugins-amd64-v0.7.1
+K8S_CNI_BIN: cni-plugins-amd64-v0.7.4
 K8S_POD_NETWORK: 10.2.0.0/16
 K8S_SERVICE_IP_RANGE: 10.3.0.0/16
 K8S_SERVICE_PORT_RANGE: 10000-32767

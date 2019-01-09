@@ -3,7 +3,7 @@
 set -e
 
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
-RKT_ACI_ETCD="${RKT_ACI_ETCD:-etcd-v3.2.0}"
+RKT_ACI_ETCD="${RKT_ACI_ETCD:-etcd-v3.2.0.aci}"
 REGISTRY_LOCAL="${REGISTRY_LOCAL:-}"
 REGISTRY_LOCAL_SPLIT="${REGISTRY_LOCAL_SPLIT:-}"
 REGISTRY_ETCD_REPO="${REGISTRY_ETCD_REPO:-}"
@@ -15,7 +15,7 @@ TOOLS_ETCDCTL="${TOOLS_ETCDCTL:-${REGISTRY_ETCDCTL_REPO}-${REGISTRY_ETCDCTL_VERS
 mkdir -p /etc/kubernetes/downloads
 mkdir -p /etc/kubernetes/data
 
-if [[ -e /etc/kubernetes/downloads/$RKT_ACI_ETCD.aci ]]; then
+if [[ -e /etc/kubernetes/downloads/$RKT_ACI_ETCD ]]; then
 	echo 'etcd aci is already exist!'
 else
   if [[ -n "${REGISTRY_LOCAL:-}" ]]; then

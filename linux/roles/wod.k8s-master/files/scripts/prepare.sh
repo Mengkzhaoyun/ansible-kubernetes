@@ -3,7 +3,7 @@
 set -e
 
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
-RKT_ACI_KUBELET="${RKT_ACI_KUBELET:-hyperkube-v1.10.6}"
+RKT_ACI_KUBELET="${RKT_ACI_KUBELET:-hyperkube-v1.10.6.aci}"
 REGISTRY_LOCAL="${REGISTRY_LOCAL:-}"
 REGISTRY_LOCAL_SPLIT="${REGISTRY_LOCAL_SPLIT:-}"
 REGISTRY_KUBELET_REPO="${REGISTRY_KUBELET_REPO:-}"
@@ -12,7 +12,7 @@ REGISTRY_KUBELET_VERSION="${REGISTRY_KUBELET_VERSION:-}"
 mkdir -p /etc/kubernetes/downloads
 mkdir -p /etc/kubernetes/data
 
-if [[ -e /etc/kubernetes/downloads/$RKT_ACI_KUBELET.aci ]]; then
+if [[ -e /etc/kubernetes/downloads/$RKT_ACI_KUBELET ]]; then
 	echo 'kubelet aci is already exist!'
 else
   if [[ -n "${REGISTRY_LOCAL:-}" ]]; then

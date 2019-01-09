@@ -15,7 +15,7 @@ ExecStartPre=/usr/bin/mkdir --parents /etc/kubernetes/data
 ExecStartPre=/usr/bin/mkdir --parents /usr/share/ca-certificates
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/etc/kubernetes/data/etcd-pod.uuid
 
-Environment="ETCD_IMAGE=/etc/kubernetes/downloads/{{ RKT_ACI_ETCD }}.aci"
+Environment="ETCD_IMAGE=/etc/kubernetes/downloads/{{ RKT_ACI_ETCD }}"
 Environment="ETCD_USER=root"        
 Environment="ETCD_DATA_DIR=/etc/kubernetes/data/etcd"
 Environment="RKT_GLOBAL_ARGS=--insecure-options=image"        

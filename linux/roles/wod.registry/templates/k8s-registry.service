@@ -20,7 +20,7 @@ ExecStart=/usr/bin/rkt run \
   --mount volume=volume-var-lib-registry,target=/var/lib/registry \
   --inherit-env \
   --stage1-from-dir=stage1-fly.aci \
-  /etc/kubernetes/downloads/{{ RKT_ACI_REGISTRY }}.aci \
+  /etc/kubernetes/downloads/{{ RKT_ACI_REGISTRY }} \
   --name=k8s-registry 
 
 ExecStop=-/usr/bin/rkt stop --uuid-file=/etc/kubernetes/data/registry-pod.uuid

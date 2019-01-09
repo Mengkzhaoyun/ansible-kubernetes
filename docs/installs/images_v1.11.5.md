@@ -31,6 +31,11 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1 &&\
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
 
+# dashboard
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.1 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetes-dashboard-amd64:v1.10.1 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetes-dashboard-amd64:v1.10.1
+
 # heapster
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 &&\
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4 &&\

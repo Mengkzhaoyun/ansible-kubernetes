@@ -12,7 +12,7 @@ ExecStartPre=/usr/bin/mkdir -p /var/log/containers
 ExecStartPre=/usr/bin/mkdir -p /etc/cni/net.d
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/etc/kubernetes/data/kubelet-pod.uuid
 
-Environment=KUBELET_IMAGE=/etc/kubernetes/downloads/{{ RKT_ACI_KUBELET }}.aci
+Environment=KUBELET_IMAGE=/etc/kubernetes/downloads/{{ RKT_ACI_KUBELET }}
 Environment="RKT_GLOBAL_ARGS=--insecure-options=image" 
 Environment="KUBELET_IMAGE_ARGS=--name=k8s-kubelet --exec=/kubelet"
 Environment="RKT_OPTS=--uuid-file-save=/etc/kubernetes/data/kubelet-pod.uuid \
