@@ -20,6 +20,21 @@ subjects:
   name: kubernetes-dashboard
   namespace: kube-system
 ---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: kube-system
+spec:
+  rules:
+  - host: {{ DASHBOARD["HOST"] }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 443  
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -33,7 +48,8 @@ spec:
   selector:
     k8s-app: kubernetes-dashboard
   ports:
-  - port: 443
+  - name: https
+    port: 443
     targetPort: 8443
 ---
 apiVersion: v1
