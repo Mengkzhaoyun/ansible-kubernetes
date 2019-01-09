@@ -11,7 +11,7 @@ spec:
     image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBE-PROXY']['NAME'] }}:{{ K8S_IMAGES['KUBE-PROXY']['VERSION'] }}
     command:
     - kube-proxy
-    - --config=/etc/kubernetes/config/kubeproxy-conf.yaml
+    - --config=/etc/kubernetes/config/kube-proxy-conf.yaml
     securityContext:
       privileged: true
     volumeMounts:
