@@ -33,7 +33,7 @@ spec:
       - path: /
         backend:
           serviceName: kubernetes-dashboard
-          servicePort: 8443  
+          servicePort: 9090  
 ---
 apiVersion: v1
 kind: Service
@@ -48,9 +48,9 @@ spec:
   selector:
     k8s-app: kubernetes-dashboard
   ports:
-  - name: https
-    port: 8443
-    targetPort: 8443
+  - name: http
+    port: 9090
+    targetPort: 9090
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -105,11 +105,14 @@ spec:
             cpu: 50m
             memory: 100Mi
         ports:
-        - containerPort: 8443
+        - containerPort: 9090
           protocol: TCP
         args:
-          - --auto-generate-certificates
           - --enable-skip-login
+          - --enable-insecure-login
+          - --heapster-host=http://heapster:8082
+          - --insecure-bind-address=0.0.0.0          
+          - --insecure-port=9090
         volumeMounts:
         - name: kubernetes-dashboard-certs
           mountPath: /certs
@@ -120,9 +123,9 @@ spec:
           readOnly: true             
         livenessProbe:
           httpGet:
-            scheme: HTTPS
+            scheme: HTTP
             path: /
-            port: 8443
+            port: 9090
           initialDelaySeconds: 30
           timeoutSeconds: 30
       volumes:

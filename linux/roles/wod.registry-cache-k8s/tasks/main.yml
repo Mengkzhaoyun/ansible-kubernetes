@@ -4,6 +4,7 @@
     REGISTRY_LOCAL_SPLIT: ':'
     REGISTRY_REMOTE: '{{ REGISTRY_REMOTE }}'
     REGISTRY_REMOTE_SPLIT: '{{ REGISTRY_REMOTE_SPLIT }}'
+    REGISTRY_DATA_PATH: '{{ REGISTRY_DATA_PATH }}'
     ITEM_REPO: '{{ item.value.NAME }}'
     ITEM_VERSION: '{{ item.value.VERSION }}'
   script: cache.sh

@@ -9,6 +9,7 @@ REGISTRY_REMOTE="${REGISTRY_REMOTE:-}"
 REGISTRY_REMOTE_SPLIT="${REGISTRY_REMOTE_SPLIT:-}"
 REGISTRY_REPO_REGISTRY="${REGISTRY_REPO_REGISTRY:-}"
 REGISTRY_VERSION_REGISTRY="${REGISTRY_VERSION_REGISTRY:-}"
+REGISTRY_DATA_PATH="${REGISTRY_DATA_PATH:-}"
 
 mkdir -p /etc/kubernetes/downloads
 mkdir -p /etc/kubernetes/data
@@ -27,7 +28,7 @@ else
   fi
 fi
 
-if [[ -e /etc/kubernetes/data/registry/docker ]]; then
+if [[ -e $REGISTRY_DATA_PATH/docker ]]; then
 	echo 'registry data ready!'
 else
   if [[ -n "${REGISTRY_REMOTE:-}" ]]; then
@@ -36,8 +37,8 @@ else
     curl $HTTP_SERVER/$RKT_ACI_REGISTRY_DATA.tgz >/etc/kubernetes/downloads/$RKT_ACI_REGISTRY_DATA.tgz
     cd /etc/kubernetes/downloads && tar -xzf /etc/kubernetes/downloads/$RKT_ACI_REGISTRY_DATA.tgz
     rm -rf /etc/kubernetes/downloads/$RKT_ACI_REGISTRY_DATA.tgz
-    mkdir -p /etc/kubernetes/data/registry
-    mv -n /etc/kubernetes/downloads/data/docker /etc/kubernetes/data/registry
+    mkdir -p $REGISTRY_DATA_PATH
+    mv -n /etc/kubernetes/downloads/data/docker $REGISTRY_DATA_PATH
     rm -rf /etc/kubernetes/downloads/data
   fi
 fi
