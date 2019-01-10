@@ -13,6 +13,7 @@ REGISTRY_LOCAL: "{{ REGISTRY_LOCAL_HOST }}:5000/k8s/"
 REGISTRY_REMOTE: "registry.cn-qingdao.aliyuncs.com/wod/"
 # REGISTRY_REMOTE_HOST: "172.16.11.23:5000"
 REGISTRY_REMOTE_SPLIT: ":"
+REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 
 K8S_IMAGES: 
   KUBELET:

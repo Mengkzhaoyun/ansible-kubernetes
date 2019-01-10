@@ -15,6 +15,7 @@ K8S_CLUSTER_ROLE:
 # registry options
 REGISTRY_LOCAL_HOSTNAME: ubuntu01
 REGISTRY_LOCAL_IP: "{{ hostvars['ubuntu01']['ansible_default_ipv4']['address'] }}"  
+REGISTRY_DATA_PATH: /data/kubernetes/registry
 
 # single master
 K8S_MASTER_IP: "{{ hostvars['ubuntu01']['ansible_default_ipv4']['address'] }}"

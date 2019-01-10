@@ -9,14 +9,14 @@ RestartSec=10
 
 Environment=PATH=/opt/bin/:/usr/bin/:/usr/sbin:/sbin:$PATH
 
-ExecStartPre=/usr/bin/mkdir --parents /etc/kubernetes/data/registry
+ExecStartPre=/usr/bin/mkdir --parents {{ REGISTRY_DATA_PATH }}
 ExecStartPre=/usr/bin/mkdir --parents /etc/kubernetes/downloads
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/etc/kubernetes/data/registry-pod.uuid       
 
 ExecStart=/usr/bin/rkt run \
   --insecure-options=image \
   --uuid-file-save=/etc/kubernetes/data/registry-pod.uuid \
-  --volume volume-var-lib-registry,kind=host,source=/etc/kubernetes/data/registry \
+  --volume volume-var-lib-registry,kind=host,source={{ REGISTRY_DATA_PATH }} \
   --mount volume=volume-var-lib-registry,target=/var/lib/registry \
   --inherit-env \
   --stage1-from-dir=stage1-fly.aci \
