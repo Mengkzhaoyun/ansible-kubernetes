@@ -9,6 +9,7 @@ ETCD_CLUSTER_ROLE:
   ubuntu01: etcd
 
 # k8s option
+K8S_SERVICE_PORT_RANGE: 1-32767
 K8S_CLUSTER_ROLE: 
   ubuntu01: master
 
