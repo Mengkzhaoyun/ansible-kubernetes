@@ -30,5 +30,5 @@
     when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"
   - role: wod.k8s-helm
     when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
-  - role: wod.k8s-traefik
-    when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"
+  # - role: wod.k8s-traefik
+  #   when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"
