@@ -13,7 +13,7 @@ mkdir -p /etc/kubernetes/downloads
 
 if [ "$ANSIBLE_LSB_CODENAME" == "bionic" ]; then
   if ! [ -x "$(command -v docker)" ]; then
-    apt install -y docker.io
+    curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
   fi
   exit 0
 fi
