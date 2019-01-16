@@ -109,7 +109,7 @@ DEB_RKT: rkt_1.30.0-1_amd64.deb
 YUM_RKT: rkt-1.30.0-1.x86_64.rpm
 
 # other
-HTTP_SERVER: http://192.168.137.1/k8s
+HTTP_SERVER: https://dl.wodcloud.com/k8s
 
 CLOUD_IMAGES: 
   # STORAGEOS-NODE:
