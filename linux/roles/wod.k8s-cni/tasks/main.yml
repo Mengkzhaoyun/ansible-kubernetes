@@ -46,57 +46,57 @@
   delay: 2
   ignore_errors: true
 
-# - name: check need kube-proxy.yaml
-#   when: K8S_NETWORK_PLUGIN == "flannel" 
-#   raw: stat /etc/kubernetes/manifests/kube-proxy.yaml
-#   register: need_manifests_kube_proxy
-#   ignore_errors: True
+- name: check need kube-proxy.yaml
+  when: K8S_NETWORK_PLUGIN == "flannel" 
+  raw: stat /etc/kubernetes/manifests/kube-proxy.yaml
+  register: need_manifests_kube_proxy
+  ignore_errors: True
 
-# - name: template kube-proxy.yml to master
+- name: template kube-proxy.yml to master
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  - K8S_NETWORK_PLUGIN == "flannel" 
+  - need_manifests_kube_proxy | failed   
+  template: src=kube-proxy-master.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
+
+- name: template kube-proxy.yml to node
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master"
+  - K8S_NETWORK_PLUGIN == "flannel" 
+  - need_manifests_kube_proxy | failed   
+  template: src=kube-proxy-worker.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
+
+- name: template kube-proxy-conf.yml
+  when: 
+  - K8S_NETWORK_PLUGIN == "flannel"
+  template: src=kube-proxy-conf.yml dest=/etc/kubernetes/config/kube-proxy-conf.yaml
+
+# - name: check need kube-router-svc.yml
+#   raw: stat /etc/kubernetes/addons/kube-system/kube-router-svc.yml
+#   register: need_addons_flannel
+#   ignore_errors: True  
 #   when: 
 #   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
 #   - K8S_NETWORK_PLUGIN == "flannel" 
-#   - need_manifests_kube_proxy | failed   
-#   template: src=kube-proxy-master.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
 
-# - name: template kube-proxy.yml to node
+# - name: template kube-router-svc.yml
+#   template: src=kube-router-svc.yml dest=/etc/kubernetes/addons/kube-system/kube-router-svc.yml
 #   when: 
-#   - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master"
+#   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
 #   - K8S_NETWORK_PLUGIN == "flannel" 
-#   - need_manifests_kube_proxy | failed   
-#   template: src=kube-proxy-worker.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
-
-# - name: template kube-proxy-conf.yml
-#   when: 
-#   - K8S_NETWORK_PLUGIN == "flannel"
-#   template: src=kube-proxy-conf.yml dest=/etc/kubernetes/config/kube-proxy-conf.yaml
-
-- name: check need kube-router-svc.yml
-  raw: stat /etc/kubernetes/addons/kube-system/kube-router-svc.yml
-  register: need_addons_flannel
-  ignore_errors: True  
-  when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
-  - K8S_NETWORK_PLUGIN == "flannel" 
-
-- name: template kube-router-svc.yml
-  template: src=kube-router-svc.yml dest=/etc/kubernetes/addons/kube-system/kube-router-svc.yml
-  when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
-  - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_addons_flannel | failed 
+#   - need_addons_flannel | failed 
   
-- name: kubectl create -f kube-router-svc.yml
-  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/kube-router-svc.yml
-  when: 
-  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
-  - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_addons_flannel | failed  
-  register: create_result_flannel
-  until: create_result_flannel.rc == 0
-  retries: 15
-  delay: 5
-  ignore_errors: true    
+# - name: kubectl create -f kube-router-svc.yml
+#   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/kube-router-svc.yml
+#   when: 
+#   - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+#   - K8S_NETWORK_PLUGIN == "flannel" 
+#   - need_addons_flannel | failed  
+#   register: create_result_flannel
+#   until: create_result_flannel.rc == 0
+#   retries: 15
+#   delay: 5
+#   ignore_errors: true    
 
 - name: check need flannel.yml
   raw: stat /etc/kubernetes/addons/kube-system/flannel.yml
