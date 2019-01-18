@@ -54,9 +54,9 @@ docker tag nginx:1.15.3-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.15.3-alpine
 
 # coredns
-docker pull coredns/coredns:1.2.2 && \
-docker tag coredns/coredns:1.2.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.2 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.2
+docker pull coredns/coredns:1.3.1 && \
+docker tag coredns/coredns:1.3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.3.1 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.3.1
 
 # kube-router
 docker pull cloudnativelabs/kube-router:v0.2.2 && \
