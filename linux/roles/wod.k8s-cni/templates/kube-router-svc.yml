@@ -55,10 +55,9 @@ spec:
         image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["KUBE-ROUTER"]["NAME"] }}:{{ K8S_IMAGES["KUBE-ROUTER"]["VERSION"] }}
         imagePullPolicy: Always
         args:
-        - --run-router=true
-        - --run-firewall=true
+        - --run-router=false
+        - --run-firewall=false
         - --run-service-proxy=true
-        - --advertise-cluster-ip=true
         - --kubeconfig=/var/lib/kube-router/kubeconfig
         - --hairpin-mode=true
         env:

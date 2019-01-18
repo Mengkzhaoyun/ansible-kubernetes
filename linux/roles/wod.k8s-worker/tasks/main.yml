@@ -17,15 +17,6 @@
   template: src=config/kubelet.yaml dest=/etc/kubernetes/config/kubelet.yaml
   when: need_config_kubelet | failed
 
-- name: check need config/kubeproxy.yaml
-  raw: stat /etc/kubernetes/config/kubeproxy.yaml
-  register: need_config_kubeproxy
-  ignore_errors: True  
-
-- name: copy config/kubeproxy.yaml
-  template: src=config/kubeproxy.yaml dest=/etc/kubernetes/config/kubeproxy.yaml
-  when: need_config_kubeproxy | failed
-
 - name: check need scripts/kubelet.sh
   raw: stat /etc/kubernetes/scripts/kubelet.sh
   register: need_scripts_kubelet

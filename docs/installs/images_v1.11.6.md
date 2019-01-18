@@ -67,6 +67,10 @@ docker pull cloudnativelabs/kube-router:v0.2.3 && \
 docker tag cloudnativelabs/kube-router:v0.2.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.3 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.3
 
+docker pull cloudnativelabs/kube-router:v0.2.4 && \
+docker tag cloudnativelabs/kube-router:v0.2.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.4 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.4
+
 # etcd
 docker pull quay.io/coreos/etcd:v3.3.10 && \
 docker tag quay.io/coreos/etcd:v3.3.10 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.10 && \
