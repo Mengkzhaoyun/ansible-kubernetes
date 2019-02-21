@@ -59,9 +59,9 @@ docker tag coredns/coredns:1.2.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredn
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.2
 
 # kube-router
-docker pull cloudnativelabs/kube-router:v0.2.4 && \
-docker tag cloudnativelabs/kube-router:v0.2.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.4 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.4
+docker pull cloudnativelabs/kube-router:v0.2.5 && \
+docker tag cloudnativelabs/kube-router:v0.2.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.5 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.2.5
 
 # etcd
 docker pull quay.io/coreos/etcd:v3.3.10 && \
