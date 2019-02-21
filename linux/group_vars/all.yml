@@ -18,10 +18,10 @@ REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 K8S_IMAGES: 
   KUBELET:
     NAME: hyperkube
-    VERSION: "v1.11.6"
+    VERSION: "v1.13.3"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.11.6"
+    VERSION: "v1.13.3"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -57,7 +57,7 @@ K8S_IMAGES:
     VERSION: "1.8.3"
   KUBECTL:
     NAME: kubectl
-    VERSION: "v1.11.6"
+    VERSION: "v1.13.3"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.3.10"
