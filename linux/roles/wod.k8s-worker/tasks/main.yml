@@ -8,23 +8,12 @@
     REGISTRY_KUBELET_VERSION: '{{ K8S_IMAGES["KUBELET"]["VERSION"] }}' 
   script: scripts/prepare.sh
 
-- name: check need config/kubelet.yaml
-  raw: mkdir -p /etc/kubernetes/config && stat /etc/kubernetes/config/kubelet.yaml
-  register: need_config_kubelet
-  ignore_errors: True  
-
 - name: copy config/kubelet.yaml
   template: src=config/kubelet.yaml dest=/etc/kubernetes/config/kubelet.yaml
-  when: need_config_kubelet | failed
 
-- name: check need scripts/kubelet.sh
-  raw: stat /etc/kubernetes/scripts/kubelet.sh
-  register: need_scripts_kubelet
-  ignore_errors: True  
 
 - name: copy scripts/kubelet.sh
   copy: src=scripts/kubelet.sh dest=/etc/kubernetes/scripts/kubelet.sh mode=0755
-  when: need_scripts_kubelet | failed
 
 - name: check need services/k8s-kubelet.service
   raw: stat /etc/systemd/system/k8s-kubelet.service
@@ -33,7 +22,6 @@
 
 - name: template services/k8s-kubelet.service
   template: src=services/kubelet.service dest=/etc/systemd/system/k8s-kubelet.service
-  when: need_services_kubelet | failed
 
 - name: start services k8s-kubelet.service
   raw: systemctl daemon-reload && systemctl enable k8s-kubelet.service && systemctl start k8s-kubelet.service
