@@ -11,6 +11,7 @@ REGISTRY_KUBELET_VERSION="${REGISTRY_KUBELET_VERSION:-}"
 
 mkdir -p /etc/kubernetes/downloads
 mkdir -p /etc/kubernetes/data
+mkdir -p /etc/kubernetes/config
 
 if [[ -e /etc/kubernetes/downloads/$RKT_ACI_KUBELET ]]; then
 	echo 'kubelet aci is already exist!'
