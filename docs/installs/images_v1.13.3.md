@@ -82,4 +82,9 @@ docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/keepalived:1.4.5
 docker pull busybox:1.30 && \
 docker tag busybox:1.30 registry-vpc.cn-qingdao.aliyuncs.com/wod/busybox:1.30 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/busybox:1.30
+
+# tiller
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.12.3 && \
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.12.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.12.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.12.3
 ```
