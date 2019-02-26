@@ -46,24 +46,16 @@
   delay: 2
   ignore_errors: true
 
-- name: check need kube-proxy.yaml
-  when: K8S_NETWORK_PLUGIN == "flannel" 
-  raw: stat /etc/kubernetes/manifests/kube-proxy.yaml
-  register: need_manifests_kube_proxy
-  ignore_errors: True
-
 - name: template kube-proxy.yml to master
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
-  - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_manifests_kube_proxy | failed   
+  - K8S_NETWORK_PLUGIN == "flannel"
   template: src=kube-proxy-master.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
 
 - name: template kube-proxy.yml to node
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master"
   - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_manifests_kube_proxy | failed   
   template: src=kube-proxy-worker.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
 
 - name: template kube-proxy-conf.yml
@@ -83,8 +75,7 @@
   template: src=flannel.yml dest=/etc/kubernetes/addons/kube-system/flannel.yml
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
-  - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_addons_flannel | failed
+  - K8S_NETWORK_PLUGIN == "flannel"
 
 - name: kubectl create -f flannel.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/flannel.yml
