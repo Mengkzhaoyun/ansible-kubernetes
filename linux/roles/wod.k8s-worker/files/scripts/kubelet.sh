@@ -72,6 +72,7 @@ run ${RKT_RUN_ARGS} \
 --volume coreos-run,kind=host,source=/run,readOnly=false \
 --volume coreos-lib-modules,kind=host,source=/lib/modules,readOnly=true \
 --volume coreos-etc-cni-net,kind=host,source=/etc/cni/net.d,readOnly=true \
+--volume coreos-var-lib-cni,kind=host,source=/var/lib/cni,readOnly=false \
 --volume coreos-etc-localtime,kind=host,source=/etc/localtime,readOnly=true \
 --volume coreos-kubelet-plugins-volume,kind=host,source=/usr/libexec/kubernetes,readOnly=false \
 --mount volume=coreos-etc-kubernetes,target=/etc/kubernetes \
@@ -84,6 +85,7 @@ run ${RKT_RUN_ARGS} \
 --mount volume=coreos-run,target=/run \
 --mount volume=coreos-lib-modules,target=/lib/modules \
 --mount volume=coreos-etc-cni-net,target=/etc/cni/net.d \
+--mount volume=coreos-var-lib-cni,target=/var/lib/cni \
 --mount volume=coreos-etc-localtime,target=/etc/localtime \
 --mount volume=coreos-kubelet-plugins-volume,target=/usr/libexec/kubernetes \
 --hosts-entry host \

@@ -12,6 +12,9 @@ spec:
     command:
     - kube-proxy
     - --config=/etc/kubernetes/config/kube-proxy-conf.yaml
+    - --ipvs-min-sync-period=5s 
+    - --ipvs-sync-period=5s 
+    - --ipvs-scheduler=rr    
     securityContext:
       privileged: true
     volumeMounts:
