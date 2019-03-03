@@ -20,6 +20,7 @@ Environment="RKT_RUN_ARGS=--volume modprobe,kind=host,source=/sbin/modprobe \
 ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/data
 ExecStartPre=/usr/bin/mkdir -p /etc/kubernetes/manifests
 ExecStartPre=/usr/bin/mkdir -p /var/log/containers
+ExecStartPre=/usr/bin/mkdir -p /var/lib/cni
 ExecStartPre=/usr/bin/mkdir -p /etc/cni/net.d
 ExecStartPre=-/usr/bin/rkt rm --uuid-file=/etc/kubernetes/data/kubelet-pod.uuid
 
