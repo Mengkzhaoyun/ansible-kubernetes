@@ -27,7 +27,7 @@ K8S_IMAGES:
     VERSION: "3.1"
   REGISTRY:
     NAME: registry
-    VERSION: "2.6.2"
+    VERSION: "2.7.1"
   ETCD:
     NAME: etcd
     VERSION: "v3.3.10"
@@ -150,7 +150,7 @@ CLOUD_IMAGES:
   #   VERSION: "v1.6.0"
   # HARBOR-REGISTRY:
   #   NAME: registry
-  #   VERSION: "2.6.2" 
+  #   VERSION: "2.7.1" 
   # HARBOR-CHARTMUSEUM:
   #   NAME: chartmuseum-photon
   #   VERSION: "dev"
