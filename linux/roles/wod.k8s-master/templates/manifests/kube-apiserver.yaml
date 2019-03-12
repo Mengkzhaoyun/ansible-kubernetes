@@ -34,11 +34,9 @@ spec:
     - --feature-gates=MountPropagation=true
     ports:
     - containerPort: {{ K8S_PORT }}
-      hostPort: {{ K8S_PORT }}
       name: https
     - containerPort: 8080
-      hostPort: 8080
-      name: local
+      name: http
     volumeMounts:
     - mountPath: /etc/kubernetes/ssl
       name: ssl-certs-kubernetes
