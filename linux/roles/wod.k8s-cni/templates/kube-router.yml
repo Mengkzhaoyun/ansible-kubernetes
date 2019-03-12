@@ -50,6 +50,9 @@ spec:
     spec:
       serviceAccountName: kube-router
       serviceAccount: kube-router
+      tolerations:
+      - operator: Exists
+        effect: NoSchedule      
       containers:
       - name: kube-router
         image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["KUBE-ROUTER"]["NAME"] }}:{{ K8S_IMAGES["KUBE-ROUTER"]["VERSION"] }}
