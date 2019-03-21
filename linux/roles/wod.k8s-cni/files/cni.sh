@@ -3,7 +3,7 @@
 set -e  
 
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
-K8S_CNI_BIN="${K8S_CNI_BIN:-cni-plugins-amd64-v0.7.0}"
+K8S_CNI_BIN="${K8S_CNI_BIN:-cni-plugins-amd64-v0.7.4}"
 
 if [[ -e /etc/sysconfig/modules/ipvs.modules ]]; then
   echo 'ipvs.modules is already exist!'
