@@ -2,29 +2,29 @@
 
 ```powershell
 # hyperkube
-docker pull gcr.io/google_containers/hyperkube:v1.13.3 ;`
-docker tag gcr.io/google_containers/hyperkube:v1.13.3 registry.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.13.3 ;`
-docker push registry.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.13.3
+docker pull gcr.io/google_containers/hyperkube:v1.13.5 ;`
+docker tag gcr.io/google_containers/hyperkube:v1.13.5 registry.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.13.5 ;`
+docker push registry.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.13.5
 
 # kube-apiserver
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.13.3 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.13.3 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.13.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.13.5 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.13.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.13.5 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.13.5
 
 # kube-controller-manager
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.13.3 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.13.3 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.13.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.13.5 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.13.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.13.5 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.13.5
 
 # kube-scheduler
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.13.3 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.13.3 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.13.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.13.5 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.13.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.13.5 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.13.5
 
 # kube-proxy
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.13.3 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.13.3 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.13.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.13.5 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.13.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.13.5 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.13.5
 
 # pause
 docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 &&\
@@ -54,9 +54,9 @@ docker tag nginx:1.15.3-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.15.3-alpine
 
 # coredns
-docker pull coredns/coredns:1.2.2 && \
-docker tag coredns/coredns:1.2.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.2 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.2
+docker pull coredns/coredns:1.2.6 && \
+docker tag coredns/coredns:1.2.6 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.6 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.2.6
 
 # kube-router
 docker pull cloudnativelabs/kube-router:v0.2.5 && \
@@ -89,7 +89,12 @@ docker tag registry:2.7.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1
 
 # tiller
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.12.3 && \
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.12.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.12.3 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.12.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.13.1 && \
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.13.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.13.1 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.13.1
+
+# traefik
+docker pull traefik:v1.7.10-alpine && \
+docker tag traefik:v1.7.10-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.10-alpine && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.10-alpine
 ```

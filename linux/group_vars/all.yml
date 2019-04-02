@@ -18,10 +18,10 @@ REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 K8S_IMAGES: 
   KUBELET:
     NAME: hyperkube
-    VERSION: "v1.13.3"
+    VERSION: "v1.13.5"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.13.3"
+    VERSION: "v1.13.5"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -45,7 +45,7 @@ K8S_IMAGES:
     VERSION: "1.15.3-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.2.2"
+    VERSION: "1.2.6"
   DASHBOARD:
     NAME: kubernetes-dashboard-amd64
     VERSION: "v1.10.1"
@@ -57,7 +57,7 @@ K8S_IMAGES:
     VERSION: "1.8.3"
   KUBECTL:
     NAME: kubectl
-    VERSION: "v1.13.3"
+    VERSION: "v1.13.5"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.3.10"
@@ -66,16 +66,16 @@ K8S_IMAGES:
     VERSION: "1.4.5"
   HELM:
     NAME: helm
-    VERSION: "v2.12.3"
+    VERSION: "v2.13.1"
   TILLER:
     NAME: tiller
-    VERSION: "v2.12.3"
+    VERSION: "v2.13.1"
   TRAEFIK-CHART:
     NAME: "traefik-chart"
     VERSION: "v1.7"
   TRAEFIK:
     NAME: traefik
-    VERSION: "v1.7.7-alpine"    
+    VERSION: "v1.7.10-alpine"    
 
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
