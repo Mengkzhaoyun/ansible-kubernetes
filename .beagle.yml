@@ -32,7 +32,7 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: master      
+      branch: master
   docker-aliyun-latest:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:

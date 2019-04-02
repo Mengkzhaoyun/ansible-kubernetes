@@ -28,7 +28,6 @@
 
 - name: template k8s-registry.service
   template: src=k8s-registry.service dest=/etc/systemd/system/k8s-registry.service mode=0644
-  when: need_services_registry | failed
 
 - name: start k8s-registry.service
   raw: systemctl daemon-reload && systemctl enable k8s-registry.service && systemctl start k8s-registry.service
