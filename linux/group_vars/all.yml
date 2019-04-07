@@ -45,7 +45,7 @@ K8S_IMAGES:
     VERSION: "1.15.3-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.2.6"
+    VERSION: "1.4.0"
   DASHBOARD:
     NAME: kubernetes-dashboard-amd64
     VERSION: "v1.10.1"
