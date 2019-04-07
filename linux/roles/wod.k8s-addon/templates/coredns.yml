@@ -61,7 +61,7 @@ data:
         kubernetes cluster.local {{ K8S_SERVICE_IP_RANGE }} {
           pods insecure
         }
-        prometheus
+        prometheus localhost:9153
         proxy . /etc/resolv.conf
         cache 30
     }
