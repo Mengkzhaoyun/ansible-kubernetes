@@ -62,7 +62,7 @@ data:
           pods insecure
         }
         prometheus localhost:9153
-        proxy . /etc/resolv.conf
+        forward . /etc/resolv.conf
         cache 30
     }
 ---
