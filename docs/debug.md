@@ -22,6 +22,6 @@ windows 10
 docker run `
 --name ansible `
 -h ansible `
--v C:/Go/src/gitlab.wodcloud.com/kubernetes/ansible/:/etc/ansible `
--d hub.c.163.com/mengkzhaoyun/public:ansible-2.3.0-centos7 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+-v $PWD/:/etc/ansible `
+-d registry.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
 ```
