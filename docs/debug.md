@@ -10,7 +10,7 @@ docker run `
 -h ansible `
 -v $PWD/linux/aliyun.ini:/etc/ansible/hosts `
 -v $PWD/linux/group_vars/aliyun.yml:/etc/ansible/linux/group_vars/aliyun.yml `
--d hub.c.163.com/mengkzhaoyun/cloud/ansible-kubernetes
+-d registry.cn-qingdao.aliyuncs.com/wod-cloud/ansible-kubernetes
 
 # docker exec
 docker exec -it ansible bash

@@ -6,7 +6,7 @@ pipeline:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
+    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod-cloud/ansible-kubernetes
     version: v1.13.5
     channel: alpha
@@ -22,7 +22,7 @@ pipeline:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
+    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod-cloud/ansible-kubernetes
     version: v1.13.5
     registry: registry-vpc.cn-qingdao.aliyuncs.com
@@ -37,7 +37,7 @@ pipeline:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.3.0-centos7
+    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod-cloud/ansible-kubernetes
     version: latest
     registry: registry-vpc.cn-qingdao.aliyuncs.com
