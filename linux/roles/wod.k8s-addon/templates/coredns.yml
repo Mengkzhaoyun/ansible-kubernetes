@@ -54,7 +54,7 @@ metadata:
       addonmanager.kubernetes.io/mode: EnsureExists
 data:
   Corefile: |
-    .:53 {
+    . {
         errors
         log
         health
@@ -63,8 +63,8 @@ data:
             upstream
             fallthrough in-addr.arpa ip6.arpa
         }
-        prometheus
-        proxy . /etc/resolv.conf
+        prometheus 0.0.0.0:9153
+        forward . /etc/resolv.conf
         cache 30
         loop
         reload
