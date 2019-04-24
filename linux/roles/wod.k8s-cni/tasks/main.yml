@@ -32,14 +32,14 @@
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
   - K8S_NETWORK_PLUGIN == "kube-router" 
-  - need_addons_kube_router | failed
+  - need_addons_kube_router is failed
 
 - name: kubectl create -f kube-router.yml
   raw: kubectl create -f /etc/kubernetes/addons/kube-system/kube-router.yml
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
   - K8S_NETWORK_PLUGIN == "kube-router" 
-  - need_addons_kube_router | failed
+  - need_addons_kube_router is failed
   register: create_result_kube_router
   until: create_result_kube_router.rc == 0
   retries: 5
@@ -82,7 +82,7 @@
   when: 
   - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
   - K8S_NETWORK_PLUGIN == "flannel" 
-  - need_addons_flannel | failed  
+  - need_addons_flannel is failed  
   register: create_result_flannel
   until: create_result_flannel.rc == 0
   retries: 15

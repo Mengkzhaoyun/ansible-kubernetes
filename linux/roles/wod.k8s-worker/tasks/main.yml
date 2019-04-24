@@ -25,4 +25,4 @@
 
 - name: start services k8s-kubelet.service
   raw: systemctl daemon-reload && systemctl enable k8s-kubelet.service && systemctl start k8s-kubelet.service
-  when: need_services_kubelet | failed
+  when: need_services_kubelet is failed

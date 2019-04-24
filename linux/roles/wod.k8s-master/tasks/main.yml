@@ -24,7 +24,7 @@
 
 - name: template ssl/admin.csv
   template: src=ssl/admin.csv dest=/etc/kubernetes/ssl/admin.csv
-  when: need_ssl_admin | failed
+  when: need_ssl_admin is failed
 
 - name: check need ssl/token.csv
   raw: stat /etc/kubernetes/ssl/token.csv
@@ -33,7 +33,7 @@
 
 - name: template ssl/token.csv
   template: src=ssl/token.csv dest=/etc/kubernetes/ssl/token.csv
-  when: need_ssl_token | failed  
+  when: need_ssl_token is failed  
 
 - name: template manifests/kube-apiserver.yaml
   template: src=manifests/kube-apiserver.yaml dest=/etc/kubernetes/manifests/kube-apiserver.yaml
@@ -54,4 +54,4 @@
 
 - name: start services k8s-kubelet.service
   raw: systemctl daemon-reload && systemctl enable k8s-kubelet.service && systemctl start k8s-kubelet.service
-  when: need_services_kubelet | failed
+  when: need_services_kubelet is failed

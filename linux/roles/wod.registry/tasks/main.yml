@@ -18,7 +18,7 @@
 
 - name: copy prepare.sh
   copy: src=prepare.sh dest=/etc/kubernetes/scripts/registry-prepare.sh mode=0755
-  when: need_scripts_prepare | failed  
+  when: need_scripts_prepare is failed  
 
 - name: check need k8s-registry.service
   raw: stat /etc/systemd/system/k8s-registry.service
@@ -31,4 +31,4 @@
 
 - name: start k8s-registry.service
   raw: systemctl daemon-reload && systemctl enable k8s-registry.service && systemctl start k8s-registry.service
-  when: need_services_registry | failed
+  when: need_services_registry is failed

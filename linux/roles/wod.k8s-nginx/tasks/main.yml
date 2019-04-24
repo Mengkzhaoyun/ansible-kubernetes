@@ -12,4 +12,4 @@
 
 - name: template manifests/kube-nginx.yaml
   template: src=kube-nginx.yaml dest=/etc/kubernetes/manifests/kube-nginx.yaml
-  when: need_manifests_nginx | failed
+  when: need_manifests_nginx is failed

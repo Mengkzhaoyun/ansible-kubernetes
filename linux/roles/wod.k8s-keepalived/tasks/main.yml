@@ -5,4 +5,4 @@
 
 - name: template manifests/kube-keepalived.yaml
   template: src=kube-keepalived.yaml dest=/etc/kubernetes/manifests/kube-keepalived.yaml
-  when: need_manifests_keepalived | failed
+  when: need_manifests_keepalived is failed
