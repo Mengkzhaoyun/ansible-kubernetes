@@ -32,3 +32,5 @@
   - role: wod.k8s-cni
   - role: wod.k8s-addon
     when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
+  - role: wod.k8s-helm
+    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"    
