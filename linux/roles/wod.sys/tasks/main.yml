@@ -10,3 +10,7 @@
 - name: centos.sh
   when: "ansible_distribution == 'CentOS'"
   script: centos.sh
+
+- name: centos.sh
+  when: "ansible_distribution == 'RedHat'"
+  script: centos.sh
