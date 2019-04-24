@@ -8,4 +8,4 @@
   vars:
     findme:
       - install-{{ ansible_distribution }}.sh  
-      - install.sh    
+      - install.sh
