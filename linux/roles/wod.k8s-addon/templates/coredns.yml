@@ -54,6 +54,12 @@ metadata:
       addonmanager.kubernetes.io/mode: EnsureExists
 data:
   Corefile: |
+    {{ K8S_DOMAIN }}:53 {
+      errors
+      log
+      file /etc/coredns/local.db
+    }
+
     . {
         errors
         log
@@ -64,12 +70,29 @@ data:
             fallthrough in-addr.arpa ip6.arpa
         }
         prometheus 0.0.0.0:9153
-        forward . /etc/resolv.conf
+        forward . /etc/resolv.conf {
+            except {{ K8S_DOMAIN }}
+        }
         cache 30
         loop
         reload
         loadbalance
     }
+
+  local.db: |
+    @	3600 IN	SOA sns.dns.icann.org. noc.dns.icann.org. (
+            2017042745 ; serial
+            7200       ; refresh (2 hours)
+            3600       ; retry (1 hour)
+            1209600    ; expire (2 weeks)
+            3600       ; minimum (1 hour)
+            )
+
+      3600 IN NS a.iana-servers.net.
+      3600 IN NS b.iana-servers.net.
+
+    *       IN A     {{ K8S_MASTER_IP }}
+            IN AAAA  ::1    
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -146,9 +169,6 @@ spec:
         - name: config-volume
           configMap:
             name: coredns
-            items:
-            - key: Corefile
-              path: Corefile
         - name: etc-localtime        
           hostPath:
             path: /etc/localtime                 
