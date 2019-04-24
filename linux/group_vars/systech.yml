@@ -28,3 +28,6 @@ K8S_MASTER_PORT: "{{ K8S_PORT }}"
 # # vip interface
 # K8S_MASTER_INTERFACE: "eth0"
 # K8S_MASTER_PORT: "8443"
+
+# 基础域名
+K8S_DOMAIN: "wodcloud.local"

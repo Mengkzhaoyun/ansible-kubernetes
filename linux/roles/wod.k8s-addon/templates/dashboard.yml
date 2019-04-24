@@ -27,7 +27,7 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-  - host: {{ DASHBOARD["HOST"] }}
+  - host: {{ K8S_DASHBOARD["HOST"] }}
     http:
       paths:
       - path: /
@@ -108,7 +108,6 @@ spec:
         - containerPort: 9090
           protocol: TCP
         args:
-          - --enable-skip-login
           - --enable-insecure-login
           - --heapster-host=http://heapster:8082
           - --insecure-bind-address=0.0.0.0          

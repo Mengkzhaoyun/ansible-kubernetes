@@ -242,23 +242,7 @@ CLOUD_IMAGES:
   #   NAME: "awecloud-users"
   #   VERSION: "1.0.0"
 
-DASHBOARD:
-  HOST: "k8s.wodcloud.local"
+K8S_DOMAIN: "wodcloud.local"
 
-STORAGEOS:
-  HOST: "storageos.wodcloud.local"
-  PASSWORD: "{{ K8S_ADMIN_PWD }}"
-
-GITLAB:
-  HOST: "gitlab.wodcloud.local"
-  PASSWORD: "{{ K8S_ADMIN_PWD }}"
-
-DRONE:
-  HOST: "drone.wodcloud.local"
-  
-HARBOR:
-  HOST: "harbor.wodcloud.local"
-  PASSWORD: "{{ K8S_ADMIN_PWD }}"
-
-CLOUD:
-  HOST: "cloud.wodcloud.local"
+K8S_DASHBOARD:
+  HOST: "k8s.{{ K8S_DOMAIN }}"
