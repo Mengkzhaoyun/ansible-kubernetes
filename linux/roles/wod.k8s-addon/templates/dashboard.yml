@@ -108,10 +108,7 @@ spec:
         - containerPort: 9090
           protocol: TCP
         args:
-          - --enable-insecure-login
           - --heapster-host=http://heapster:8082
-          - --insecure-bind-address=0.0.0.0          
-          - --insecure-port=9090
         volumeMounts:
         - name: kubernetes-dashboard-certs
           mountPath: /certs
