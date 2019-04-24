@@ -68,7 +68,7 @@ Check the server contians these files：
 
 ```bash
 # centos deps
-rkt-1.29.0-1.x86_64.rpm.tgz
+rkt-1.30.0-1.x86_64.rpm.tgz
 
 # k8s require
 etcd-v3.3.2.tgz

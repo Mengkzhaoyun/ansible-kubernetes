@@ -4,7 +4,7 @@ set -e
 
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
 DEB_SERVER="$HTTP_SERVER"
-DEB_RKT="${DEB_RKT:-rkt_1.29.0-1_amd64.deb}"
+DEB_RKT="${DEB_RKT:-rkt_1.30.0-1_amd64.deb}"
 
 mkdir -p /etc/kubernetes/downloads
 
