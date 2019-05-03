@@ -18,10 +18,10 @@ REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 K8S_IMAGES: 
   KUBELET:
     NAME: hyperkube
-    VERSION: "v1.13.5"
+    VERSION: "v1.14.1"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.13.5"
+    VERSION: "v1.14.1"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -57,7 +57,7 @@ K8S_IMAGES:
     VERSION: "1.8.3"
   KUBECTL:
     NAME: kubectl
-    VERSION: "v1.13.5"
+    VERSION: "v1.14.1"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.3.10"
@@ -70,9 +70,6 @@ K8S_IMAGES:
   TILLER:
     NAME: tiller
     VERSION: "v2.13.1"
-  TRAEFIK-CHART:
-    NAME: "traefik-chart"
-    VERSION: "v1.7"
   TRAEFIK:
     NAME: traefik
     VERSION: "v1.7.10-alpine"    

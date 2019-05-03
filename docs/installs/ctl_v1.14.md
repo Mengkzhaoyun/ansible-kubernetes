@@ -1,9 +1,9 @@
 # kubectl
 
-2019.04.02  v1.13.5
+2019.04.02  v1.14.1
 readme   : https://kubernetes.io/docs/tasks/tools/install-kubectl/
 version  : https://storage.googleapis.com/kubernetes-release/release/stable.txt
-download : https://storage.googleapis.com/kubernetes-release/release/v1.13.5/bin/linux/amd64/kubectl
+download : https://storage.googleapis.com/kubernetes-release/release/v1.14.1/bin/linux/amd64/kubectl
 
 # etcdctl
 
