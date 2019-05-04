@@ -9,10 +9,9 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-scheduler
-    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBELET']['NAME'] }}:{{ K8S_IMAGES['KUBELET']['VERSION'] }}
+    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBE-SCHEDULER']['NAME'] }}:{{ K8S_IMAGES['KUBE-SCHEDULER']['VERSION'] }}
     command:
-    - /hyperkube
-    - scheduler
+    - kube-scheduler
     - --master=http://127.0.0.1:8080
     - --leader-elect=true
     resources:

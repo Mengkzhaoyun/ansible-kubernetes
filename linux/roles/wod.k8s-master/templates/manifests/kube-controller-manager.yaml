@@ -9,10 +9,9 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-controller-manager
-    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBELET']['NAME'] }}:{{ K8S_IMAGES['KUBELET']['VERSION'] }}
+    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBE-CONTROLLER-MANAGER']['NAME'] }}:{{ K8S_IMAGES['KUBE-CONTROLLER-MANAGER']['VERSION'] }}
     command:
-    - /hyperkube
-    - controller-manager
+    - kube-controller-manager
     - --master=http://127.0.0.1:8080
     - --allocate-node-cidrs=true
     - --service-cluster-ip-range={{ K8S_SERVICE_IP_RANGE }}
@@ -21,6 +20,7 @@ spec:
     - --leader-elect=true
     - --service-account-private-key-file=/etc/kubernetes/ssl/apiserver.key
     - --root-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --feature-gates=ExpandPersistentVolumes=true,ExpandCSIVolumes=true,ExpandInUsePersistentVolumes=true
     resources:
       requests:
         cpu: 200m

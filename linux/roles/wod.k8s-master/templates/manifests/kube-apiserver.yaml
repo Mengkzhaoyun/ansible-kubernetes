@@ -7,10 +7,9 @@ spec:
   hostNetwork: true
   containers:
   - name: kube-apiserver
-    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBELET']['NAME'] }}:{{ K8S_IMAGES['KUBELET']['VERSION'] }}
+    image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBE-APISERVER']['NAME'] }}:{{ K8S_IMAGES['KUBE-APISERVER']['VERSION'] }}
     command:
-    - /hyperkube
-    - apiserver
+    - kube-apiserver
     - --bind-address=0.0.0.0
     - --etcd-servers={% for host, role in ETCD_CLUSTER_ROLE.iteritems() %}http://{{ hostvars[host]['ansible_default_ipv4']['address'] }}:2379{% if loop.last %}{% else %},{% endif %}{% endfor %}
 
@@ -19,7 +18,7 @@ spec:
     - --service-node-port-range={{ K8S_SERVICE_PORT_RANGE }}
     - --secure-port={{ K8S_PORT }}
     - --advertise-address={{ K8S_ADVERTISE_IP }}
-    - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,MutatingAdmissionWebhook,ValidatingAdmissionWebhook
+    - --admission-control=PersistentVolumeClaimResize,NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,MutatingAdmissionWebhook,ValidatingAdmissionWebhook
     - --authorization-mode=RBAC
     - --tls-cert-file=/etc/kubernetes/ssl/apiserver.pem
     - --tls-private-key-file=/etc/kubernetes/ssl/apiserver.key
@@ -31,6 +30,7 @@ spec:
     - --kubelet-client-key=/etc/kubernetes/ssl/apiserver.key
     - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true,rbac.authorization.k8s.io/v1beta1=true
     - --token-auth-file=/etc/kubernetes/ssl/token.csv
+    - --feature-gates=ExpandPersistentVolumes=true,ExpandCSIVolumes=true,ExpandInUsePersistentVolumes=true
     ports:
     - containerPort: {{ K8S_PORT }}
       name: https

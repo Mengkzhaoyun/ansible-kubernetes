@@ -19,9 +19,21 @@ K8S_IMAGES:
   KUBELET:
     NAME: hyperkube
     VERSION: "v1.14.1"
+  KUBE-APISERVER:
+    NAME: kube-apiserver
+    VERSION: "v1.14.1"
+  KUBE-CONTROLLER-MANAGER:
+    NAME: kube-controller-manager
+    VERSION: "v1.14.1"
+  KUBE-SCHEDULER:
+    NAME: kube-scheduler
+    VERSION: "v1.14.1"            
   KUBE-PROXY:
     NAME: kube-proxy
     VERSION: "v1.14.1"
+  KUBECTL:
+    NAME: kubectl
+    VERSION: "v1.14.1"    
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -55,9 +67,6 @@ K8S_IMAGES:
   ADDON-RESIZER:
     NAME: addon-resizer
     VERSION: "1.8.3"
-  KUBECTL:
-    NAME: kubectl
-    VERSION: "v1.14.1"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.3.10"
