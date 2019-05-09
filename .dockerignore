@@ -4,6 +4,7 @@
 .temp/
 .vscode/
 build/
+dist/
 docs/
 node_modules/
 .babelrc
