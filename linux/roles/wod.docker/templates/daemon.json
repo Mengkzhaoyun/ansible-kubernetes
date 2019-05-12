@@ -1,4 +1,5 @@
 {
+  "graph": "{{ DOCKER_DATA_PATH }}",
   "insecure-registries": [
     {% if REGISTRY_REMOTE_HOST is defined %}
     "{{ REGISTRY_REMOTE_HOST }}",

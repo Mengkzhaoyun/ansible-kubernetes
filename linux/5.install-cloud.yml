@@ -1,4 +1,0 @@
-- hosts: all
-  roles:
-  - role: wod.k8s-cloud
-    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"

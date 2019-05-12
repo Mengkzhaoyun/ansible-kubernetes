@@ -1,5 +1,0 @@
-- name: template traefik.sh
-  template: src=traefik.sh dest=/etc/kubernetes/scripts/traefik.sh mode=0755
-
-- name: /etc/kubernetes/scripts/traefik.sh
-  raw: /etc/kubernetes/scripts/traefik.sh

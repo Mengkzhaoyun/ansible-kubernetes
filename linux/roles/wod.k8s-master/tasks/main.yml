@@ -3,7 +3,6 @@
     HTTP_SERVER: '{{ HTTP_SERVER }}'
     RKT_ACI_KUBELET: '{{ RKT_ACI_KUBELET }}'
     REGISTRY_LOCAL: '{{ REGISTRY_LOCAL }}'
-    REGISTRY_LOCAL_SPLIT: ":"
     REGISTRY_KUBELET_REPO: '{{ K8S_IMAGES["KUBELET"]["NAME"] }}'
     REGISTRY_KUBELET_VERSION: '{{ K8S_IMAGES["KUBELET"]["VERSION"] }}' 
   script: scripts/prepare.sh
@@ -15,7 +14,7 @@
   copy: src=config/kubelet.yaml dest=/etc/kubernetes/config/kubelet.yaml
 
 - name: copy scripts/kubelet.sh
-  copy: src=scripts/kubelet.sh dest=/etc/kubernetes/scripts/kubelet.sh mode=0755
+  template: src=scripts/kubelet.sh dest=/etc/kubernetes/scripts/kubelet.sh mode=0755
 
 - name: check need ssl/admin.csv
   raw: stat /etc/kubernetes/ssl/admin.csv

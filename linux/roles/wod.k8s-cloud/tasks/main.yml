@@ -1,5 +1,0 @@
-- name: template cloud.sh
-  template: src=cloud.sh dest=/etc/kubernetes/scripts/cloud.sh mode=0755
-
-- name: /etc/kubernetes/scripts/cloud.sh
-  raw: /etc/kubernetes/scripts/cloud.sh

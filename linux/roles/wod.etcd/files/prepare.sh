@@ -5,7 +5,6 @@ set -e
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
 RKT_ACI_ETCD="${RKT_ACI_ETCD:-etcd-v3.2.0.aci}"
 REGISTRY_LOCAL="${REGISTRY_LOCAL:-}"
-REGISTRY_LOCAL_SPLIT="${REGISTRY_LOCAL_SPLIT:-}"
 REGISTRY_ETCD_REPO="${REGISTRY_ETCD_REPO:-}"
 REGISTRY_ETCD_VERSION="${REGISTRY_ETCD_VERSION:-}"
 REGISTRY_ETCDCTL_REPO="${REGISTRY_ETCDCTL_REPO:-}"
@@ -19,9 +18,9 @@ if [[ -e /etc/kubernetes/downloads/$RKT_ACI_ETCD ]]; then
 	echo 'etcd aci is already exist!'
 else
   if [[ -n "${REGISTRY_LOCAL:-}" ]]; then
-    rkt --insecure-options=http,image fetch docker://$REGISTRY_LOCAL$REGISTRY_ETCD_REPO$REGISTRY_LOCAL_SPLIT$REGISTRY_ETCD_VERSION
+    rkt --insecure-options=http,image fetch docker://$REGISTRY_LOCAL$REGISTRY_ETCD_REPO:$REGISTRY_ETCD_VERSION
     REGISTRY_LOCAL_RKT=$(echo $REGISTRY_LOCAL | sed 's/:/_/g')
-    rkt image export $REGISTRY_LOCAL_RKT$REGISTRY_ETCD_REPO$REGISTRY_LOCAL_SPLIT$REGISTRY_ETCD_VERSION /etc/kubernetes/downloads/$REGISTRY_ETCD_REPO-$REGISTRY_ETCD_VERSION.aci
+    rkt image export $REGISTRY_LOCAL_RKT$REGISTRY_ETCD_REPO:$REGISTRY_ETCD_VERSION /etc/kubernetes/downloads/$REGISTRY_ETCD_REPO-$REGISTRY_ETCD_VERSION.aci
   else
     curl $HTTP_SERVER/$RKT_ACI_ETCD.tgz > /etc/kubernetes/downloads/$RKT_ACI_ETCD.tgz
     cd /etc/kubernetes/downloads && tar -xzf /etc/kubernetes/downloads/$RKT_ACI_ETCD.tgz
@@ -33,7 +32,7 @@ fi
 if ! [ -x "$(command -v etcdctl)" ]; then
   if ! [[ -e /etc/kubernetes/downloads/$TOOLS_ETCDCTL ]]; then
     if [[ -n "${REGISTRY_LOCAL:-}" ]]; then
-      docker run -v /etc/kubernetes/downloads:/data/output --rm $REGISTRY_LOCAL$REGISTRY_ETCDCTL_REPO$REGISTRY_LOCAL_SPLIT$REGISTRY_ETCDCTL_VERSION
+      docker run -v /etc/kubernetes/downloads:/data/output --rm $REGISTRY_LOCAL$REGISTRY_ETCDCTL_REPO:$REGISTRY_ETCDCTL_VERSION
     else
       curl $HTTP_SERVER/$TOOLS_ETCDCTL.tgz > /etc/kubernetes/downloads/$TOOLS_ETCDCTL.tgz
     fi

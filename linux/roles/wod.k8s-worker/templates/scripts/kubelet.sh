@@ -52,7 +52,7 @@ if [[ "${KUBELET_IMAGE%%/*}" == "quay.io" ]]; then
 fi
 
 /usr/bin/mkdir --parents /etc/kubernetes
-/usr/bin/mkdir --parents /var/lib/docker
+/usr/bin/mkdir --parents {{ DOCKER_DATA_PATH }}
 /usr/bin/mkdir --parents /var/lib/kubelet
 /usr/bin/mkdir --parents /run/kubelet
 
@@ -68,7 +68,7 @@ run ${RKT_RUN_ARGS} \
 --volume coreos-etc-cni-net,kind=host,source=/etc/cni/net.d,readOnly=true \
 --volume coreos-etc-localtime,kind=host,source=/etc/localtime,readOnly=true \
 --volume coreos-etc-resolv,kind=host,source=/etc/resolv.conf,readOnly=true \
---volume coreos-var-lib-docker,kind=host,source=/var/lib/docker,readOnly=false \
+--volume coreos-var-lib-docker,kind=host,source={{ DOCKER_DATA_PATH }},readOnly=false \
 --volume coreos-var-lib-kubelet,kind=host,source=/var/lib/kubelet,readOnly=false,recursive=true \
 --volume coreos-var-log,kind=host,source=/var/log,readOnly=false \
 --volume coreos-var-lib-cni,kind=host,source=/var/lib/cni,readOnly=false \
@@ -82,7 +82,7 @@ run ${RKT_RUN_ARGS} \
 --mount volume=coreos-etc-localtime,target=/etc/localtime \
 --mount volume=coreos-etc-os-release,target=/etc/os-release \
 --mount volume=coreos-etc-cni-net,target=/etc/cni/net.d \
---mount volume=coreos-var-lib-docker,target=/var/lib/docker \
+--mount volume=coreos-var-lib-docker,target={{ DOCKER_DATA_PATH }} \
 --mount volume=coreos-var-lib-kubelet,target=/var/lib/kubelet \
 --mount volume=coreos-var-log,target=/var/log \
 --mount volume=coreos-var-lib-cni,target=/var/lib/cni \

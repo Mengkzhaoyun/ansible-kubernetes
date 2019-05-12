@@ -1,5 +1,0 @@
-- name: template drone.sh
-  template: src=drone.sh dest=/etc/kubernetes/scripts/drone.sh mode=0755
-
-- name: /etc/kubernetes/scripts/drone.sh
-  raw: /etc/kubernetes/scripts/drone.sh
