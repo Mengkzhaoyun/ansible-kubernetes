@@ -13,11 +13,6 @@
   
 # install docker
 - name: install docker
-  when: 
-  - "HTTP_SERVER is defined"
-  environment:
-    HTTP_SERVER: '{{ HTTP_SERVER }}'
-    ANSIBLE_LSB_CODENAME: 'bionic'
   script: "{{ lookup('first_found', findme)}}"
   vars:
     findme:

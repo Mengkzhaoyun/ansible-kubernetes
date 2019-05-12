@@ -55,4 +55,31 @@ for key in ${KEYS[@]}; do
   fi
 done
 
+cat > /etc/sysconfig/modules/ipvs.modules <<EOF
+#!/bin/bash
+ipvs_modules_dir="/usr/lib/modules/\`uname -r\`/kernel/net/netfilter/ipvs"
+for i in \`ls \$ipvs_modules_dir | sed  -r 's#(.*).ko.xz#\1#'\`; do
+    /sbin/modinfo -F filename \$i  &> /dev/null
+    if [ \$? -eq 0 ]; then
+        /sbin/modprobe \$i
+    fi
+done
+EOF
+chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/modules/ipvs.modules && lsmod | grep -e ip_vs -e nf_conntrack_ipv4 -e br_netfilter
+
+if ! (grep -q 'net.ipv4.ip_forward' /etc/sysctl.conf) ; then
+  echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf;
+  sysctl -p
+fi
+
+if ! (grep -q 'net.bridge.bridge-nf-call-ip6tables' /etc/sysctl.conf) ; then
+  echo "net.bridge.bridge-nf-call-ip6tables=1" >> /etc/sysctl.conf;
+  sysctl -p
+fi
+
+if ! (grep -q 'net.bridge.bridge-nf-call-iptables' /etc/sysctl.conf) ; then
+  echo "net.bridge.bridge-nf-call-iptables=1" >> /etc/sysctl.conf;
+  sysctl -p
+fi
+
 mkdir -p /etc/kubernetes/scripts /etc/kubernetes/manifests /usr/share/ca-certificates
