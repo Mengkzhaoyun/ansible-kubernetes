@@ -27,7 +27,7 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-  - host: {{ K8S_DASHBOARD["HOST"] }}
+  - host: {{ K8S_DOMAIN_ADDONS["DASHBOARD"] }}
     http:
       paths:
       - path: /
