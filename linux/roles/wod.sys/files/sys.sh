@@ -19,7 +19,7 @@ AUTHORIZED_KEYS="${AUTHORIZED_KEYS}"
 ENV_OPT="$PATH:/opt/bin"
 
 if ! (grep -q ${REGISTRY_LOCAL_HOST} /etc/hosts) ; then
-  echo "\n " >> /etc/hosts;
+  echo " " >> /etc/hosts;
   echo "${REGISTRY_LOCAL_IP} ${REGISTRY_LOCAL_HOST}" >> /etc/hosts;
 else
   sed -i "/${REGISTRY_LOCAL_HOST}/c\\${REGISTRY_LOCAL_IP} ${REGISTRY_LOCAL_HOST}" /etc/hosts
