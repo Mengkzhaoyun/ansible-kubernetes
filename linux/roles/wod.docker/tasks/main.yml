@@ -10,10 +10,6 @@
 - name: template /etc/docker/daemon.json
   template: src=daemon.json dest=/etc/docker/daemon.json mode=0644
   when: need_docker_daemon is failed
-
-- name: start docker.service
-  raw: systemctl daemon-reload && systemctl enable docker && systemctl restart docker
-  when: need_docker_daemon is failed
   
 # install docker
 - name: install docker
@@ -26,4 +22,8 @@
   vars:
     findme:
       - install-{{ ansible_distribution }}.sh  
-      - install.sh    
+      - install.sh
+
+- name: start docker.service
+  raw: systemctl daemon-reload && systemctl enable docker && systemctl restart docker
+  when: need_docker_daemon is failed      
