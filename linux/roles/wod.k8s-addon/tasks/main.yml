@@ -72,6 +72,12 @@
   - need_addons_traefik is failed
   - K8S_NETWORK_PLUGIN == "kube-router"
 
+- name: template traefik.yml
+  template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
+  when: 
+  - need_addons_traefik is failed
+  - K8S_NETWORK_PLUGIN == "flannel"  
+
 - name: kubectl create -f traefik.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/traefik.yml
   when: 
