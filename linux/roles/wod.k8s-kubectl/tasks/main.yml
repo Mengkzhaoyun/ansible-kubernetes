@@ -2,7 +2,6 @@
   environment:
     HTTP_SERVER: '{{ HTTP_SERVER }}'
     REGISTRY_REMOTE: '{{ REGISTRY_LOCAL }}'
-    REGISTRY_REMOTE_SPLIT: ':'
     REGISTRY_KUBECTL_REPO: '{{ K8S_IMAGES["KUBECTL"]["NAME"] }}'
     REGISTRY_KUBECTL_VERSION: '{{ K8S_IMAGES["KUBECTL"]["VERSION"] }}'     
   script: kubectl.sh

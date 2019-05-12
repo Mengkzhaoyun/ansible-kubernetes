@@ -25,6 +25,11 @@ spec:
     securityContext:
       privileged: true
     volumeMounts:
+    - mountPath: /var/log
+      name: varlog
+      readOnly: false
+    - mountPath: /run/xtables.lock
+      name: xtables-lock    
     - mountPath: /etc/ssl/certs
       name: "etc-ssl-certs"
     - mountPath: /etc/kubernetes/ssl
@@ -36,6 +41,13 @@ spec:
     - mountPath: /lib/modules
       name: "lib-modules"
   volumes:
+  - name: varlog
+    hostPath:
+      path: /var/log
+  - name: xtables-lock
+    hostPath:
+      path: /run/xtables.lock
+      type: FileOrCreate  
   - name: "etc-ssl-certs"
     hostPath:
       path: "/usr/share/ca-certificates"

@@ -1,5 +1,0 @@
-- name: template storageos.sh
-  template: src=storageos.sh dest=/etc/kubernetes/scripts/storageos.sh mode=0755
-
-- name: /etc/kubernetes/scripts/storageos.sh
-  raw: /etc/kubernetes/scripts/storageos.sh

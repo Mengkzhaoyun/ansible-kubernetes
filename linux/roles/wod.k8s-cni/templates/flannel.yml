@@ -155,7 +155,7 @@ spec:
       serviceAccountName: flannel
       initContainers:
       - name: install-cni
-        image: {{ REGISTRY_LOCAL }}flannel:v0.10.0
+        image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["FLANNEL"]["NAME"] }}:{{ K8S_IMAGES["FLANNEL"]["VERSION"] }}
         command:
         - cp
         args:
@@ -169,7 +169,7 @@ spec:
           mountPath: /etc/kube-flannel/
       containers:
       - name: kube-flannel
-        image: {{ REGISTRY_LOCAL }}flannel:v0.10.0
+        image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["FLANNEL"]["NAME"] }}:{{ K8S_IMAGES["FLANNEL"]["VERSION"] }}
         command:
         - /opt/bin/flanneld
         args:

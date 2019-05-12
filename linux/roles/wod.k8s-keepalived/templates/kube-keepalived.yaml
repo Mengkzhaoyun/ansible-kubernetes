@@ -27,9 +27,9 @@ spec:
       value: "{% if inventory_hostname == REGISTRY_LOCAL_HOSTNAME %}100{% else %}150{% endif %}"
     - name: KEEPALIVED_ROUTER_ID
       value: "51"
-    resources:
-      requests:
-        cpu: 100m
+    # resources:
+    #   requests:
+    #     cpu: 100m
     securityContext:
       privileged: true
       capabilities:

@@ -3,6 +3,6 @@ kind: KubeProxyConfiguration
 bindAddress: 0.0.0.0
 clientConnection:
   kubeconfig: "/etc/kubernetes/config/kube-proxy.yaml"
-clusterCIDR: "{{ K8S_POD_NETWORK }}"
+# clusterCIDR: "{{ K8S_POD_NETWORK }}"
 hostnameOverride: "{{ HOST_IP }}"
 mode: "ipvs"

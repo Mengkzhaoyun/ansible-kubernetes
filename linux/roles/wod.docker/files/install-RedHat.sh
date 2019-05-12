@@ -7,5 +7,5 @@ if ! [ -x "$(command -v docker)" ]; then
   yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
   yum makecache fast
   yum -y install docker-ce
-  service docker start
+  systemctl start docker && systemctl enable docker
 fi

@@ -19,7 +19,7 @@ AUTHORIZED_KEYS="${AUTHORIZED_KEYS}"
 ENV_OPT="$PATH:/opt/bin"
 
 if ! (grep -q ${REGISTRY_LOCAL_HOST} /etc/hosts) ; then
-  echo "\n " >> /etc/hosts;
+  echo " " >> /etc/hosts;
   echo "${REGISTRY_LOCAL_IP} ${REGISTRY_LOCAL_HOST}" >> /etc/hosts;
 else
   sed -i "/${REGISTRY_LOCAL_HOST}/c\\${REGISTRY_LOCAL_IP} ${REGISTRY_LOCAL_HOST}" /etc/hosts
@@ -54,5 +54,32 @@ for key in ${KEYS[@]}; do
     echo "${key}" >> /root/.ssh/authorized_keys;
   fi
 done
+
+cat > /etc/sysconfig/modules/ipvs.modules <<EOF
+#!/bin/bash
+ipvs_modules_dir="/usr/lib/modules/\`uname -r\`/kernel/net/netfilter/ipvs"
+for i in \`ls \$ipvs_modules_dir | sed  -r 's#(.*).ko.xz#\1#'\`; do
+    /sbin/modinfo -F filename \$i  &> /dev/null
+    if [ \$? -eq 0 ]; then
+        /sbin/modprobe \$i
+    fi
+done
+EOF
+chmod 755 /etc/sysconfig/modules/ipvs.modules && bash /etc/sysconfig/modules/ipvs.modules && lsmod | grep -e ip_vs -e nf_conntrack_ipv4 -e br_netfilter
+
+if ! (grep -q 'net.ipv4.ip_forward' /etc/sysctl.conf) ; then
+  echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf;
+  sysctl -p
+fi
+
+if ! (grep -q 'net.bridge.bridge-nf-call-ip6tables' /etc/sysctl.conf) ; then
+  echo "net.bridge.bridge-nf-call-ip6tables=1" >> /etc/sysctl.conf;
+  sysctl -p
+fi
+
+if ! (grep -q 'net.bridge.bridge-nf-call-iptables' /etc/sysctl.conf) ; then
+  echo "net.bridge.bridge-nf-call-iptables=1" >> /etc/sysctl.conf;
+  sysctl -p
+fi
 
 mkdir -p /etc/kubernetes/scripts /etc/kubernetes/manifests /usr/share/ca-certificates

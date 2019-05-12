@@ -27,7 +27,7 @@ metadata:
   namespace: kube-system
 spec:
   rules:
-  - host: {{ K8S_DASHBOARD["HOST"] }}
+  - host: {{ K8S_DOMAIN_ADDONS["DASHBOARD"] }}
     http:
       paths:
       - path: /
@@ -99,10 +99,8 @@ spec:
         image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["DASHBOARD"]["NAME"] }}:{{ K8S_IMAGES["DASHBOARD"]["VERSION"] }}
         resources:
           limits:
-            cpu: 100m
             memory: 300Mi
           requests:
-            cpu: 50m
             memory: 100Mi
         ports:
         - containerPort: 9090

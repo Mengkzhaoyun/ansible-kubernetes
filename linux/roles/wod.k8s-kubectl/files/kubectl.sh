@@ -4,7 +4,6 @@ set -e
 
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
 REGISTRY_REMOTE="${REGISTRY_REMOTE:-}"
-REGISTRY_REMOTE_SPLIT="${REGISTRY_REMOTE_SPLIT:-}"
 REGISTRY_KUBECTL_REPO="${REGISTRY_KUBECTL_REPO:-}"
 REGISTRY_KUBECTL_VERSION="${REGISTRY_KUBECTL_VERSION:-}"
 TOOLS_KUBECTL="${TOOLS_KUBECTL:-${REGISTRY_KUBECTL_REPO}-${REGISTRY_KUBECTL_VERSION}}"
@@ -14,7 +13,7 @@ mkdir -p /opt/bin
 
 if ! [[ -e /etc/kubernetes/downloads/$TOOLS_KUBECTL ]]; then
 
-  docker run -v /etc/kubernetes/downloads:/data/output --rm $REGISTRY_REMOTE$REGISTRY_KUBECTL_REPO$REGISTRY_REMOTE_SPLIT$REGISTRY_KUBECTL_VERSION
+  docker run -v /etc/kubernetes/downloads:/data/output --rm $REGISTRY_REMOTE$REGISTRY_KUBECTL_REPO:$REGISTRY_KUBECTL_VERSION
 
   cd /etc/kubernetes/downloads && tar -xzf /etc/kubernetes/downloads/$TOOLS_KUBECTL.tgz
 
