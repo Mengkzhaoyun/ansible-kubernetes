@@ -124,5 +124,7 @@ CLOUD_IMAGES:
 
 K8S_DOMAIN: "wodcloud.local"
 
-K8S_DASHBOARD:
-  HOST: "k8s.{{ K8S_DOMAIN }}"
+K8S_DOMAIN_ADDONS:
+  DASHBOARD: "k8s.{{ K8S_DOMAIN }}"
+  TRAEFIK: "traefik.{{ K8S_DOMAIN }}"
+  HUB: "hub.{{ K8S_DOMAIN }}"

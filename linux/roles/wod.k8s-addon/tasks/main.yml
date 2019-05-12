@@ -60,3 +60,19 @@
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/heapster.yml
   when: 
   - need_addons_heapster is failed 
+
+- name: check need traefik.yml
+  raw: stat /etc/kubernetes/addons/kube-system/traefik.yml
+  register: need_addons_traefik
+  ignore_errors: True
+
+- name: template traefik.yml
+  template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
+  when: 
+  - need_addons_traefik is failed
+  - K8S_NETWORK_PLUGIN == "kube-router"
+
+- name: kubectl create -f traefik.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/traefik.yml
+  when: 
+  - need_addons_traefik is failed   

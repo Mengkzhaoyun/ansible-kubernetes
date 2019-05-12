@@ -1,11 +1,11 @@
 {
+  "dns": ["{{ K8S_DNS_SERVICE_IP }}"],
   "graph": "{{ DOCKER_DATA_PATH }}",
   "insecure-registries": [
+    "{{ REGISTRY_LOCAL_HOST }}:5000",
+    "hub.{{ K8S_DOMAIN }}",
     {% if REGISTRY_REMOTE_HOST is defined %}
-    "{{ REGISTRY_REMOTE_HOST }}",
-    "{{ REGISTRY_LOCAL_HOST }}:5000"
-    {% else %}
-    "{{ REGISTRY_LOCAL_HOST }}:5000"
+    "{{ REGISTRY_REMOTE_HOST }}"
     {% endif %}
   ]
 }
