@@ -76,7 +76,6 @@ metadata:
   name: traefik
   namespace: kube-system
 spec:
-  externalTrafficPolicy: Local
   type: NodePort
   ports:
     - name: http
