@@ -57,6 +57,7 @@ done
 
 cat > /etc/sysconfig/modules/ipvs.modules <<EOF
 #!/bin/bash
+/sbin/modprobe -- nf_conntrack_ipv4
 ipvs_modules_dir="/usr/lib/modules/\`uname -r\`/kernel/net/netfilter/ipvs"
 for i in \`ls \$ipvs_modules_dir | sed  -r 's#(.*).ko.xz#\1#'\`; do
     /sbin/modinfo -F filename \$i  &> /dev/null
