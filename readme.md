@@ -63,7 +63,7 @@ SSH_INSTALL_KEYS:
 
 # registry options
 REGISTRY_LOCAL_HOSTNAME: systech14
-REGISTRY_LOCAL_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"
+REGISTRY_LOCAL_IP: "{{ hostvars['systech14']['ansible_'+IFACE]['ipv4']['address'] }}"
 
 # etcd options
 ETCD_CLUSTER_ROLE: 
@@ -73,7 +73,7 @@ ETCD_CLUSTER_ROLE:
 K8S_CLUSTER_ROLE: 
   systech14: master
 
-K8S_MASTER_IP: "{{ hostvars['systech14']['ansible_default_ipv4']['address'] }}"
+K8S_MASTER_IP: "{{ hostvars['systech14']['ansible_'+IFACE]['ipv4']['address'] }}"
 ```
 
 ### 3.Install

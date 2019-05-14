@@ -1,6 +1,9 @@
 ---
+# iface
+IFACE: "{{ ansible_default_ipv4['interface'] }}"
+
 # host define
-HOST_IP: "{{ ansible_default_ipv4['address'] }}"
+HOST_IP: "{{ 'ansible_'+IFACE['ipv4']['address'] }}"
 
 # /root/.ssh
 SSH_KEYS: 
@@ -102,7 +105,7 @@ K8S_SERVICE_IP_RANGE: 10.3.0.0/16
 K8S_SERVICE_PORT_RANGE: 10000-32767
 K8S_SERVICE_IP: 10.3.0.1
 K8S_DNS_SERVICE_IP: 10.3.0.10
-K8S_ADVERTISE_IP: "{{ ansible_default_ipv4['address'] }}"
+K8S_ADVERTISE_IP: "{{ 'ansible_'+IFACE['ipv4']['address'] }}"
 K8S_PORT: 6443
 K8S_ADMIN_PWD: abcd2018
 K8S_MASTER_DOMAIN: k8s.wodcloud.local

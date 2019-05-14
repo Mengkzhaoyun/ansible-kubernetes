@@ -1,6 +1,6 @@
 - name: kubectl label node master/node
   environment:
-    K8S_HOST: '{{ hostvars[item.key]["ansible_default_ipv4"]["address"] }}'
+    K8S_HOST: '{{ hostvars[item.key]["ansible_"+IFACE]["ipv4"]["address"] }}'
     K8S_ROLE: '{{ item.value }}'
   script: label.sh
   with_dict: '{{ K8S_CLUSTER_ROLE }}'
