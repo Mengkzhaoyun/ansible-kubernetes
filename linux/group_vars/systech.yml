@@ -6,20 +6,20 @@ SSH_INSTALL_KEYS:
 
 # etcd options
 ETCD_CLUSTER_ROLE: 
-  ubuntu01: etcd
+  k8s-centos-1: etcd
 
 # k8s option
 K8S_SERVICE_PORT_RANGE: 1-32767
 K8S_CLUSTER_ROLE: 
-  ubuntu01: master
+  k8s-centos-1: master
 
 # registry options
-REGISTRY_LOCAL_HOSTNAME: ubuntu01
-REGISTRY_LOCAL_IP: "{{ hostvars['ubuntu01']['ansible_'+IFACE]['ipv4']['address'] }}"  
+REGISTRY_LOCAL_HOSTNAME: k8s-centos-1
+REGISTRY_LOCAL_IP: "{{ hostvars['k8s-centos-1']['ansible_facts'][IFACE]['ipv4']['address'] }}"  
 REGISTRY_DATA_PATH: /data/kubernetes/registry
 
 # single master
-K8S_MASTER_IP: "{{ hostvars['ubuntu01']['ansible_'+IFACE]['ipv4']['address'] }}"
+K8S_MASTER_IP: "{{ hostvars['k8s-centos-1']['ansible_facts'][IFACE]['ipv4']['address'] }}"
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
 # # ha-cluster master

@@ -20,7 +20,7 @@ spec:
     - name: KEEPALIVED_INTERFACE
       value: {{ K8S_MASTER_INTERFACE }}
     - name: KEEPALIVED_UNICAST_PEERS
-      value: "#PYTHON2BASH:[{% for host, role in K8S_CLUSTER_ROLE.iteritems() %}'{{ hostvars[host]['ansible_'+IFACE]['ipv4']['address'] }}'{% if loop.last %}{% else %},{% endif %}{% endfor %}]"
+      value: "#PYTHON2BASH:[{% for host, role in K8S_CLUSTER_ROLE.iteritems() %}'{{ hostvars[host]['ansible_facts'][IFACE]['ipv4']['address'] }}'{% if loop.last %}{% else %},{% endif %}{% endfor %}]"
     - name: KEEPALIVED_PASSWORD
       value: d0cker
     - name: KEEPALIVED_PRIORITY

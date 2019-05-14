@@ -12,6 +12,12 @@ docker run `
 -v $PWD/linux/group_vars/aliyun.yml:/etc/ansible/linux/group_vars/aliyun.yml `
 -d registry.cn-qingdao.aliyuncs.com/wod-cloud/ansible-kubernetes
 
+docker run `
+--name ansible `
+-h ansible `
+-v $PWD/:/etc/ansible `
+-d registry.cn-qingdao.aliyuncs.com/wod-cloud/ansible-kubernetes
+
 # docker exec
 docker exec -it ansible bash
 ```
