@@ -31,6 +31,13 @@ spec:
     - --runtime-config=extensions/v1beta1=true,extensions/v1beta1/networkpolicies=true,rbac.authorization.k8s.io/v1beta1=true
     - --token-auth-file=/etc/kubernetes/ssl/token.csv
     - --feature-gates=ExpandPersistentVolumes=true,ExpandCSIVolumes=true,ExpandInUsePersistentVolumes=true
+    - --requestheader-client-ca-file=/etc/kubernetes/ssl/ca.pem
+    - --proxy-client-cert-file=/etc/kubernetes/ssl/admin.pem
+    - --proxy-client-key-file=/etc/kubernetes/ssl/admin.key
+    - --requestheader-allowed-names=aggregator
+    - --requestheader-extra-headers-prefix=X-Remote-Extra-
+    - --requestheader-group-headers=X-Remote-Group
+    - --requestheader-username-headers=X-Remote-User  
     ports:
     - containerPort: {{ K8S_PORT }}
       name: https
