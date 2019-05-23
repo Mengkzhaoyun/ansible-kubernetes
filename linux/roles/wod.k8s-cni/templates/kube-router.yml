@@ -51,6 +51,8 @@ spec:
       serviceAccountName: kube-router
       serviceAccount: kube-router
       tolerations:
+      - key: CriticalAddonsOnly
+        operator: Exists      
       - operator: Exists
         effect: NoSchedule      
       containers:
@@ -94,6 +96,9 @@ spec:
         - name: kubeconfig
           mountPath: /var/lib/kube-router/kubeconfig
           readOnly: true
+        - name: run
+          mountPath: /var/run/docker.sock
+          readOnly: true          
       initContainers:
       - name: install-cni
         image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES["BUSYBOX"]["NAME"] }}:{{ K8S_IMAGES["BUSYBOX"]["VERSION"] }}
@@ -113,15 +118,8 @@ spec:
         - name: kube-router-cfg
           mountPath: /etc/kube-router
       hostNetwork: true
-      tolerations:
-      - key: CriticalAddonsOnly
-        operator: Exists
-      - effect: NoSchedule
-        key: node-role.kubernetes.io/master
-        operator: Exists
-      - effect: NoSchedule
-        key: node.kubernetes.io/not-ready
-        operator: Exists
+      hostIPC: true
+      hostPID: true
       volumes:
       - name: lib-modules
         hostPath:
@@ -138,6 +136,9 @@ spec:
       - name: kubeconfig
         hostPath:
           path: /etc/kubernetes/config/kube-proxy.yaml
+      - name: run
+        hostPath:
+          path: /var/run/docker.sock          
 ---
 apiVersion: v1
 kind: ServiceAccount
