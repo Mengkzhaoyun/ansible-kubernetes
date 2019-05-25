@@ -23,22 +23,22 @@ REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 
 K8S_IMAGES: 
   KUBELET:
-    NAME: hyperkube
+    NAME: awecloud-kubelet
     VERSION: "v1.14.2-beagle-1.0"
   KUBE-APISERVER:
-    NAME: kube-apiserver
+    NAME: awecloud-kube-apiserver
     VERSION: "v1.14.2-beagle-1.0"
   KUBE-CONTROLLER-MANAGER:
-    NAME: kube-controller-manager
+    NAME: awecloud-kube-controller-manager
     VERSION: "v1.14.2-beagle-1.0"
   KUBE-SCHEDULER:
-    NAME: kube-scheduler
+    NAME: awecloud-kube-scheduler
     VERSION: "v1.14.2-beagle-1.0"            
   KUBE-PROXY:
-    NAME: kube-proxy
+    NAME: awecloud-kube-proxy
     VERSION: "v1.14.2-beagle-1.0"
   KUBECTL:
-    NAME: kubectl
+    NAME: awecloud-kubectl
     VERSION: "v1.14.2-beagle-1.0"    
   PAUSE: 
     NAME: pause-amd64
