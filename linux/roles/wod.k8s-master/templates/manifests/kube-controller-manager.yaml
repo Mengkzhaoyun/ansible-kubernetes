@@ -20,7 +20,7 @@ spec:
     - --leader-elect=true
     - --service-account-private-key-file=/etc/kubernetes/ssl/apiserver.key
     - --root-ca-file=/etc/kubernetes/ssl/ca.pem
-    - --feature-gates=ExpandCSIVolumes=true,ExpandInUsePersistentVolumes=true
+    - --feature-gates=MountContainers=true,ExpandCSIVolumes=true
     resources:
       requests:
         cpu: 200m
