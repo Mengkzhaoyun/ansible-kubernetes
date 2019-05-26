@@ -17,14 +17,14 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: dev        
+      branch: dev
   docker:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod/ansible-kubernetes
-    version: v1.14.2
+    version: v1.14.2 
     registry: registry-vpc.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
