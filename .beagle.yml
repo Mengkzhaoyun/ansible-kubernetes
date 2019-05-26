@@ -18,6 +18,19 @@ pipeline:
         target: REGISTRY_PASSWORD
     when:
       branch: dev
+  harbor-alpha:
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    repo: wod-cloud/ansible-kubernetes
+    secrets: 
+      - source: REGISTRY_USER_ALIYUN
+        target: REGISTRY_USER
+      - source: REGISTRY_PASSWORD_ALIYUN
+        target: REGISTRY_PASSWORD
+    when:
+      branch: dev      
   docker:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
@@ -33,6 +46,19 @@ pipeline:
         target: REGISTRY_PASSWORD
     when:
       branch: master
+  harbor:
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    repo: wod-cloud/ansible-kubernetes
+    secrets: 
+      - source: REGISTRY_USER_ALIYUN
+        target: REGISTRY_USER
+      - source: REGISTRY_PASSWORD_ALIYUN
+        target: REGISTRY_PASSWORD
+    when:
+      branch: master         
   docker-latest:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
@@ -48,4 +74,17 @@ pipeline:
         target: REGISTRY_PASSWORD
     when:
       branch: master
+  harbor-latest:
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    repo: wod-cloud/ansible-kubernetes
+    secrets: 
+      - source: REGISTRY_USER_ALIYUN
+        target: REGISTRY_USER
+      - source: REGISTRY_PASSWORD_ALIYUN
+        target: REGISTRY_PASSWORD
+    when:
+      branch: master        
 branches: [master,dev]
