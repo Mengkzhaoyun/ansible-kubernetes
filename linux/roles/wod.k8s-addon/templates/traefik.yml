@@ -125,9 +125,6 @@ spec:
       - name: config
         configMap:
           name: traefik
-      - name: acme
-        hostPath:
-          path: "/data/kube-system/traefik"
       - name: etc-localtime
         hostPath:
           path: /etc/localtime
@@ -137,8 +134,6 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: acme
-          mountPath: /etc/traefik
         - name: etc-localtime
           mountPath: /etc/localtime
         ports:
