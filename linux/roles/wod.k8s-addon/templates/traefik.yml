@@ -116,8 +116,15 @@ spec:
     metadata:
       labels:
         k8s-app: traefik
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''        
     spec:
       serviceAccountName: traefik
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"      
       terminationGracePeriodSeconds: 60
       nodeSelector:
         node-role.kubernetes.io/master: "true"      
