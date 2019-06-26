@@ -81,10 +81,10 @@ K8S_IMAGES:
     VERSION: "1.4.5"
   HELM:
     NAME: helm
-    VERSION: "v2.13.1"
+    VERSION: "v2.14.1"
   TILLER:
     NAME: tiller
-    VERSION: "v2.13.1"
+    VERSION: "v2.14.1"
   TRAEFIK:
     NAME: traefik
     VERSION: "v1.7.10-alpine"    
