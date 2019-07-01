@@ -60,7 +60,7 @@ K8S_IMAGES:
     VERSION: "1.30"
   NGINX:
     NAME: nginx
-    VERSION: "1.15.3-alpine"
+    VERSION: "1.15.5-alpine"
   COREDNS:
     NAME: coredns
     VERSION: "1.5.0"
@@ -87,7 +87,7 @@ K8S_IMAGES:
     VERSION: "v2.14.1"
   TRAEFIK:
     NAME: traefik
-    VERSION: "v1.7.10-alpine"    
+    VERSION: "v1.7.11-alpine"    
 
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
