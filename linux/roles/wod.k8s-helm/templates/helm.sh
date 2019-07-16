@@ -2,7 +2,7 @@
 
 set -e  
 
-HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
+HTTP_SERVER="${HTTP_SERVER:-http://dl.wodcloud.com/k8s}"
 TOOLS_HELM="{{ K8S_IMAGES['HELM']['NAME'] }}-{{ K8S_IMAGES['HELM']['VERSION'] }}"
 REGISTRY_LOCAL="{{ REGISTRY_LOCAL }}"
 REGISTRY_HELM_REPO="{{ K8S_IMAGES['HELM']['NAME'] }}"
