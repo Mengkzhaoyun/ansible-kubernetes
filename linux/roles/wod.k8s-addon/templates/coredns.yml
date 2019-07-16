@@ -113,6 +113,8 @@ spec:
     metadata:
       labels:
         k8s-app: coredns
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''        
     spec:
       serviceAccountName: coredns
       tolerations:

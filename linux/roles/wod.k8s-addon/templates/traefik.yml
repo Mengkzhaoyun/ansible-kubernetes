@@ -7,6 +7,7 @@ metadata:
 data:
   traefik.toml: |
     defaultEntryPoints = ["http","https"]
+    [kubernetes]
     [entryPoints.traefik]
       address = ":8380"
     [websocket]
@@ -115,8 +116,15 @@ spec:
     metadata:
       labels:
         k8s-app: traefik
+      annotations:
+        scheduler.alpha.kubernetes.io/critical-pod: ''        
     spec:
       serviceAccountName: traefik
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+        - key: "CriticalAddonsOnly"
+          operator: "Exists"      
       terminationGracePeriodSeconds: 60
       nodeSelector:
         node-role.kubernetes.io/master: "true"      
@@ -124,9 +132,6 @@ spec:
       - name: config
         configMap:
           name: traefik
-      - name: acme
-        hostPath:
-          path: "/data/kube-system/traefik"
       - name: etc-localtime
         hostPath:
           path: /etc/localtime
@@ -136,8 +141,6 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /config
-        - name: acme
-          mountPath: /etc/traefik
         - name: etc-localtime
           mountPath: /etc/localtime
         ports:
@@ -149,7 +152,6 @@ spec:
           name: http-web
         args:
         - --configfile=/config/traefik.toml
-        - --kubernetes
         - --insecureSkipVerify=true
 ---
 apiVersion: extensions/v1beta1

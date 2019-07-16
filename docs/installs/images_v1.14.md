@@ -88,10 +88,10 @@ docker pull registry:2.7.1 && \
 docker tag registry:2.7.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1
 
-# tiller gcr.io/kubernetes-helm/tiller:v2.13.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.13.1 && \
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.13.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.13.1 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.13.1
+# tiller gcr.io/kubernetes-helm/tiller:v2.14.1
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.1 && \
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.1 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.1
 
 # traefik
 docker pull traefik:v1.7.10-alpine && \
