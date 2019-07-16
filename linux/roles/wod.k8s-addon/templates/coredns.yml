@@ -60,7 +60,7 @@ data:
       file /etc/coredns/local.db
     }
 
-    . {
+    .:53 {
         errors
         log
         health
@@ -74,7 +74,6 @@ data:
             except {{ K8S_DOMAIN }}
         }
         cache 30
-        loop
         reload
         loadbalance
     }
