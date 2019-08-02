@@ -1,5 +1,5 @@
 - name: mkdir /etc/kubernetes/ssl
-  raw: mkdir -p /etc/kubernetes/ssl
+  raw: mkdir -p /etc/kubernetes/ssl/{{ K8S_DOMAIN }}
 
 - name: check need ca.pem
   raw: stat /etc/kubernetes/ssl/ca.pem
