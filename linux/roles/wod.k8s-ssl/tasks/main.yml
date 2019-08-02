@@ -9,6 +9,15 @@
 - name: copy ca.pem
   copy: src=ca.pem dest=/etc/kubernetes/ssl/ca.pem mode=0644
   when: need_ssl_ca_pem is failed
+  
+- name: check need ca.crt
+  raw: stat /etc/kubernetes/ssl/ca.crt
+  register: need_ssl_ca_crt
+  ignore_errors: True  
+
+- name: copy ca.crt
+  copy: src=ca.crt dest=/etc/kubernetes/ssl/ca.crt mode=0644
+  when: need_ssl_ca_crt is failed
 
 - name: check need ca.key
   raw: stat /etc/kubernetes/ssl/ca.key
@@ -45,6 +54,31 @@
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
   - need_ssl_admin_key is failed  
+  
+- name: template gencert.sh
+  template: src=gencert.sh dest=/etc/kubernetes/ssl/{{ K8S_DOMAIN }}/gencert.sh 
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  
+- name: template gensecret.sh
+  template: src=gensecret.sh dest=/etc/kubernetes/ssl/{{ K8S_DOMAIN }}/gensecret.sh 
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  
+- name: template {{ K8S_DOMAIN }}.cnf
+  template: src=demo.cnf dest=/etc/kubernetes/ssl/{{ K8S_DOMAIN }}/{{ K8S_DOMAIN }}.cnf
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  
+- name: exec gencert.sh
+  shell: cd /etc/kubernetes/ssl/{{ K8S_DOMAIN }} && sh gencert.sh
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  
+- name: exec gensecret.sh
+  shell: cd /etc/kubernetes/ssl/{{ K8S_DOMAIN }} && sh gensecret.sh
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"  
 
 - name: check need master-ssl.sh
   raw: stat /etc/kubernetes/ssl/master-ssl.sh

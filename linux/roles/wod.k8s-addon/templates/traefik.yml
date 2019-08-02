@@ -18,6 +18,9 @@ data:
       [entryPoints.https]
       address = ":443"
         [entryPoints.https.tls]
+          [[entryPoints.https.tls.certificates]]
+          CertFile = "/ssl/{{ K8S_DOMAIN }}.crt"
+          KeyFile = "/ssl/{{ K8S_DOMAIN }}.key"
     [metrics]
       [metrics.prometheus]
         entryPoint = "traefik"
@@ -129,6 +132,9 @@ spec:
       nodeSelector:
         node-role.kubernetes.io/master: "true"      
       volumes:
+      - name: ssl
+        secret:
+          secretName: traefik-cert
       - name: config
         configMap:
           name: traefik
@@ -139,6 +145,8 @@ spec:
       - image: "{{ REGISTRY_LOCAL }}{{ K8S_IMAGES["TRAEFIK"]["NAME"] }}:{{ K8S_IMAGES["TRAEFIK"]["VERSION"] }}"
         name: traefik
         volumeMounts:
+        - name: ssl
+          mountPath: /ssl
         - name: config
           mountPath: /config
         - name: etc-localtime

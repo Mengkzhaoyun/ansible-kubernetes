@@ -1,0 +1,16 @@
+[req]
+req_extensions = v3_req
+distinguished_name = req_distinguished_name
+[req_distinguished_name]
+[ v3_req ]
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = {{ K8S_DOMAIN }}
+DNS.2 = *.{{ K8S_DOMAIN }}
+DNS.3 = k8s.{{ K8S_DOMAIN }}
+IP.1 = 10.3.0.1
+IP.2 = 172.16.1.11
+IP.3 = 172.16.1.11
+IP.4 = 127.0.0.1
