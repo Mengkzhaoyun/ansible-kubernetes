@@ -54,19 +54,19 @@ docker tag nginx:1.15.3-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.15.3-alpine
 
 # coredns
-docker pull coredns/coredns:1.5.0 && \
-docker tag coredns/coredns:1.5.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.5.0 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.5.0
+docker pull coredns/coredns:1.5.2 && \
+docker tag coredns/coredns:1.5.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.5.2 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.5.2
 
 # kube-router
-docker pull cloudnativelabs/kube-router:v0.3.1 && \
-docker tag cloudnativelabs/kube-router:v0.3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.3.1 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.3.1
+docker pull cloudnativelabs/kube-router:v0.3.2 && \
+docker tag cloudnativelabs/kube-router:v0.3.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.3.2 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.3.2
 
 # etcd
-docker pull quay.io/coreos/etcd:v3.3.10 && \
-docker tag quay.io/coreos/etcd:v3.3.10 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.10 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.10
+docker pull quay.io/coreos/etcd:v3.3.14 && \
+docker tag quay.io/coreos/etcd:v3.3.14 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.14 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.3.14
 
 # flannel
 docker pull quay.io/coreos/flannel:v0.11.0 && \
@@ -79,22 +79,22 @@ docker tag osixia/keepalived:1.4.5 registry-vpc.cn-qingdao.aliyuncs.com/wod/keep
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/keepalived:1.4.5
 
 # busybox
-docker pull busybox:1.30 && \
-docker tag busybox:1.30 registry-vpc.cn-qingdao.aliyuncs.com/wod/busybox:1.30 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/busybox:1.30
+docker pull busybox:1.31 && \
+docker tag busybox:1.31 registry-vpc.cn-qingdao.aliyuncs.com/wod/busybox:1.31 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/busybox:1.31
 
 # registry
 docker pull registry:2.7.1 && \
 docker tag registry:2.7.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1
 
-# tiller gcr.io/kubernetes-helm/tiller:v2.14.1
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.1 && \
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.1 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.1
+# tiller gcr.io/kubernetes-helm/tiller:v2.14.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.3 && \
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.3
 
 # traefik
-docker pull traefik:v1.7.10-alpine && \
-docker tag traefik:v1.7.10-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.10-alpine && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.10-alpine
+docker pull traefik:v1.7.14-alpine && \
+docker tag traefik:v1.7.14-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.14-alpine && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.14-alpine
 ```

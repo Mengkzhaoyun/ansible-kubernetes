@@ -24,22 +24,25 @@ REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 K8S_IMAGES: 
   KUBELET:
     NAME: awecloud-kubelet
-    VERSION: "v1.14.2-beagle-1.0"
+    VERSION: "v1.14.5-beagle-1.0"
   KUBE-APISERVER:
     NAME: awecloud-kube-apiserver
-    VERSION: "v1.14.2-beagle-1.0"
+    VERSION: "v1.14.5-beagle-1.0"
   KUBE-CONTROLLER-MANAGER:
     NAME: awecloud-kube-controller-manager
-    VERSION: "v1.14.2-beagle-1.0"
+    VERSION: "v1.14.5-beagle-1.0"
   KUBE-SCHEDULER:
     NAME: awecloud-kube-scheduler
-    VERSION: "v1.14.2-beagle-1.0"            
+    VERSION: "v1.14.5-beagle-1.0"
   KUBE-PROXY:
     NAME: awecloud-kube-proxy
-    VERSION: "v1.14.2-beagle-1.0"
+    VERSION: "v1.14.5-beagle-1.0"
   KUBECTL:
     NAME: awecloud-kubectl
-    VERSION: "v1.14.2-beagle-1.0"    
+    VERSION: "v1.14.5-beagle-1.0"
+  DASHBOARD:
+    NAME: awecloud-kubernetes-ui
+    VERSION: "v1.14.5-beagle-1.0"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -48,25 +51,22 @@ K8S_IMAGES:
     VERSION: "2.7.1"
   ETCD:
     NAME: etcd
-    VERSION: "v3.3.10"
+    VERSION: "v3.3.14"
   FLANNEL:
     NAME: flannel
     VERSION: "v0.11.0"
   KUBE-ROUTER:
     NAME: kube-router
-    VERSION: "v0.3.1"
+    VERSION: "v0.3.2"
   BUSYBOX:
     NAME: busybox
-    VERSION: "1.30"
+    VERSION: "1.31"
   NGINX:
     NAME: nginx
     VERSION: "1.15.5-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.5.0"
-  DASHBOARD:
-    NAME: kubernetes-dashboard-amd64
-    VERSION: "v1.10.1"
+    VERSION: "1.5.2"
   HEAPSTER:
     NAME: heapster-amd64
     VERSION: "v1.5.4"
@@ -75,19 +75,19 @@ K8S_IMAGES:
     VERSION: "1.8.3"
   ETCDCTL:
     NAME: etcdctl
-    VERSION: "v3.3.10"
+    VERSION: "v3.3.14"
   KEEPALIVED:
     NAME: keepalived
     VERSION: "1.4.5"
   HELM:
     NAME: helm
-    VERSION: "v2.14.1"
+    VERSION: "v2.14.3"
   TILLER:
     NAME: tiller
-    VERSION: "v2.14.1"
+    VERSION: "v2.14.3"
   TRAEFIK:
     NAME: traefik
-    VERSION: "v1.7.11-alpine"    
+    VERSION: "v1.7.14-alpine"    
 
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
@@ -99,7 +99,7 @@ RKT_ACI_REGISTRY_DATA: "registry-data-{{ K8S_IMAGES['KUBELET']['VERSION'] }}"
 
 # k8s adv option.
 K8S_NETWORK_PLUGIN: kube-router
-K8S_CNI_BIN: cni-plugins-amd64-v0.7.5
+K8S_CNI_BIN: cni-plugins-linux-amd64-v0.8.2
 K8S_POD_NETWORK: 10.2.0.0/16
 K8S_SERVICE_IP_RANGE: 10.3.0.0/16
 K8S_SERVICE_PORT_RANGE: 10000-32767
