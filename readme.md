@@ -87,6 +87,9 @@ docker run `
 -v $PWD/linux/group_vars/systech.yml:/etc/ansible/linux/group_vars/systech.yml `
 -d hub.c.163.com/mengkzhaoyun/cloud/ansible-kubernetes
 
+# linux
+docker run --name ansible -h ansible -v $PWD/hosts:/etc/ansible/hosts -v $PWD/linux/group_vars/systech.yml:/etc/ansible/linux/group_vars/systech.yml -d registry.cn-qingdao.aliyuncs.com/wod/ansible-kubernetes:latest
+
 # docker exec
 docker exec -it ansible bash
 
