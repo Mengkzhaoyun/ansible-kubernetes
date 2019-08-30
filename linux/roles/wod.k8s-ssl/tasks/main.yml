@@ -74,11 +74,6 @@
   shell: cd /etc/kubernetes/ssl/{{ K8S_DOMAIN }} && sh gencert.sh
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
-  
-- name: exec gensecret.sh
-  shell: cd /etc/kubernetes/ssl/{{ K8S_DOMAIN }} && sh gensecret.sh
-  when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"  
 
 - name: check need master-ssl.sh
   raw: stat /etc/kubernetes/ssl/master-ssl.sh
