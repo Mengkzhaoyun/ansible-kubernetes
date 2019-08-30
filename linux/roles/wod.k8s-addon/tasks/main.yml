@@ -77,6 +77,11 @@
   when: 
   - need_addons_traefik is failed
   - K8S_NETWORK_PLUGIN == "flannel"  
+  
+- name: exec gensecret.sh
+  shell: cd /etc/kubernetes/ssl/{{ K8S_DOMAIN }} && sh gensecret.sh
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master" 
 
 - name: kubectl apply -f traefik.yml
   raw: /opt/bin/kubectl apply -f /etc/kubernetes/addons/kube-system/traefik.yml
