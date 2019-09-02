@@ -124,9 +124,9 @@ spec:
     spec:
       serviceAccountName: traefik
       tolerations:
-        - key: node-role.kubernetes.io/master
+        # - key: node-role.kubernetes.io/master
           effect: NoSchedule
-        - key: "CriticalAddonsOnly"
+        # - key: "CriticalAddonsOnly"
           operator: "Exists"      
       terminationGracePeriodSeconds: 60
       nodeSelector:
