@@ -1,43 +1,16 @@
 clone:
   git:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/git:1.4.0
-pipeline:
-  docker-alpha:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
-    repo: wod/ansible-kubernetes
-    version: v1.14.5
-    channel: alpha
-    registry: registry-vpc.cn-qingdao.aliyuncs.com
-    secrets: 
-      - source: REGISTRY_USER_ALIYUN
-        target: REGISTRY_USER
-      - source: REGISTRY_PASSWORD_ALIYUN
-        target: REGISTRY_PASSWORD
-    when:
-      branch: dev
-  harbor-alpha:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    registry: registry-vpc.cn-qingdao.aliyuncs.com
-    repo: wod-cloud/ansible-kubernetes
-    secrets: 
-      - source: REGISTRY_USER_ALIYUN
-        target: REGISTRY_USER
-      - source: REGISTRY_PASSWORD_ALIYUN
-        target: REGISTRY_PASSWORD
-    when:
-      branch: dev      
+    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/git:1.5.0
+
+pipeline:  
+
   docker:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod/ansible-kubernetes
-    version: v1.14.5 
+    version: v1.14.7 
     registry: registry-vpc.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
@@ -45,7 +18,8 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: master
+      branch: v1.14
+
   harbor:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
     volumes:
@@ -58,7 +32,8 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: master         
+      branch: v1.14  
+
   docker-latest:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
@@ -73,7 +48,8 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: master
+      branch: v1.14
+      
   harbor-latest:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
     volumes:
@@ -86,5 +62,4 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: master        
-branches: [master,dev]
+      branch: v1.14
