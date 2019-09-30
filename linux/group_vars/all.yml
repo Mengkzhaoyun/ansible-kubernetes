@@ -69,16 +69,13 @@ K8S_IMAGES:
     VERSION: "1.31"
   NGINX:
     NAME: nginx
-    VERSION: "1.15.5-alpine"
+    VERSION: "1.17.4-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.5.2"
-  HEAPSTER:
-    NAME: heapster-amd64
-    VERSION: "v1.5.4"
-  ADDON-RESIZER:
-    NAME: addon-resizer
-    VERSION: "1.8.3"
+    VERSION: "1.6.4"
+  METRICS-SCRAPER:
+    NAME: metrics-scraper
+    VERSION: "v1.0.1"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.4.1"

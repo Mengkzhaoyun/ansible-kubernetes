@@ -6,15 +6,10 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1 &&\
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
 
-# heapster
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/heapster-amd64:v1.5.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/heapster-amd64:v1.5.4
-
-# addon-resizer
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/addon-resizer:1.8.3 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/addon-resizer:1.8.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/addon-resizer:1.8.3 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/addon-resizer:1.8.3
+# metrics-scraper
+docker pull kubernetesui/metrics-scraper:v1.0.1 &&\
+docker tag kubernetesui/metrics-scraper:v1.0.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-scraper:v1.0.1 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-scraper:v1.0.1
 
 # nginx
 docker pull nginx:1.17.4-alpine && \
