@@ -8,8 +8,6 @@
 
 - name: template rbac-admin.yml
   template: src=rbac-admin.yml dest=/etc/kubernetes/addons/kube-system/rbac-admin.yml
-  when:
-  - need_addons_rbac_admin is failed
 
 - name: kubectl create -f rbac-admin.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/rbac-admin.yml
@@ -23,8 +21,6 @@
 
 - name: template coredns.yml
   template: src=coredns.yml dest=/etc/kubernetes/addons/kube-system/coredns.yml
-  when: 
-  - need_addons_dns is failed
 
 - name: kubectl create -f coredns.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/coredns.yml
@@ -38,8 +34,6 @@
 
 - name: template dashboard.yml
   template: src=dashboard.yml dest=/etc/kubernetes/addons/kube-system/dashboard.yml
-  when: 
-  - need_addons_dashboard is failed
 
 - name: kubectl create -f dashboard.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/dashboard.yml
@@ -53,8 +47,6 @@
 
 - name: template heapster.yml
   template: src=heapster.yml dest=/etc/kubernetes/addons/kube-system/heapster.yml
-  when: 
-  - need_addons_heapster is failed
 
 - name: kubectl create -f heapster.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/heapster.yml
@@ -68,14 +60,12 @@
 
 - name: template traefik.yml
   template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
-  when: 
-  - need_addons_traefik is failed
+  when:
   - K8S_NETWORK_PLUGIN == "kube-router"
 
 - name: template traefik.yml
   template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
-  when: 
-  - need_addons_traefik is failed
+  when:
   - K8S_NETWORK_PLUGIN == "flannel"  
   
 - name: exec gensecret.sh
