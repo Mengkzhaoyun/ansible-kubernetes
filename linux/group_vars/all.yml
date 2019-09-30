@@ -42,7 +42,7 @@ K8S_IMAGES:
     VERSION: "v1.16.0-beagle-1.0"
   DASHBOARD:
     NAME: awecloud-kubernetes-ui
-    VERSION: "v1.16.0-beagle-1.1"
+    VERSION: "v1.16.0-beagle-1.1-alpha"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
