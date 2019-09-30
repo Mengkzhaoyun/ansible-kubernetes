@@ -10,7 +10,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod/ansible-kubernetes
-    version: v1.15.4 
+    version: v1.16.0 
     channel: alpha
     registry: registry-vpc.cn-qingdao.aliyuncs.com
     secrets: 
@@ -41,7 +41,7 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod/ansible-kubernetes
-    version: v1.15.4 
+    version: v1.16.0 
     registry: registry-vpc.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
