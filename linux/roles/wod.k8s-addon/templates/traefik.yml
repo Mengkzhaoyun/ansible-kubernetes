@@ -103,8 +103,8 @@ spec:
   selector:
     k8s-app: traefik
 ---
+apiVersion: apps/v1
 kind: Deployment
-apiVersion: extensions/v1beta1
 metadata:
   name: traefik
   namespace: kube-system
