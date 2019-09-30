@@ -32,7 +32,6 @@
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
   - K8S_NETWORK_PLUGIN == "kube-router" 
-  - need_addons_kube_router is failed
 
 - name: kubectl create -f kube-router.yml
   raw: kubectl create -f /etc/kubernetes/addons/kube-system/kube-router.yml
