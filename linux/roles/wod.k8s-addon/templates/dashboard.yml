@@ -16,7 +16,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-csrf
-  namespace: kubernetes-dashboard
+  kube-system
 type: Opaque
 data:
   csrf: ""
@@ -29,7 +29,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-key-holder
-  namespace: kubernetes-dashboard
+  kube-system
 type: Opaque
 
 ---
@@ -40,7 +40,7 @@ metadata:
   labels:
     k8s-app: kubernetes-dashboard
   name: kubernetes-dashboard-settings
-  namespace: kubernetes-dashboard
+  kube-system
   
 ---
 
