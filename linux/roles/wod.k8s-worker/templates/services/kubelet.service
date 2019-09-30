@@ -24,7 +24,6 @@ ExecStart=/etc/kubernetes/scripts/kubelet.sh \
   --anonymous-auth=false \
   --client-ca-file=/etc/kubernetes/ssl/ca.pem \
   --authentication-token-webhook=true \
-  --allow-privileged=true \
   --pod-manifest-path=/etc/kubernetes/manifests \
   --hostname-override={{ HOST_IP }} \
   --cluster-dns={{ K8S_DNS_SERVICE_IP }} \
