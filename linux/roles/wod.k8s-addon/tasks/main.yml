@@ -38,20 +38,7 @@
 - name: kubectl create -f dashboard.yml
   raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/dashboard.yml
   when: 
-  - need_addons_dashboard is failed  
-
-- name: check need heapster.yml
-  raw: stat /etc/kubernetes/addons/kube-system/heapster.yml
-  register: need_addons_heapster
-  ignore_errors: True
-
-- name: template heapster.yml
-  template: src=heapster.yml dest=/etc/kubernetes/addons/kube-system/heapster.yml
-
-- name: kubectl create -f heapster.yml
-  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/heapster.yml
-  when: 
-  - need_addons_heapster is failed 
+  - need_addons_dashboard is failed
 
 - name: check need traefik.yml
   raw: stat /etc/kubernetes/addons/kube-system/traefik.yml
