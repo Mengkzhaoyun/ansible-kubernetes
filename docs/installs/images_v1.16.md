@@ -6,10 +6,10 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1 &&\
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
 
-# metrics-scraper
-docker pull kubernetesui/metrics-scraper:v1.0.1 &&\
-docker tag kubernetesui/metrics-scraper:v1.0.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-scraper:v1.0.1 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-scraper:v1.0.1
+# dashboard-metrics-sidecar
+docker pull kubernetesdashboarddev/dashboard-metrics-sidecar:latest &&\
+docker tag kubernetesdashboarddev/dashboard-metrics-sidecar:latest registry-vpc.cn-qingdao.aliyuncs.com/wod/dashboard-metrics-sidecar:latest &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/dashboard-metrics-sidecar:latest
 
 # nginx
 docker pull nginx:1.17.4-alpine && \
