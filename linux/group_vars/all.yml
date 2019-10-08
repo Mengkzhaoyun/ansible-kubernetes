@@ -68,8 +68,8 @@ K8S_IMAGES:
     NAME: coredns
     VERSION: "1.6.4"
   METRICS-SCRAPER:
-    NAME: metrics-scraper
-    VERSION: "v1.0.1"
+    NAME: dashboard-metrics-sidecar
+    VERSION: "latest"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.4.1"
