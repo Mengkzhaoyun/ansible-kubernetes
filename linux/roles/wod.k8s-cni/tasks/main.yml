@@ -88,3 +88,46 @@
   retries: 15
   delay: 5
   ignore_errors: true  
+
+- name: template kube-proxy.yml to master
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  - K8S_NETWORK_PLUGIN == "calico"
+  template: src=kube-proxy-master.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
+
+- name: template kube-proxy.yml to node
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master"
+  - K8S_NETWORK_PLUGIN == "calico" 
+  template: src=kube-proxy-worker.yml dest=/etc/kubernetes/manifests/kube-proxy.yaml
+
+- name: template kube-proxy-conf.yml
+  when: 
+  - K8S_NETWORK_PLUGIN == "calico"
+  template: src=kube-proxy-conf.yml dest=/etc/kubernetes/config/kube-proxy-conf.yaml
+
+- name: check need calico.yml
+  raw: stat /etc/kubernetes/addons/kube-system/calico.yml
+  register: need_addons_calico
+  ignore_errors: True  
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  - K8S_NETWORK_PLUGIN == "calico" 
+
+- name: template calico.yml
+  template: src=calico.yml dest=/etc/kubernetes/addons/kube-system/calico.yml
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+  - K8S_NETWORK_PLUGIN == "calico"
+
+- name: kubectl create -f calico.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/calico.yml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+  - K8S_NETWORK_PLUGIN == "calico" 
+  - need_addons_calico is failed  
+  register: create_result_calico
+  until: create_result_calico.rc == 0
+  retries: 15
+  delay: 5
+  ignore_errors: true  

@@ -87,7 +87,16 @@ K8S_IMAGES:
     VERSION: "v2.14.3"
   TRAEFIK:
     NAME: traefik
-    VERSION: "v1.7.18-alpine"    
+    VERSION: "v1.7.18-alpine"
+  CALICO-NODE:
+    NAME: calico-node
+    VERSION: "v3.2.4"   
+  CALICO-CNI:
+    NAME: calico-cni
+    VERSION: "v3.2.4"     
+  CALICO-CONTROLLERS:
+    NAME: calico-controllers
+    VERSION: "v3.2.4"
 
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
