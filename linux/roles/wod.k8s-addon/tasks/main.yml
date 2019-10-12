@@ -9,8 +9,8 @@
 - name: template rbac-admin.yml
   template: src=rbac-admin.yml dest=/etc/kubernetes/addons/kube-system/rbac-admin.yml
 
-- name: kubectl apply -f rbac-admin.yml
-  raw: /opt/bin/kubectl apply -f /etc/kubernetes/addons/kube-system/rbac-admin.yml
+- name: kubectl create -f rbac-admin.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/rbac-admin.yml
   when: 
   - need_addons_rbac_admin is failed
 
