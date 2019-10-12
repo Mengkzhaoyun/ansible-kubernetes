@@ -51,6 +51,7 @@ if [[ "${KUBELET_IMAGE%%/*}" == "quay.io" ]]; then
     RKT_RUN_ARGS="${RKT_RUN_ARGS} --trust-keys-from-https"
 fi
 
+/usr/bin/mkdir --parents /var/lib/calico
 /usr/bin/mkdir --parents /etc/kubernetes
 /usr/bin/mkdir --parents {{ DOCKER_DATA_PATH }}
 /usr/bin/mkdir --parents /var/lib/kubelet
