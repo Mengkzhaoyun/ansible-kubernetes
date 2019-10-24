@@ -18,7 +18,7 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: v1.15
+      branch: master
 
   harbor:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
@@ -32,7 +32,7 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: v1.15  
+      branch: master
 
   docker-latest:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
@@ -48,7 +48,7 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: v1.15
+      branch: master
       
   harbor-latest:
     image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
@@ -62,4 +62,4 @@ pipeline:
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
     when:
-      branch: v1.15
+      branch: master
