@@ -51,6 +51,7 @@ if [[ "${KUBELET_IMAGE%%/*}" == "quay.io" ]]; then
     RKT_RUN_ARGS="${RKT_RUN_ARGS} --trust-keys-from-https"
 fi
 
+/usr/bin/mkdir --parents /var/lib/calico
 /usr/bin/mkdir --parents /etc/kubernetes
 /usr/bin/mkdir --parents {{ DOCKER_DATA_PATH }}
 /usr/bin/mkdir --parents /var/lib/kubelet
@@ -66,6 +67,8 @@ run ${RKT_RUN_ARGS} \
 --volume coreos-etc-ssl-certs,kind=host,source=/etc/ssl/certs,readOnly=true \
 --volume coreos-etc-os-release,kind=host,source=/etc/os-release,readOnly=true \
 --volume coreos-etc-cni-net,kind=host,source=/etc/cni/net.d,readOnly=true \
+--volume coreos-opt-cni-bin,kind=host,source=/opt/cni/bin,readOnly=true \
+--volume coreos-var-lib-calico,kind=host,source=/var/lib/calico,readOnly=true \
 --volume coreos-etc-localtime,kind=host,source=/etc/localtime,readOnly=true \
 --volume coreos-etc-resolv,kind=host,source=/etc/resolv.conf,readOnly=true \
 --volume coreos-var-lib-docker,kind=host,source={{ DOCKER_DATA_PATH }},readOnly=false \
@@ -82,6 +85,8 @@ run ${RKT_RUN_ARGS} \
 --mount volume=coreos-etc-localtime,target=/etc/localtime \
 --mount volume=coreos-etc-os-release,target=/etc/os-release \
 --mount volume=coreos-etc-cni-net,target=/etc/cni/net.d \
+--mount volume=coreos-opt-cni-bin,target=/opt/cni/bin \
+--mount volume=coreos-var-lib-calico,target=/var/lib/calico \
 --mount volume=coreos-var-lib-docker,target={{ DOCKER_DATA_PATH }} \
 --mount volume=coreos-var-lib-kubelet,target=/var/lib/kubelet \
 --mount volume=coreos-var-log,target=/var/log \
