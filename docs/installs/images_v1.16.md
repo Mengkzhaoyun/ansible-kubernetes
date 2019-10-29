@@ -7,9 +7,9 @@ docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 r
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
 
 # dashboard-metrics-sidecar
-docker pull kubernetesdashboarddev/dashboard-metrics-sidecar:latest &&\
-docker tag kubernetesdashboarddev/dashboard-metrics-sidecar:latest registry-vpc.cn-qingdao.aliyuncs.com/wod/dashboard-metrics-sidecar:latest &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/dashboard-metrics-sidecar:latest
+docker pull kubernetesui/metrics-scraper:v1.0.2 &&\
+docker tag kubernetesui/metrics-scraper:v1.0.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/dashboard-metrics-scraper:v1.0.2 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/dashboard-metrics-scraper:v1.0.2
 
 # nginx
 docker pull nginx:1.17.4-alpine && \
