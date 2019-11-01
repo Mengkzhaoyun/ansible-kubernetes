@@ -21,6 +21,9 @@ REGISTRY_LOCAL: "{{ REGISTRY_LOCAL_HOST }}:5000/k8s/"
 REGISTRY_REMOTE: "registry.cn-qingdao.aliyuncs.com/wod/"
 REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 
+# singer master
+K8S_TRAEFIK_REPLICAS: "1"
+
 K8S_IMAGES: 
   KUBELET:
     NAME: awecloud-kubelet

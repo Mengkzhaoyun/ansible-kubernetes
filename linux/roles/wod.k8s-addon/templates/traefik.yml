@@ -111,7 +111,7 @@ metadata:
   labels:
     k8s-app: traefik
 spec:
-  replicas: "{{ K8S_TRAEFIK_REPLICAS }}"
+  replicas: {{ K8S_TRAEFIK_REPLICAS }}
   selector:
     matchLabels:
       k8s-app: traefik
