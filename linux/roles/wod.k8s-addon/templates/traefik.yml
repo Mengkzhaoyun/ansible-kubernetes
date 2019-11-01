@@ -122,7 +122,7 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''        
     spec:
-      hostNetwork: true
+      hostNetwork: true
       serviceAccountName: traefik
       tolerations:
         - effect: NoSchedule
