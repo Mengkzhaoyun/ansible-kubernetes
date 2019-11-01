@@ -73,23 +73,23 @@ subjects:
 - kind: ServiceAccount
   name: traefik
   namespace: kube-system
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: traefik
-  namespace: kube-system
-spec:
-  type: NodePort
-  ports:
-    - name: http
-      port: 80
-      nodePort: 80
-    - name: https
-      port: 443
-      nodePort: 443       
-  selector:
-    k8s-app: traefik
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: traefik
+#   namespace: kube-system
+# spec:
+#   type: NodePort
+#   ports:
+#     - name: http
+#       port: 80
+#       nodePort: 80
+#     - name: https
+#       port: 443
+#       nodePort: 443       
+#   selector:
+#     k8s-app: traefik
 ---
 apiVersion: v1
 kind: Service
@@ -111,7 +111,7 @@ metadata:
   labels:
     k8s-app: traefik
 spec:
-  replicas: 1
+  replicas: "{{ K8S_TRAEFIK_REPLICAS }}"
   selector:
     matchLabels:
       k8s-app: traefik
@@ -122,11 +122,10 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''        
     spec:
+      hostNetwork: true
       serviceAccountName: traefik
       tolerations:
-        - key: node-role.kubernetes.io/master
-          effect: NoSchedule
-        - key: "CriticalAddonsOnly"
+        - effect: NoSchedule
           operator: "Exists"      
       terminationGracePeriodSeconds: 60
       nodeSelector:

@@ -21,6 +21,7 @@ REGISTRY_DATA_PATH: /data/kubernetes/registry
 # single master
 K8S_MASTER_IP: "{{ hostvars['k8s-centos-1']['ansible_facts'][IFACE]['ipv4']['address'] }}"
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
+K8S_TRAEFIK_REPLICAS: "1"
 
 # # ha-cluster master
 # # vip
@@ -28,6 +29,7 @@ K8S_MASTER_PORT: "{{ K8S_PORT }}"
 # # vip interface
 # K8S_MASTER_INTERFACE: "eth0"
 # K8S_MASTER_PORT: "8443"
+# K8S_TRAEFIK_REPLICAS: "3"
 
 # 基础域名
 K8S_DOMAIN: "wodcloud.local"
