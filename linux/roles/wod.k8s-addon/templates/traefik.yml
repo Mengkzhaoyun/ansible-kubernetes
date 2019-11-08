@@ -6,6 +6,9 @@ metadata:
   namespace: kube-system
 data:
   traefik.toml: |
+    traefikLogsFile = "/opt/log/traefik.log"
+    accessLogsFile = "/opt/log/access.log"
+    logLevel = "INFO"
     defaultEntryPoints = ["http","https"]
     [kubernetes]
     [entryPoints.traefik]
@@ -140,6 +143,9 @@ spec:
       - name: etc-localtime
         hostPath:
           path: /etc/localtime
+      - name: traefiklog
+        hostPath:
+          path: /data/traefiklog
       containers:
       - image: "{{ REGISTRY_LOCAL }}{{ K8S_IMAGES["TRAEFIK"]["NAME"] }}:{{ K8S_IMAGES["TRAEFIK"]["VERSION"] }}"
         name: traefik
@@ -150,6 +156,8 @@ spec:
           mountPath: /config
         - name: etc-localtime
           mountPath: /etc/localtime
+        - name: traefiklog
+          mountPath: /opt/log
         ports:
         - containerPort: 443
           name: https
