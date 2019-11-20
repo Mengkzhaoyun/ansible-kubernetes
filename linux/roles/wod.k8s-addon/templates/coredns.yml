@@ -56,13 +56,13 @@ data:
   Corefile: |
     {{ K8S_DOMAIN }}:53 {
       errors
-      log
+      log error
       file /etc/coredns/local.db
     }
 
     .:53 {
         errors
-        log
+        log error
         health
         kubernetes cluster.local {{ K8S_SERVICE_IP_RANGE }} {
             pods insecure
