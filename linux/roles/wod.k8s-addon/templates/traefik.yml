@@ -6,9 +6,13 @@ metadata:
   namespace: kube-system
 data:
   traefik.toml: |
-    traefikLogsFile = "/opt/log/traefik.log"
-    accessLogsFile = "/opt/log/access.log"
     logLevel = "INFO"
+    [traefikLog]
+      filePath = "/opt/log/traefik.log"
+      format = "json"
+    [accessLog]
+      filePath = "/opt/log/access.log"
+      format = "json"
     defaultEntryPoints = ["http","https"]
     [kubernetes]
     [entryPoints.traefik]
@@ -28,8 +32,6 @@ data:
       [metrics.prometheus]
         entryPoint = "traefik"
         buckets = [0.1,0.3,1.2,5.0]
-    [accessLog]
-      format   = "json"
     [api]
       entryPoint = "traefik"
       dashboard = true
