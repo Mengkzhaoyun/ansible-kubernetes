@@ -55,11 +55,12 @@ for key in ${KEYS[@]}; do
   fi
 done
 
+mkdir -p /etc/sysconfig/modules/
 cat > /etc/sysconfig/modules/ipvs.modules <<EOF
 #!/bin/bash
 /sbin/modprobe -- nf_conntrack_ipv4
-ipvs_modules_dir="/usr/lib/modules/\`uname -r\`/kernel/net/netfilter/ipvs"
-for i in \`ls \$ipvs_modules_dir | sed  -r 's#(.*).ko.xz#\1#'\`; do
+ipvs_modules_dir="/lib/modules/\`uname -r\`/kernel/net/netfilter/ipvs"
+for i in \`ls \$ipvs_modules_dir | sed  -r 's#(.*).ko(.*)#\1#'\`; do
     /sbin/modinfo -F filename \$i  &> /dev/null
     if [ \$? -eq 0 ]; then
         /sbin/modprobe \$i
