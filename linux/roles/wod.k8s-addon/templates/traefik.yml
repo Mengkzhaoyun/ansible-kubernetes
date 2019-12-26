@@ -6,6 +6,7 @@ metadata:
   namespace: kube-system
 data:
   traefik.toml: |
+    defaultEntryPoints = ["http","https"]
     logLevel = "INFO"
     [traefikLog]
       filePath = "/opt/log/traefik.log"
@@ -13,7 +14,6 @@ data:
     [accessLog]
       filePath = "/opt/log/access.log"
       format = "json"
-    defaultEntryPoints = ["http","https"]
     [kubernetes]
     [entryPoints.traefik]
       address = ":8380"
