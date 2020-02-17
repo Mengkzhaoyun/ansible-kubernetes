@@ -1,0 +1,6 @@
+{
+    "rktKind": "paths",
+    "rktVersion": "v1",
+    "data": "{{ RKT_DATA_PATH }}/data",
+    "stage1-images": "{{ RKT_DATA_PATH }}/stage1-images"
+}

@@ -1,5 +1,18 @@
 ---
 # install rkt
+---
+- name: mkdir -p /etc/rkt/paths.d
+  raw: mkdir -p /etc/rkt/paths.d
+
+- name: check need /etc/rkt/paths.d/paths.json
+  raw: stat /etc/rkt/paths.d/paths.json
+  register: need_rkt_paths
+  ignore_errors: True
+
+- name: template /etc/rkt/paths.d/paths.json
+  template: src=paths.json dest=/etc/rkt/paths.d/paths.json mode=0644
+  when: need_rkt_paths is failed
+
 - name: install rkt
   environment:
     HTTP_SERVER: '{{ HTTP_SERVER }}'

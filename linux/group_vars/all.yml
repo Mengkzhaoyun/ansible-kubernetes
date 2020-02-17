@@ -13,6 +13,9 @@ SSH_KEYS:
 # docker
 DOCKER_DATA_PATH: /var/lib/docker
 
+# rkt
+RKT_DATA_PATH: /var/lib/rkt
+
 # registry
 REGISTRY_LOCAL_HOST: reg.local
 REGISTRY_LOCAL: "{{ REGISTRY_LOCAL_HOST }}:5000/k8s/"
