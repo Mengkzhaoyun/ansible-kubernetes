@@ -1,17 +1,17 @@
 clone:
   git:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/git:1.5.0
+    image: registry.cn-qingdao.aliyuncs.com/wod-devops/git:1.5.0
 
 pipeline:  
 
   docker:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
+    image: registry.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
+    base: registry.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod/ansible-kubernetes
     version: v1.15.4 
-    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    registry: registry.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
         target: REGISTRY_USER
@@ -21,10 +21,10 @@ pipeline:
       branch: master
 
   harbor:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
+    image: registry.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    registry: registry.cn-qingdao.aliyuncs.com
     repo: wod-cloud/ansible-kubernetes
     secrets: 
       - source: REGISTRY_USER_ALIYUN
@@ -35,13 +35,13 @@ pipeline:
       branch: master
 
   docker-latest:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
+    image: registry.cn-qingdao.aliyuncs.com/wod-devops/docker:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    base: registry-vpc.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
+    base: registry.cn-qingdao.aliyuncs.com/wod/ansible:2.7.10
     repo: wod/ansible-kubernetes
     version: latest
-    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    registry: registry.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
         target: REGISTRY_USER
@@ -51,10 +51,10 @@ pipeline:
       branch: master
       
   harbor-latest:
-    image: registry-vpc.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
+    image: registry.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    registry: registry-vpc.cn-qingdao.aliyuncs.com
+    registry: registry.cn-qingdao.aliyuncs.com
     repo: wod-cloud/ansible-kubernetes
     secrets: 
       - source: REGISTRY_USER_ALIYUN
