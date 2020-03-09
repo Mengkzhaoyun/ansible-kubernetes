@@ -25,7 +25,8 @@ pipeline:
       - /var/run/docker.sock:/var/run/docker.sock
     registry: registry.cn-qingdao.aliyuncs.com
     repo: wod/ansible-kubernetes
-    tag: v1.16.0
+    tag: v1.16.0 
+    registry: registry.cn-qingdao.aliyuncs.com
     secrets: 
       - source: REGISTRY_USER_ALIYUN
         target: REGISTRY_USER

@@ -130,7 +130,9 @@ spec:
       hostNetwork: true
       serviceAccountName: traefik
       tolerations:
-        - effect: NoSchedule
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+        - key: "CriticalAddonsOnly"
           operator: "Exists"      
       terminationGracePeriodSeconds: 60
       nodeSelector:
