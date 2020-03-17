@@ -13,6 +13,7 @@
 - name: check images exists
   environment:
     HTTP_SERVER: '{{ HTTP_SERVER }}'
+    RKT_DATA_PATH: '{{ RKT_DATA_PATH }}'
   script: checkimages.sh
 
 - name: install rkt
