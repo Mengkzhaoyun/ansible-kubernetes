@@ -18,7 +18,6 @@
 
 - name: template k8s-etcd.service
   template: src=k8s-etcd.service dest=/etc/systemd/system/k8s-etcd.service mode=0644
-  when: need_services_etcd is failed
 
 - name: start k8s-etcd.service
   raw: systemctl daemon-reload && systemctl enable k8s-etcd.service && systemctl start k8s-etcd.service

@@ -32,6 +32,6 @@ if ! [ -x "$(command -v etcdctl)" ]; then
     rm -rf /etc/kubernetes/downloads/$TOOLS_ETCDCTL.tgz    
   fi
   chmod 0744 /etc/kubernetes/downloads/$TOOLS_ETCDCTL
-  rm -rf /usr/bin/etcdctl
-  ln -s /etc/kubernetes/downloads/$TOOLS_ETCDCTL /usr/bin/etcdctl
+  rm -rf /opt/bin/etcdctl
+  ln -s /etc/kubernetes/downloads/$TOOLS_ETCDCTL /opt/bin/etcdctl
 fi
