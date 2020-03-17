@@ -1,5 +1,7 @@
 {
-  "dns": ["{{ K8S_DNS_SERVICE_IP }}"],
+  "dns": [
+    "{{ K8S_DNS_SERVICE_IP }}"
+  ],
   "graph": "{{ DOCKER_DATA_PATH }}",
   "insecure-registries": [
     "hub.{{ K8S_DOMAIN }}",
@@ -9,5 +11,5 @@
     {% else %}
     "{{ REGISTRY_LOCAL_HOST }}:5000"
     {% endif %}
-]
+  ]
 }

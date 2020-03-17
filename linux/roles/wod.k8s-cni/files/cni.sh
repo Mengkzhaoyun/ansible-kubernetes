@@ -3,7 +3,7 @@
 set -e  
 
 HTTP_SERVER="${HTTP_SERVER:-https://dl.wodcloud.com/k8s}"
-K8S_CNI_BIN="${K8S_CNI_BIN:-cni-plugins-linux-amd64-v0.8.2}"
+K8S_CNI_BIN="${K8S_CNI_BIN:-cni-plugins-linux-amd64-v0.8.5}"
 
 mkdir -p /opt/cni/bin
 

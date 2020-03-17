@@ -47,8 +47,11 @@ K8S_IMAGES:
     NAME: awecloud-kubectl
     VERSION: "v1.16.7-beagle-1.0"
   DASHBOARD:
-    NAME: awecloud-kubernetes-ui
-    VERSION: "v1.16-beagle-1.1"
+    NAME: kubernetesui-dashboard
+    VERSION: "v2.0.0-rc6"
+  METRICS-SCRAPER:
+    NAME: dashboard-metrics-scraper
+    VERSION: "v1.0.3"    
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"
@@ -57,13 +60,13 @@ K8S_IMAGES:
     VERSION: "2.7.1"
   ETCD:
     NAME: etcd
-    VERSION: "v3.4.1"
+    VERSION: "v3.4.4"
   FLANNEL:
     NAME: flannel
-    VERSION: "v0.11.0"
+    VERSION: "v0.12.0"
   KUBE-ROUTER:
     NAME: kube-router
-    VERSION: "v0.3.2"
+    VERSION: "v1.0.0-rc1"
   BUSYBOX:
     NAME: busybox
     VERSION: "1.31"
@@ -72,31 +75,28 @@ K8S_IMAGES:
     VERSION: "1.17.4-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.6.4"
-  METRICS-SCRAPER:
-    NAME: dashboard-metrics-scraper
-    VERSION: "v1.0.2"
+    VERSION: "1.6.7"
   ETCDCTL:
     NAME: etcdctl
-    VERSION: "v3.4.1"
+    VERSION: "v3.4.4"
   KEEPALIVED:
     NAME: keepalived
     VERSION: "1.4.5"
   HELM:
     NAME: helm
-    VERSION: "v2.14.3"
+    VERSION: "v2.16.3"
   TILLER:
     NAME: tiller
-    VERSION: "v2.14.3"
+    VERSION: "v2.16.3"
   TRAEFIK:
     NAME: traefik
     VERSION: "v1.7.18-alpine"
   CALICO-NODE:
     NAME: calico-node
-    VERSION: "v3.2.4"   
+    VERSION: "v3.2.4"
   CALICO-CNI:
     NAME: calico-cni
-    VERSION: "v3.2.4"     
+    VERSION: "v3.2.4"
   CALICO-CONTROLLERS:
     NAME: calico-controllers
     VERSION: "v3.2.4"
@@ -111,7 +111,7 @@ RKT_ACI_REGISTRY_DATA: "registry-data-{{ K8S_IMAGES['KUBELET']['VERSION'] }}"
 
 # k8s adv option.
 K8S_NETWORK_PLUGIN: kube-router
-K8S_CNI_BIN: cni-plugins-linux-amd64-v0.8.2
+K8S_CNI_BIN: cni-plugins-linux-amd64-v0.8.5
 K8S_POD_NETWORK: 10.2.0.0/16
 K8S_SERVICE_IP_RANGE: 10.3.0.0/16
 K8S_SERVICE_PORT_RANGE: 10000-32767
@@ -124,9 +124,6 @@ K8S_MASTER_DOMAIN: k8s.wodcloud.local
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
 # ubuntu
-DEB_LIBLTDL7: libltdl7_2.4.6-0.1_amd64.deb
-DEB_IPTABLE: iptables_1.6.0-2ubuntu3_amd64.deb
-DEB_DOCKER: docker-engine_1.13.1-0~ubuntu-xenial_amd64.deb
 DEB_RKT: rkt_1.30.0-1_amd64.deb
 
 # centos
@@ -141,5 +138,6 @@ K8S_DOMAIN: "wodcloud.local"
 
 K8S_DOMAIN_ADDONS:
   DASHBOARD: "k8s.{{ K8S_DOMAIN }}"
+  METRICS-SCRAPER: "scraper.{{ K8S_DOMAIN }}"
   TRAEFIK: "traefik.{{ K8S_DOMAIN }}"
   HUB: "hub.{{ K8S_DOMAIN }}"

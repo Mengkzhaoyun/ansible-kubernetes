@@ -6,6 +6,11 @@ docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 
 docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1 &&\
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
 
+# dashboard
+docker pull kubernetesui/dashboard:v2.0.0-rc6 &&\
+docker tag kubernetesui/dashboard:v2.0.0-rc6 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0.0-rc6 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0.0-rc6
+
 # dashboard-metrics-sidecar
 docker pull kubernetesui/metrics-scraper:v1.0.3 &&\
 docker tag kubernetesui/metrics-scraper:v1.0.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.3 &&\
@@ -17,24 +22,24 @@ docker tag nginx:1.17.4-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.17.4-alpine
 
 # coredns
-docker pull coredns/coredns:1.6.4 && \
-docker tag coredns/coredns:1.6.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.6.4 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.6.4
+docker pull coredns/coredns:1.6.7 && \
+docker tag coredns/coredns:1.6.7 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.6.7 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.6.7
 
 # kube-router
-docker pull cloudnativelabs/kube-router:v0.3.2 && \
-docker tag cloudnativelabs/kube-router:v0.3.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.3.2 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v0.3.2
+docker pull cloudnativelabs/kube-router:v1.0.0-rc1 && \
+docker tag cloudnativelabs/kube-router:v1.0.0-rc1 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v1.0.0-rc1 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v1.0.0-rc1
 
 # etcd
-docker pull quay.io/coreos/etcd:v3.4.1 && \
-docker tag quay.io/coreos/etcd:v3.4.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.4.1 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.4.1
+docker pull quay.io/coreos/etcd:v3.4.4 && \
+docker tag quay.io/coreos/etcd:v3.4.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.4.4 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.4.4
 
 # flannel
-docker pull quay.io/coreos/flannel:v0.11.0 && \
-docker tag quay.io/coreos/flannel:v0.11.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.11.0 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.11.0
+docker pull quay.io/coreos/flannel:v0.12.0 && \
+docker tag quay.io/coreos/flannel:v0.12.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.12.0 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.12.0
 
 # keepalived
 docker pull osixia/keepalived:1.4.5 && \
@@ -51,10 +56,10 @@ docker pull registry:2.7.1 && \
 docker tag registry:2.7.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1
 
-# tiller gcr.io/kubernetes-helm/tiller:v2.14.3
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.3 && \
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.14.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.3 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.14.3
+# tiller gcr.io/kubernetes-helm/tiller:v2.16.3
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.3 && \
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.16.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.16.3
 
 # traefik
 docker pull traefik:v1.7.18-alpine && \
