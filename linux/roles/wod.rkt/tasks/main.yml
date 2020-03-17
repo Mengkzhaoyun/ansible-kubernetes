@@ -10,6 +10,9 @@
   template: src=paths.json dest=/etc/rkt/paths.d/paths.json mode=0644
   when: need_rkt_paths is failed
 
+- name: CentOS SELINUX set
+  script: checkimages.sh
+
 - name: install rkt
   environment:
     HTTP_SERVER: '{{ HTTP_SERVER }}'
