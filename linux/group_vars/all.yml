@@ -50,7 +50,7 @@ K8S_IMAGES:
     NAME: kubernetesui-dashboard
     VERSION: "v2.0.0-rc6"
   METRICS-SCRAPER:
-    NAME: dashboard-metrics-scraper
+    NAME: kubernetesui-metrics-scraper
     VERSION: "v1.0.3"    
   PAUSE: 
     NAME: pause-amd64
