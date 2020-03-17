@@ -1,6 +1,3 @@
----
-# install rkt
----
 - name: mkdir -p /etc/rkt/paths.d
   raw: mkdir -p /etc/rkt/paths.d
 
