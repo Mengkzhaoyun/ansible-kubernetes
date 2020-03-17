@@ -11,6 +11,6 @@ mkdir -p ${RKT_DATA_PATH}/images
 if ! [[ -e ${RKT_DATA_PATH}/images/stage1-fly.aci ]]; then
   curl $HTTP_SERVER/$RKT_STAGE1_FLY.tgz > /etc/kubernetes/downloads/$RKT_STAGE1_FLY.tgz
   cd /etc/kubernetes/downloads && tar -xzf /etc/kubernetes/downloads/$RKT_STAGE1_FLY.tgz
-  rm -rf /etc/kubernetes/downloads/$YUM_RKT.tgz
+  rm -rf /etc/kubernetes/downloads/$RKT_STAGE1_FLY.tgz
   mv /etc/kubernetes/downloads/${RKT_STAGE1_FLY} ${RKT_DATA_PATH}/images/stage1-fly.aci
 fi
