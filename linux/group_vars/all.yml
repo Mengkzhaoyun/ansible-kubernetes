@@ -51,7 +51,10 @@ K8S_IMAGES:
     VERSION: "v2.0.0-rc6"
   METRICS-SCRAPER:
     NAME: kubernetesui-metrics-scraper
-    VERSION: "v1.0.3"    
+    VERSION: "v1.0.3"
+  METRICSSERVER:
+    NAME: metrics-server-amd64
+    VERSION: "v0.3.6"
   PAUSE: 
     NAME: pause-amd64
     VERSION: "3.1"

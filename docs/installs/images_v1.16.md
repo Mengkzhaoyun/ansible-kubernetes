@@ -16,6 +16,12 @@ docker pull kubernetesui/metrics-scraper:v1.0.3 &&\
 docker tag kubernetesui/metrics-scraper:v1.0.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.3 &&\
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.3
 
+# metrics-server
+## https://github.com/kubernetes-sigs/metrics-server/releases
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6 && \
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6 registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-server-amd64:v0.3.6 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-server-amd64:v0.3.6
+
 # nginx
 docker pull nginx:1.17.4-alpine && \
 docker tag nginx:1.17.4-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.17.4-alpine && \

@@ -27,6 +27,19 @@
   when: 
   - need_addons_dns is failed  
 
+- name: check need metrics-server.yml
+  raw: stat /etc/kubernetes/addons/kube-system/metrics-server.yml
+  register: need_addons_metrics
+  ignore_errors: True
+
+- name: template metrics-server.yml
+  template: src=metrics-server.yml dest=/etc/kubernetes/addons/kube-system/metrics-server.yml
+
+- name: kubectl create -f metrics-server.yml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/metrics-server.yml
+  when: 
+  - need_addons_metrics is failed 
+
 - name: check need dashboard.yml
   raw: stat /etc/kubernetes/addons/kube-system/dashboard.yml
   register: need_addons_dashboard
