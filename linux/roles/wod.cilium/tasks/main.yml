@@ -1,0 +1,40 @@
+- name: mkdir -p /etc/kubernetes/addons/kube-system
+  raw: mkdir -p /etc/kubernetes/addons/kube-system
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: check need cilium.yaml
+  raw: stat /etc/kubernetes/addons/kube-system/cilium.yaml
+  register: need_addons_cilium
+  ignore_errors: True  
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: template cilium.yaml
+  template: src=cilium.yaml dest=/etc/kubernetes/addons/kube-system/cilium.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: kubectl create -f cilium.yaml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/cilium.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+  - need_addons_cilium is failed
+
+- name: check need cilium-hubble.yaml
+  raw: stat /etc/kubernetes/addons/kube-system/cilium-hubble.yaml
+  register: need_addons_cilium_hubble
+  ignore_errors: True  
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: template cilium-hubble.yaml
+  template: src=cilium-hubble.yaml dest=/etc/kubernetes/addons/kube-system/cilium-hubble.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: kubectl create -f cilium-hubble.yaml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/cilium-hubble.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+  - need_addons_cilium_hubble is failed

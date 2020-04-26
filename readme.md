@@ -1,5 +1,17 @@
 # One Command Auto Deploy kubernetes cluster
 
+## Debug
+
+```powershell
+docker pull registry.cn-qingdao.aliyuncs.com/wod/ansible-kubernetes:v1.16.7-alpha ;`
+docker run `
+--rm `
+-h ansible `
+-v $PWD/:/etc/ansible `
+--entrypoint=bash `
+-it registry.cn-qingdao.aliyuncs.com/wod/ansible-kubernetes:v1.16.7-alpha
+```
+
 ## What the scripts do ?
 
 - One Command Deploy a kubernetes cluster<br>

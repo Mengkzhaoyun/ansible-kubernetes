@@ -19,11 +19,18 @@
   - role: wod.k8s-kubectl
     when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"
   - role: wod.k8s-worker
-    when: "K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != 'master'"
   - role: wod.k8s-label
-    when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"  
+    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
   - role: wod.k8s-cni
+  - role: wod.flannel
+    when: "K8S_NETWORK_PLUGIN == 'flannel'"
+  - role: wod.kube-router
+    when: "K8S_NETWORK_PLUGIN == 'kube-router'"
+  - role: wod.calico
+    when: "K8S_NETWORK_PLUGIN == 'calico'"        
+  - role: wod.cilium
+    when: "K8S_NETWORK_PLUGIN == 'cilium'"
   - role: wod.k8s-addon
-    when: "K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == 'master'"
+    when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"
   - role: wod.k8s-helm
     when: "inventory_hostname == REGISTRY_LOCAL_HOSTNAME"

@@ -10,6 +10,11 @@
 - name: copy config/kubelet.yaml
   template: src=config/kubelet.yaml dest=/etc/kubernetes/config/kubelet.yaml
 
+- name: copy config/kubelet-master.yaml
+  template: src=config/kubelet-master.yaml dest=/etc/kubernetes/config/kubelet.yaml  
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"  
+
 - name: copy scripts/kubelet.sh
   template: src=scripts/kubelet.sh dest=/etc/kubernetes/scripts/kubelet.sh mode=0755
 

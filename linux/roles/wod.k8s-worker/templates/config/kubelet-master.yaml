@@ -12,4 +12,4 @@ contexts:
 current-context: local
 kind: Config
 preferences: {}
-users: []   
+users: []

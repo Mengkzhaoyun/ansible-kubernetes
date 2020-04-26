@@ -110,30 +110,24 @@
 - name: check need worker-ssl.sh
   raw: stat /etc/kubernetes/ssl/worker-ssl.sh
   register: need_ssl_worker_sh
-  when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master"
   ignore_errors: True  
 
 - name: copy worker-ssl.sh
   copy: src=worker-ssl.sh dest=/etc/kubernetes/ssl/worker-ssl.sh mode=0755
   when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master" 
   - need_ssl_worker_sh is failed
 
 - name: template worker-kubelet.cnf
   template: src=worker-kubelet.cnf dest=/etc/kubernetes/ssl/worker-kubelet.cnf 
   when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master" 
   - need_ssl_worker_sh is failed
 
-- name: template worker-kubeproxy.cnf
-  template: src=worker-kubeproxy.cnf dest=/etc/kubernetes/ssl/worker-kubeproxy.cnf 
+- name: template worker-kube-proxy.cnf
+  template: src=worker-kube-proxy.cnf dest=/etc/kubernetes/ssl/worker-kube-proxy.cnf 
   when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master" 
   - need_ssl_worker_sh is failed
   
 - name: Run worker-ssl.sh
   script: worker-ssl.sh
   when: 
-  - K8S_CLUSTER_ROLE[inventory_hostname] is not defined or K8S_CLUSTER_ROLE[inventory_hostname] != "master" 
   - need_ssl_worker_sh is failed

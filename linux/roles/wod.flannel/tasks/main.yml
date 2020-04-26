@@ -1,0 +1,32 @@
+
+- name: template config/kube-proxy.yaml to /etc/kubernetes/config
+  template: src=config/kube-proxy.yaml dest=/etc/kubernetes/config/kube-proxy.yaml
+
+- name: template config/kube-proxy.conf to /etc/kubernetes/config
+  template: src=config/kube-proxy.conf dest=/etc/kubernetes/config/kube-proxy.conf  
+
+- name: template kube-proxy.yaml to /etc/kubernetes/manifests
+  template: src=kube-proxy.yaml dest=/etc/kubernetes/manifests/kube-proxy.yaml
+
+- name: mkdir -p /etc/kubernetes/addons/kube-system
+  raw: mkdir -p /etc/kubernetes/addons/kube-system
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+
+- name: check need flannel.yaml
+  raw: stat /etc/kubernetes/addons/kube-system/flannel.yaml
+  register: need_addons_flannel
+  ignore_errors: True  
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+
+- name: template flannel.yaml
+  template: src=flannel.yaml dest=/etc/kubernetes/addons/kube-system/flannel.yaml
+  when: 
+  - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"
+
+- name: kubectl create -f flannel.yaml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/flannel.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+  - need_addons_flannel is failed

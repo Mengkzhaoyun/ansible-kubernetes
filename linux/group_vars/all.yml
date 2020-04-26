@@ -48,10 +48,10 @@ K8S_IMAGES:
     VERSION: "v1.16.7-beagle-1.0"
   DASHBOARD:
     NAME: kubernetesui-dashboard
-    VERSION: "v2.0.0-rc6"
+    VERSION: "v2.0.0"
   METRICS-SCRAPER:
     NAME: kubernetesui-metrics-scraper
-    VERSION: "v1.0.3"
+    VERSION: "v1.0.4"
   METRICSSERVER:
     NAME: metrics-server-amd64
     VERSION: "v0.3.6"
@@ -78,7 +78,7 @@ K8S_IMAGES:
     VERSION: "1.17.4-alpine"
   COREDNS:
     NAME: coredns
-    VERSION: "1.6.7"
+    VERSION: "1.5.2"
   ETCDCTL:
     NAME: etcdctl
     VERSION: "v3.4.4"
@@ -94,15 +94,30 @@ K8S_IMAGES:
   TRAEFIK:
     NAME: traefik
     VERSION: "v1.7.18-alpine"
-  CALICO-NODE:
-    NAME: calico-node
-    VERSION: "v3.2.4"
   CALICO-CNI:
     NAME: calico-cni
-    VERSION: "v3.2.4"
+    VERSION: "v3.13.3"
+  CALICO-FLEXVOL:
+    NAME: calico-pod2daemon-flexvol
+    VERSION: "v3.13.3"
+  CALICO-NODE:
+    NAME: calico-node
+    VERSION: "v3.13.3"        
   CALICO-CONTROLLERS:
-    NAME: calico-controllers
-    VERSION: "v3.2.4"
+    NAME: calico-kube-controllers
+    VERSION: "v3.13.3"
+  CILIUM:
+    NAME: cilium
+    VERSION: "v1.7.2"
+  CILIUM-OPERATOR:
+    NAME: cilium-operator
+    VERSION: "v1.7.2"
+  CILIUM-HUBBLE:
+    NAME: cilium-hubble
+    VERSION: "v0.5.0"
+  CILIUM-HUBBLE-UI:
+    NAME: cilium-hubble-ui
+    VERSION: "latest"
 
 # rkt images
 RKT_ACI_REGISTRY: "registry-{{ K8S_IMAGES['REGISTRY']['VERSION'] }}.aci"
@@ -144,3 +159,4 @@ K8S_DOMAIN_ADDONS:
   METRICS-SCRAPER: "scraper.{{ K8S_DOMAIN }}"
   TRAEFIK: "traefik.{{ K8S_DOMAIN }}"
   HUB: "hub.{{ K8S_DOMAIN }}"
+  HUBBLE: "hubble.{{ K8S_DOMAIN }}"

@@ -60,18 +60,6 @@
 
 - name: template traefik.yml
   template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
-  when:
-  - K8S_NETWORK_PLUGIN == "kube-router"
-
-- name: template traefik.yml
-  template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
-  when:
-  - K8S_NETWORK_PLUGIN == "flannel"  
-
-- name: template traefik.yml
-  template: src=traefik.yml dest=/etc/kubernetes/addons/kube-system/traefik.yml
-  when:
-  - K8S_NETWORK_PLUGIN == "calico"  
 
 - name: exec gensecret.sh
   shell: cd /etc/kubernetes/ssl/{{ K8S_DOMAIN }} && sh gensecret.sh

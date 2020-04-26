@@ -6,22 +6,15 @@ metadata:
   namespace: kube-system
 spec:
   hostNetwork: true
-  tolerations:
-    - key: node-role.kubernetes.io/master
-      operator: "Equal"
-      value: "true"
-      effect: NoSchedule
-    - key: "CriticalAddonsOnly"
-      operator: "Exists"       
   containers:
   - name: kube-proxy
     image: {{ REGISTRY_LOCAL }}{{ K8S_IMAGES['KUBE-PROXY']['NAME'] }}:{{ K8S_IMAGES['KUBE-PROXY']['VERSION'] }}
     command:
     - kube-proxy
-    - --config=/etc/kubernetes/config/kube-proxy-conf.yaml
+    - --config=/etc/kubernetes/config/kube-proxy.conf
     - --ipvs-min-sync-period=5s 
     - --ipvs-sync-period=5s 
-    - --ipvs-scheduler=rr
+    - --ipvs-scheduler=rr    
     securityContext:
       privileged: true
     volumeMounts:

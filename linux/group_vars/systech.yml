@@ -1,35 +1,30 @@
----
 # system options
 SSH_INSTALL_KEYS: 
   - ansible
   - admin
 
+# docker
+DOCKER_DATA_PATH: /data/docker
+
 # etcd options
 ETCD_CLUSTER_ROLE: 
-  k8s-centos-1: etcd
+  ubuntu-1: etcd
 
 # k8s option
-K8S_SERVICE_PORT_RANGE: 1-32767
+K8S_NETWORK_PLUGIN: calico
+K8S_SERVICE_PORT_RANGE: 1-65535
 K8S_CLUSTER_ROLE: 
-  k8s-centos-1: master
+  ubuntu-1: master
 
 # registry options
-REGISTRY_LOCAL_HOSTNAME: k8s-centos-1
-REGISTRY_LOCAL_IP: "{{ hostvars['k8s-centos-1']['ansible_facts'][IFACE]['ipv4']['address'] }}"  
+REGISTRY_LOCAL_HOSTNAME: ubuntu-1
+REGISTRY_LOCAL_IP: "{{ hostvars['ubuntu-1']['ansible_default_ipv4']['address'] }}"  
+REGISTRY_LOCAL: "registry.cn-qingdao.aliyuncs.com/wod/"
 REGISTRY_DATA_PATH: /data/kubernetes/registry
+RKT_DATA_PATH: /data/kubernetes/rkt
 
 # single master
-K8S_MASTER_IP: "{{ hostvars['k8s-centos-1']['ansible_facts'][IFACE]['ipv4']['address'] }}"
-K8S_MASTER_PORT: "{{ K8S_PORT }}"
-K8S_TRAEFIK_REPLICAS: "1"
+K8S_MASTER_IP: "{{ hostvars['ubuntu-1']['ansible_default_ipv4']['address'] }}"  
+K8S_MASTER_PORT: "6443"
 
-# # ha-cluster master
-# # vip
-# K8S_MASTER_IP: "127.0.0.1"
-# # vip interface
-# K8S_MASTER_INTERFACE: "eth0"
-# K8S_MASTER_PORT: "8443"
-# K8S_TRAEFIK_REPLICAS: "3"
-
-# 基础域名
-K8S_DOMAIN: "wodcloud.local"
+K8S_DOMAIN: "home.wodcloud.local"

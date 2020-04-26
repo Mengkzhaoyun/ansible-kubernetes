@@ -78,23 +78,23 @@ subjects:
 - kind: ServiceAccount
   name: traefik
   namespace: kube-system
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: traefik
-#   namespace: kube-system
-# spec:
-#   type: NodePort
-#   ports:
-#     - name: http
-#       port: 80
-#       nodePort: 80
-#     - name: https
-#       port: 443
-#       nodePort: 443       
-#   selector:
-#     k8s-app: traefik
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      nodePort: 80
+    - name: https
+      port: 443
+      nodePort: 443       
+  selector:
+    k8s-app: traefik
 ---
 apiVersion: v1
 kind: Service
@@ -127,7 +127,6 @@ spec:
       annotations:
         scheduler.alpha.kubernetes.io/critical-pod: ''        
     spec:
-      hostNetwork: true
       serviceAccountName: traefik
       tolerations:
         - key: node-role.kubernetes.io/master
@@ -139,17 +138,17 @@ spec:
         node-role.kubernetes.io/master: "true"      
       volumes:
       - name: ssl
-        secret:
-          secretName: traefik-cert
+        hostPath:
+          path: /etc/kubernetes/ssl/{{ K8S_DOMAIN }}
       - name: config
         configMap:
           name: traefik
       - name: etc-localtime
         hostPath:
           path: /etc/localtime
-      - name: traefiklog
+      - name: log
         hostPath:
-          path: /data/traefiklog
+          path: /data/kube-system/traefik
       containers:
       - image: "{{ REGISTRY_LOCAL }}{{ K8S_IMAGES["TRAEFIK"]["NAME"] }}:{{ K8S_IMAGES["TRAEFIK"]["VERSION"] }}"
         name: traefik
@@ -160,7 +159,7 @@ spec:
           mountPath: /config
         - name: etc-localtime
           mountPath: /etc/localtime
-        - name: traefiklog
+        - name: log
           mountPath: /opt/log
         ports:
         - containerPort: 443

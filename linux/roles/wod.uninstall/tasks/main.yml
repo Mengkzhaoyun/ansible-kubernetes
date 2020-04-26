@@ -2,5 +2,5 @@
   script: uninstall.sh
 
 - name: reboot
-  raw: reboot
+  raw: shutdown -r 0
   ignore_errors: true  

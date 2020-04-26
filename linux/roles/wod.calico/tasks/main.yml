@@ -1,0 +1,31 @@
+
+- name: template config/kube-proxy.yaml to /etc/kubernetes/config
+  template: src=config/kube-proxy.yaml dest=/etc/kubernetes/config/kube-proxy.yaml
+
+- name: mkdir -p /etc/kubernetes/addons/kube-system
+  raw: mkdir -p /etc/kubernetes/addons/kube-system
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: check need calico.yaml
+  raw: stat /etc/kubernetes/addons/kube-system/calico.yaml
+  register: need_addons_calico
+  ignore_errors: True  
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: template calico.yaml
+  template: src=calico.yaml dest=/etc/kubernetes/addons/kube-system/calico.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: kubectl create -f calico.yaml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/calico.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+  - need_addons_calico is failed  
+  register: create_result_calico
+  until: create_result_calico.rc == 0
+  retries: 15
+  delay: 5
+  ignore_errors: true

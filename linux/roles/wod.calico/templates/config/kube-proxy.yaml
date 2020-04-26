@@ -9,8 +9,8 @@ clusters:
 users:
 - name: kubeproxy
   user:
-    client-certificate: /etc/kubernetes/ssl/kubeproxy.pem
-    client-key: /etc/kubernetes/ssl/kubeproxy.key
+    client-certificate: /etc/kubernetes/ssl/kube-proxy.pem
+    client-key: /etc/kubernetes/ssl/kube-proxy.key
 contexts:
 - context:
     cluster: local

@@ -71,4 +71,24 @@ docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.16.3
 docker pull traefik:v1.7.18-alpine && \
 docker tag traefik:v1.7.18-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.18-alpine && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.18-alpine
+
+# calico-cni
+docker pull calico/cni:v3.13.3 && \
+docker tag calico/cni:v3.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-cni:v3.13.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-cni:v3.13.3
+
+# calico-flexvol
+docker pull calico/pod2daemon-flexvol:v3.13.3 && \
+docker tag calico/pod2daemon-flexvol:v3.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-pod2daemon-flexvol:v3.13.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-pod2daemon-flexvol:v3.13.3
+
+# calico-node
+docker pull calico/node:v3.13.3 && \
+docker tag calico/node:v3.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-node:v3.13.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-node:v3.13.3
+
+# calico-kube-controllers
+docker pull calico/kube-controllers:v3.13.3 && \
+docker tag calico/kube-controllers:v3.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-kube-controllers:v3.13.3 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-kube-controllers:v3.13.3
 ```

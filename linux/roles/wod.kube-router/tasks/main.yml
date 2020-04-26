@@ -1,0 +1,26 @@
+
+- name: template config/kube-proxy.yaml to /etc/kubernetes/config
+  template: src=config/kube-proxy.yaml dest=/etc/kubernetes/config/kube-proxy.yaml
+
+- name: mkdir -p /etc/kubernetes/addons/kube-system
+  raw: mkdir -p /etc/kubernetes/addons/kube-system
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: check need kube-router.yaml
+  raw: stat /etc/kubernetes/addons/kube-system/kube-router.yaml
+  register: need_addons_kube_router
+  ignore_errors: True  
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: template kube-router.yaml
+  template: src=kube-router.yaml dest=/etc/kubernetes/addons/kube-system/kube-router.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+
+- name: kubectl create -f kube-router.yaml
+  raw: /opt/bin/kubectl create -f /etc/kubernetes/addons/kube-system/kube-router.yaml
+  when: 
+  - inventory_hostname == REGISTRY_LOCAL_HOSTNAME
+  - need_addons_kube_router is failed
