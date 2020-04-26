@@ -32,6 +32,8 @@ pipeline:
         target: REGISTRY_USER
       - source: REGISTRY_PASSWORD_ALIYUN
         target: REGISTRY_PASSWORD
+    when:
+      branch: master        
       
   harbor-latest:
     image: registry.cn-qingdao.aliyuncs.com/wod-devops/harbor:1.0
