@@ -26,3 +26,23 @@ K8S_MASTER_IP: "{{ hostvars['ubuntu-1']['ansible_default_ipv4']['address'] }}"
 K8S_MASTER_PORT: "6443"
 
 K8S_DOMAIN: "home.wodcloud.local"
+
+K8S_IMAGES: 
+  KUBELET:
+    NAME: awecloud-kubelet
+    VERSION: "v1.16.7-beagle-1.0"
+  KUBE-APISERVER:
+    NAME: awecloud-kube-apiserver
+    VERSION: "v1.16.7-beagle-1.0"
+  KUBE-CONTROLLER-MANAGER:
+    NAME: awecloud-kube-controller-manager
+    VERSION: "v1.16.7-beagle-1.0"
+  KUBE-SCHEDULER:
+    NAME: awecloud-kube-scheduler
+    VERSION: "v1.16.7-beagle-1.0"
+  KUBE-PROXY:
+    NAME: awecloud-kube-proxy
+    VERSION: "v1.16.7-beagle-1.0"
+  KUBECTL:
+    NAME: awecloud-kubectl
+    VERSION: "v1.16.7-beagle-1.0"

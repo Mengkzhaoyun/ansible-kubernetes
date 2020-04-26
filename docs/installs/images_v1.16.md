@@ -1,20 +1,45 @@
 # images
 
 ```bash
+# kube-apiserver
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.16.9 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.16.9 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.16.9
+
+# kube-controller-manager
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.16.9 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.16.9 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.16.9
+
+# kube-scheduler
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.16.9 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.16.9 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.16.9
+
+# hyperkube
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/hyperkube:v1.16.9 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/hyperkube:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.16.9 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.16.9
+
+# kube-proxy
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.16.9 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.16.9 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.16.9
+
 # pause
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.1
+docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.2 &&\
+docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.2 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.2
 
 # dashboard
-docker pull kubernetesui/dashboard:v2.0.0-rc6 &&\
-docker tag kubernetesui/dashboard:v2.0.0-rc6 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0.0-rc6 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0.0-rc6
+docker pull kubernetesui/dashboard:v2.0.0 &&\
+docker tag kubernetesui/dashboard:v2.0.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0.0 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0.0
 
 # dashboard-metrics-sidecar
-docker pull kubernetesui/metrics-scraper:v1.0.3 &&\
-docker tag kubernetesui/metrics-scraper:v1.0.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.3 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.3
+docker pull kubernetesui/metrics-scraper:v1.0.4 &&\
+docker tag kubernetesui/metrics-scraper:v1.0.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.4 &&\
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.4
 
 # metrics-server
 ## https://github.com/kubernetes-sigs/metrics-server/releases
@@ -28,24 +53,14 @@ docker tag nginx:1.17.4-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/nginx:1.17.4-alpine
 
 # coredns
-docker pull coredns/coredns:1.6.7 && \
-docker tag coredns/coredns:1.6.7 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.6.7 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.6.7
-
-# kube-router
-docker pull cloudnativelabs/kube-router:v1.0.0-rc1 && \
-docker tag cloudnativelabs/kube-router:v1.0.0-rc1 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v1.0.0-rc1 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v1.0.0-rc1
+docker pull coredns/coredns:1.5.2 && \
+docker tag coredns/coredns:1.5.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.5.2 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/coredns:1.5.2
 
 # etcd
 docker pull quay.io/coreos/etcd:v3.4.4 && \
 docker tag quay.io/coreos/etcd:v3.4.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.4.4 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/etcd:v3.4.4
-
-# flannel
-docker pull quay.io/coreos/flannel:v0.12.0 && \
-docker tag quay.io/coreos/flannel:v0.12.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.12.0 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.12.0
 
 # keepalived
 docker pull osixia/keepalived:1.4.5 && \
@@ -72,6 +87,16 @@ docker pull traefik:v1.7.18-alpine && \
 docker tag traefik:v1.7.18-alpine registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.18-alpine && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/traefik:v1.7.18-alpine
 
+# flannel
+docker pull quay.io/coreos/flannel:v0.12.0 && \
+docker tag quay.io/coreos/flannel:v0.12.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.12.0 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/flannel:v0.12.0
+
+# kube-router
+docker pull cloudnativelabs/kube-router:v1.0.0-rc1 && \
+docker tag cloudnativelabs/kube-router:v1.0.0-rc1 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v1.0.0-rc1 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-router:v1.0.0-rc1
+
 # calico-cni
 docker pull calico/cni:v3.13.3 && \
 docker tag calico/cni:v3.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-cni:v3.13.3 && \
@@ -91,4 +116,24 @@ docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-node:v3.13.3
 docker pull calico/kube-controllers:v3.13.3 && \
 docker tag calico/kube-controllers:v3.13.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-kube-controllers:v3.13.3 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/calico-kube-controllers:v3.13.3
+
+# cilium
+docker pull cilium/cilium:v1.7.2 && \
+docker tag cilium/cilium:v1.7.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium:v1.7.2 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium:v1.7.2
+
+# cilium/operator
+docker pull cilium/operator:v1.7.2 && \
+docker tag cilium/operator:v1.7.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium-operator:v1.7.2 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium-operator:v1.7.2
+
+# cilium/hubble
+docker pull quay.io/cilium/hubble:v0.5.0 && \
+docker tag quay.io/cilium/hubble:v0.5.0 registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium-hubble:v0.5.0 && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium-hubble:v0.5.0
+
+# cilium/hubble-ui
+docker pull quay.io/cilium/hubble-ui:latest && \
+docker tag quay.io/cilium/hubble-ui:latest registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium-hubble-ui:latest && \
+docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/cilium-hubble-ui:latest
 ```

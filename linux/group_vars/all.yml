@@ -7,8 +7,11 @@ HOST_IP: "{{ ansible_facts[IFACE]['ipv4']['address'] }}"
 
 # /root/.ssh
 SSH_KEYS: 
-  ansible: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDCJNFRbNc0SsHa/+mWB71z7SLPH9rQpwEqGbRo7q466a97h3bejNav9wc9AKmepHPfRw7DJfSmWO3lGBya0QkXMYXVvtfcWPvZZDlar5JK/ZsC8HGOpwVLdd1uUfyPu2qM0sjRNA/Ty8PDMkS5dSyZAJNlxUAILRpepkYoT8jhrw== ansible@space.docker"
-  admin: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCrQGlgFB4TGjJCNk3mJEjgId2Td054T642kLzZ57ztotWzgZsxXlVYb8U9LG0UsQ22luRd04hIU4mplhHh6vKuVtRq34I7ZXJVDj0d9A22xuzpc4Poe7oBDtiBUL3eO+SPkjlN/EGeTyHk4eAxAVvDe59RJ2g89h5oyZFgTaWpAQ== admin@space.docker"
+  ansible: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQDCJNFRbNc0SsHa/+mWB71z7SLPH9rQpwEqGbRo7q466a97h3bejNav9wc9AKmepHPfRw7DJfSmWO3lGBya0QkXMYXVvtfcWPvZZDlar5JK/ZsC8HGOpwVLdd1uUfyPu2qM0sjRNA/Ty8PDMkS5dSyZAJNlxUAILRpepkYoT8jhrw== ansible@docker"
+
+# system options
+SSH_INSTALL_KEYS: 
+  - ansible
 
 # docker
 DOCKER_DATA_PATH: /var/lib/docker
@@ -26,26 +29,26 @@ REGISTRY_DATA_PATH: /etc/kubernetes/data/registry
 
 # singer master
 K8S_TRAEFIK_REPLICAS: "1"
-
+K8S_ADMIN_TOKEN: "pleasechangeit"
 K8S_IMAGES: 
   KUBELET:
-    NAME: awecloud-kubelet
-    VERSION: "v1.16.7-beagle-1.0"
+    NAME: hyperkube
+    VERSION: "v1.16.9"
   KUBE-APISERVER:
-    NAME: awecloud-kube-apiserver
-    VERSION: "v1.16.7-beagle-1.0"
+    NAME: kube-apiserver
+    VERSION: "v1.16.9"
   KUBE-CONTROLLER-MANAGER:
-    NAME: awecloud-kube-controller-manager
-    VERSION: "v1.16.7-beagle-1.0"
+    NAME: kube-controller-manager
+    VERSION: "v1.16.9"
   KUBE-SCHEDULER:
-    NAME: awecloud-kube-scheduler
-    VERSION: "v1.16.7-beagle-1.0"
+    NAME: kube-scheduler
+    VERSION: "v1.16.9"
   KUBE-PROXY:
-    NAME: awecloud-kube-proxy
-    VERSION: "v1.16.7-beagle-1.0"
+    NAME: kube-proxy
+    VERSION: "v1.16.9"
   KUBECTL:
-    NAME: awecloud-kubectl
-    VERSION: "v1.16.7-beagle-1.0"
+    NAME: kubectl
+    VERSION: "v1.16.9"
   DASHBOARD:
     NAME: kubernetesui-dashboard
     VERSION: "v2.0.0"
@@ -57,7 +60,7 @@ K8S_IMAGES:
     VERSION: "v0.3.6"
   PAUSE: 
     NAME: pause-amd64
-    VERSION: "3.1"
+    VERSION: "3.2"
   REGISTRY:
     NAME: registry
     VERSION: "2.7.1"
