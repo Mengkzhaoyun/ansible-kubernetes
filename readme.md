@@ -26,7 +26,7 @@ docker run `
 - 数据库:   etcd v3.4
 - 容器平台: kubernetes v1.16.x
 - 网络组件: flannel v0.12.0 , calico v3.13 , kube-router v1.0.0 , cilium v1.7.2
-- 扩展组件: coredns 1.5.2 , dashboard v2.0.0
+- 扩展组件: coredns 1.5.2 , dashboard v2.0.0 , traefik v1.17
 
 ## 开始
 
