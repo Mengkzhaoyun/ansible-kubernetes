@@ -2,34 +2,40 @@
 
 ```bash
 # kube-apiserver
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.16.9 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-apiserver:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.16.9 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.16.9
+docker pull gcr.io/google-containers/kube-apiserver:v1.16.9 &&\
+docker tag gcr.io/google-containers/kube-apiserver:v1.16.9 registry.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.16.9 &&\
+docker push registry.cn-qingdao.aliyuncs.com/wod/kube-apiserver:v1.16.9
 
 # kube-controller-manager
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.16.9 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-controller-manager:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.16.9 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.16.9
+docker pull gcr.io/google-containers/kube-controller-manager:v1.16.9 &&\
+docker tag gcr.io/google-containers/kube-controller-manager:v1.16.9 registry.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.16.9 &&\
+docker push registry.cn-qingdao.aliyuncs.com/wod/kube-controller-manager:v1.16.9
 
 # kube-scheduler
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.16.9 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-scheduler:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.16.9 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.16.9
+docker pull gcr.io/google-containers/kube-scheduler:v1.16.9 &&\
+docker tag gcr.io/google-containers/kube-scheduler:v1.16.9 registry.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.16.9 &&\
+docker push registry.cn-qingdao.aliyuncs.com/wod/kube-scheduler:v1.16.9
 
 # hyperkube
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/hyperkube:v1.16.9 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/hyperkube:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.16.9 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.16.9
+docker pull gcr.io/google-containers/hyperkube:v1.16.9 &&\
+docker tag gcr.io/google-containers/hyperkube:v1.16.9 registry.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.16.9 &&\
+docker push registry.cn-qingdao.aliyuncs.com/wod/hyperkube:v1.16.9
 
 # kube-proxy
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.16.9 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/kube-proxy:v1.16.9 registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.16.9 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.16.9
+docker pull gcr.io/google-containers/kube-proxy:v1.16.9 &&\
+docker tag gcr.io/google-containers/kube-proxy:v1.16.9 registry.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.16.9 &&\
+docker push registry.cn-qingdao.aliyuncs.com/wod/kube-proxy:v1.16.9
 
 # pause
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.2 &&\
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/pause-amd64:3.2 registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.2 &&\
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.2
+docker pull gcr.io/google-containers/pause-amd64:3.2 &&\
+docker tag gcr.io/google-containers/pause-amd64:3.2 registry.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.2 &&\
+docker push registry.cn-qingdao.aliyuncs.com/wod/pause-amd64:3.2
+
+# metrics-server
+## https://github.com/kubernetes-sigs/metrics-server/releases
+docker pull gcr.io/google-containers/metrics-server-amd64:v0.3.6 && \
+docker tag gcr.io/google-containers/metrics-server-amd64:v0.3.6 registry.cn-qingdao.aliyuncs.com/wod/metrics-server-amd64:v0.3.6 && \
+docker push registry.cn-qingdao.aliyuncs.com/wod/metrics-server-amd64:v0.3.6
 
 # dashboard
 docker pull kubernetesui/dashboard:v2.0.0 &&\
@@ -40,12 +46,6 @@ docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-dashboard:v2.0
 docker pull kubernetesui/metrics-scraper:v1.0.4 &&\
 docker tag kubernetesui/metrics-scraper:v1.0.4 registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.4 &&\
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/kubernetesui-metrics-scraper:v1.0.4
-
-# metrics-server
-## https://github.com/kubernetes-sigs/metrics-server/releases
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6 && \
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6 registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-server-amd64:v0.3.6 && \
-docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/metrics-server-amd64:v0.3.6
 
 # nginx
 docker pull nginx:1.17.4-alpine && \
@@ -78,8 +78,8 @@ docker tag registry:2.7.1 registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/registry:2.7.1
 
 # tiller gcr.io/kubernetes-helm/tiller:v2.16.3
-docker pull registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.3 && \
-docker tag registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.16.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.16.3 && \
+docker pull gcr.io/google-containers/tiller:v2.16.3 && \
+docker tag gcr.io/google-containers/tiller:v2.16.3 registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.16.3 && \
 docker push registry-vpc.cn-qingdao.aliyuncs.com/wod/tiller:v2.16.3
 
 # traefik
