@@ -115,4 +115,4 @@ ap 9.uninstall.yml
 
 https://k8s.home.wodcloud.local<br>
 
-使用上面设置的Token来登录服务
+使用上面设置的<K8S_ADMIN_TOKEN>来登录服务
