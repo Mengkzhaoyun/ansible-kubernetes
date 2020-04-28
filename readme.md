@@ -22,9 +22,9 @@ docker run `
 
 ### 核心组件
 
-- 容器引擎: docker-ce 19.08
+- 容器引擎: docker-ce 19.3.8
 - 数据库:   etcd v3.4
-- 容器平台: kubernetes v1.16.x
+- 容器平台: kubernetes v1.18.x
 - 网络组件: flannel v0.12.0 , calico v3.13 , kube-router v1.0.0 , cilium v1.7.2
 - 扩展组件: coredns 1.5.2 , dashboard v2.0.0 , traefik v1.17
 

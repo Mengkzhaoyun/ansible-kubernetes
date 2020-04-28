@@ -33,22 +33,22 @@ K8S_ADMIN_TOKEN: "pleasechangeit"
 K8S_IMAGES: 
   KUBELET:
     NAME: hyperkube
-    VERSION: "v1.17.5"
+    VERSION: "v1.18.2"
   KUBE-APISERVER:
     NAME: kube-apiserver
-    VERSION: "v1.17.5"
+    VERSION: "v1.18.2"
   KUBE-CONTROLLER-MANAGER:
     NAME: kube-controller-manager
-    VERSION: "v1.17.5"
+    VERSION: "v1.18.2"
   KUBE-SCHEDULER:
     NAME: kube-scheduler
-    VERSION: "v1.17.5"
+    VERSION: "v1.18.2"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.17.5"
+    VERSION: "v1.18.2"
   KUBECTL:
     NAME: kubectl
-    VERSION: "v1.17.5"
+    VERSION: "v1.18.2"
   DASHBOARD:
     NAME: kubernetesui-dashboard
     VERSION: "v2.0.0"
