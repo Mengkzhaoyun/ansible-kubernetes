@@ -22,7 +22,7 @@ docker run `
 
 ### 核心组件
 
-- 容器引擎: docker-ce 19.08
+- 容器引擎: docker-ce 19.3.8
 - 数据库:   etcd v3.4
 - 容器平台: kubernetes v1.16.x
 - 网络组件: flannel v0.12.0 , calico v3.13 , kube-router v1.0.0 , cilium v1.7.2
@@ -116,3 +116,9 @@ ap 9.uninstall.yml
 https://k8s.home.wodcloud.local<br>
 
 使用上面设置的<K8S_ADMIN_TOKEN>来登录服务
+
+### 5.练习视频
+
+[B站视频](https://www.bilibili.com/video/bv1w541147bH)
+
+[Youtube](https://www.youtube.com/watch?v=60ksLcW6uZw)
