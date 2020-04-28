@@ -33,22 +33,22 @@ K8S_ADMIN_TOKEN: "pleasechangeit"
 K8S_IMAGES: 
   KUBELET:
     NAME: hyperkube
-    VERSION: "v1.16.9"
+    VERSION: "v1.17.5"
   KUBE-APISERVER:
     NAME: kube-apiserver
-    VERSION: "v1.16.9"
+    VERSION: "v1.17.5"
   KUBE-CONTROLLER-MANAGER:
     NAME: kube-controller-manager
-    VERSION: "v1.16.9"
+    VERSION: "v1.17.5"
   KUBE-SCHEDULER:
     NAME: kube-scheduler
-    VERSION: "v1.16.9"
+    VERSION: "v1.17.5"
   KUBE-PROXY:
     NAME: kube-proxy
-    VERSION: "v1.16.9"
+    VERSION: "v1.17.5"
   KUBECTL:
     NAME: kubectl
-    VERSION: "v1.16.9"
+    VERSION: "v1.17.5"
   DASHBOARD:
     NAME: kubernetesui-dashboard
     VERSION: "v2.0.0"
@@ -140,8 +140,7 @@ K8S_SERVICE_IP: 10.3.0.1
 K8S_DNS_SERVICE_IP: 10.3.0.10
 K8S_ADVERTISE_IP: "{{ HOST_IP }}"
 K8S_PORT: 6443
-K8S_ADMIN_PWD: abcd2018
-K8S_MASTER_DOMAIN: k8s.wodcloud.local
+K8S_MASTER_DOMAIN: k8s.{{ K8S_DOMAIN }}
 K8S_MASTER_PORT: "{{ K8S_PORT }}"
 
 # ubuntu

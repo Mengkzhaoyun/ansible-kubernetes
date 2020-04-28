@@ -1,23 +1,21 @@
 - name: Run prepare.sh
   environment:
-    HTTP_SERVER: '{{ HTTP_SERVER }}'
-    RKT_ACI_KUBELET: '{{ RKT_ACI_KUBELET }}'
     REGISTRY_LOCAL: '{{ REGISTRY_LOCAL }}'
     REGISTRY_KUBELET_REPO: '{{ K8S_IMAGES["KUBELET"]["NAME"] }}'
     REGISTRY_KUBELET_VERSION: '{{ K8S_IMAGES["KUBELET"]["VERSION"] }}' 
   script: scripts/prepare.sh
 
-- name: copy config/kubelet.yaml
+- name: template config/kubelet.yaml
   template: src=config/kubelet.yaml dest=/etc/kubernetes/config/kubelet.yaml
 
-- name: copy config/kubelet-master.yaml
+- name: template config/kubelet.conf.yaml
+  template: src=config/kubelet.conf.yaml dest=/etc/kubernetes/config/kubelet.conf.yaml
+
+- name: template config/kubelet-master.yaml
   template: src=config/kubelet-master.yaml dest=/etc/kubernetes/config/kubelet.yaml  
   when: 
   - K8S_CLUSTER_ROLE[inventory_hostname] is defined and K8S_CLUSTER_ROLE[inventory_hostname] == "master"  
-
-- name: copy scripts/kubelet.sh
-  template: src=scripts/kubelet.sh dest=/etc/kubernetes/scripts/kubelet.sh mode=0755
-
+  
 - name: check need services/k8s-kubelet.service
   raw: stat /etc/systemd/system/k8s-kubelet.service
   register: need_services_kubelet
