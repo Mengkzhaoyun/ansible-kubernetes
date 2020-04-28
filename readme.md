@@ -116,3 +116,9 @@ ap 9.uninstall.yml
 https://k8s.home.wodcloud.local<br>
 
 使用上面设置的<K8S_ADMIN_TOKEN>来登录服务
+
+### 5.练习视频
+
+[B站视频](https://www.bilibili.com/video/BV1ra4y1v7po/)
+
+[Youtube](https://www.youtube.com/watch?v=hj6oUjhEarU)
